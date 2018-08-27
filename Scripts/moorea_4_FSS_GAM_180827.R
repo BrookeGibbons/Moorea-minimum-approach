@@ -8,6 +8,7 @@
 
 rm(list=ls())
 study<-"mad.schools"
+name<-"mad.schools"
 
 # Source functions----
 library(RCurl)
@@ -18,7 +19,8 @@ require(plyr)
 library(dplyr)
 library(tidyr)
 library(googlesheets)
-
+library(gamm4)
+library(MuMIn)
 
 function_full_subsets_gam <- getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam/master/function_full_subsets_gam_v1.11.R?token=AOSO6tZYAozKTAZ1Kt-aqlQIsiKuxONjks5ZZCtiwA%3D%3D", ssl.verifypeer = FALSE)
 eval(parse(text = function_full_subsets_gam))
@@ -31,6 +33,7 @@ dat <-read.csv(text=getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam
 
 # Bring in my data ----
 work.dir=("C:/GitHub/Moorea-minimum-approach")
+work.dir=("~/Git Projects/Moorea-minimum-approach")
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -38,6 +41,12 @@ tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
 summaries=paste(work.dir,"Data/Summaries",sep="/")
 plots=paste(work.dir,"Plots",sep="/")
 model.out=paste(work.dir,"ModelOut",sep="/")
+
+# Load functions----
+script.dir=paste(work.dir,"Scripts",sep="/")
+setwd(script.dir)
+dir()
+source("function_full_subsets_gam_v1.10.R")
 
 # Life history ----
 master <- gs_title("Moorea Species List_170406")%>%
@@ -141,6 +150,42 @@ dat<-combined%>%
 
 colnames(dat)
 
+# Mad data----
+dat.mad<-brooke.dat%>%
+  filter(final.mad>0)%>%
+  filter(!is.na(Length))%>%
+  filter(Length>80)%>%
+  #filter(Length<300)%>%
+  mutate(Indicator="Mad")%>%
+  mutate(TargetLoc=as.factor(TargetLoc))%>%
+  mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
+  mutate(School=as.factor(School))%>%
+  dplyr::rename(response=final.mad)%>%
+  select(-c(Reef.Lagoon))%>%
+  glimpse()
+
+dat.mad.targetloc<-dat.mad%>%
+  select(Sample,TargetLoc,response,Length,School)%>%
+  inner_join(dat.factor, by="Sample")%>%
+  mutate(Metric="TargetLoc")%>%
+  select(-c(Reef.Lagoon,Genus_species))
+
+dat.mad.species<-dat.mad%>%
+  select(Sample,Genus_species,response,Length,School)%>%
+  filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
+  inner_join(dat.factor, by="Sample")%>%
+  mutate(Metric=Genus_species)%>%
+  select(-c(Reef.Lagoon,Genus_species))
+  
+dat.mad.school.min<-dat.mad%>%
+  filter(!School=="")%>%
+  select(Sample,School,response,Length)%>%
+  dplyr::group_by(Sample,School)%>%
+  summarise(min.mad=min(final.mad),avg.length=mean(Length),min.length=min(Length),max.length=max(Length))
+  
+dat.mad.complete<-bind_rows(dat.mad.targetloc,dat.mad.species)
+
+#### Begining of models ----
 #dat$SQRTSA=dat$SA
 #dat$sqrt.rug=sqrt(dat$rugosity)
 #dat$sqrtLC=sqrt(dat$LC)
@@ -781,6 +826,276 @@ combine.plot<-arrangeGrob(ggmod.bds.status,ggmod.bds.distance.x.status,ggmod.bds
 
 ggsave(combine.plot,file="Langlois_gamm.plot.png", width = 30, height = 30,units = "cm")
 
+#### OLD SCRIPT ----
+setwd(model.out)
+# set predictors---
+#pred.vars=c("mean.relief","sd.relief","hard.corals","rock")  #,"Length"
+pred.vars=c("Depth","mean.relief","sd.relief","rock","macroalgae","hard.corals","sand","reef")
 
+# Clean up Response vector---
+unique.vars=unique(as.character(dat$Metric))
+unique.vars.use=character()
+for(i in 1:length(unique.vars)){
+  temp.dat=dat[which(dat$Metric==unique.vars[i]),]
+  if(length(which(temp.dat$response==0))/nrow(temp.dat)<0.9){
+    unique.vars.use=c(unique.vars.use,unique.vars[i])}
+}
+unique.vars.use
+write.csv(unique.vars.use,file=paste("unique.vars.use.csv",sep = "_"))
 
+dat<-dat%>%
+  ungroup()
 
+str(dat)
+
+write.csv(dat,"dat.csv")
+dat<-read.csv("dat.csv")
+
+# Full-subset models---
+head(dat,2)
+resp.vars=unique.vars.use
+use.dat=dat
+out.all=list()
+var.imp=list()
+factor.vars=c("Status")
+str(dat)
+
+for(i in 1:length(resp.vars)){
+  use.dat=dat[which(dat$Metric==resp.vars[i]),]
+  
+  Model1=gam(response~s(hard.corals,bs='cr')+s(Location,Site,bs="re"),
+             family=tw(),
+             #family=gaussian(link = "identity"), #this is much quicker! but change to tw() for actual analysis
+             offset=PeriodLength,
+             data=use.dat)
+  out.list=full.subsets.gam(use.dat=use.dat,
+                            test.fit=Model1,
+                            pred.vars.cont=pred.vars,
+                            pred.vars.fact=factor.vars,
+                            k=3,
+                            # linear.vars="Length",
+                            null.terms="s(Location,Site,bs='re')",      
+                            max.models=600,
+                            parallel=T)
+  names(out.list)
+  
+  
+  # examine the list of failed models
+  out.list$failed.models
+  # look at the model selection table
+  mod.table=out.list$mod.data.out
+  mod.table=mod.table[order(mod.table$AICc),]
+  # mod.table$cumsum.wi=cumsum(mod.table$wi.AICc) #changed here TJL
+  # best.mods.index=c(1,1+which(mod.table$cumsum.wi<0.9))
+  # out.i=mod.table[ best.mods.index,]
+  out.i=mod.table[which(mod.table$delta.AICc<=4),]
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.per.mod))
+  #write.csv(mod.table,"test_out_modfits_mgcv.csv")
+  
+  # plot the best models
+  for(m in 1:nrow(out.i)){
+    best.model.name=as.character(out.i$modname[m])
+    
+    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    if(best.model.name!="null"){
+      par(mfrow=c(3,1),mar=c(9,4,3,1))
+      best.model=out.list$success.models[[best.model.name]]
+      #       plot(best.model$gam,all.terms=T,pages=1,residuals=T,pch=16) #change if you change the gam function
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=2,text=resp.vars[i],outer=F)}
+    dev.off()
+  }
+}
+
+# Model fits and importance---
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+write.csv(all.mod.fits,file=paste(name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(name,"all.var.imp.csv",sep="_"))
+
+# Generic importance plots-
+pdf(file=paste(name,"var_importance_heatmap.pdf",sep="_"),onefile=T)
+heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
+          col=colorRampPalette(c("white","yellow","red"))(10),
+          trace="none",key.title = "",keysize=2,
+          notecol="black",key=T,
+          sepcolor = "black",margins=c(12,8), lhei=c(4,15),Rowv=FALSE,Colv=FALSE)
+dev.off()
+
+# END OF MODEL---
+# model.out.TargetLoc.factor.mad----
+name<-"model.out.TargetLoc.factor.mad"
+setwd(model.out)
+dir()
+
+# set predictors---
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+
+dat<-dat.mad.targetloc
+
+# Clean up Response vector---
+unique.vars=unique(as.character(dat$Metric))
+unique.vars.use=character()
+for(i in 1:length(unique.vars)){
+  temp.dat=dat[which(dat$Metric==unique.vars[i]),]
+  if(length(which(temp.dat$response==0))/nrow(temp.dat)<0.9){
+    unique.vars.use=c(unique.vars.use,unique.vars[i])}
+}
+unique.vars.use
+write.csv(unique.vars.use,file=paste("unique.vars.use.csv",sep = "_"))
+
+# Full-subset models---
+head(dat,2)
+resp.vars=unique.vars.use
+use.dat=dat
+out.all=list()
+var.imp=list()
+factor.vars=c("Status","TargetLoc","School")
+str(dat)
+
+for(i in 1:length(resp.vars)){
+  use.dat=dat[which(dat$Metric==resp.vars[i]),]
+  
+  Model1=gam(response~s(hard.corals,bs='cr')+s(Location,Site,bs="re"), #TJL removed Sample
+             # family=tw(),
+             family=gaussian(link = "identity"), #this is much quicker! but change to tw() for actual analysis
+             offset=PeriodLength,
+             data=use.dat)
+  out.list=full.subsets.gam(use.dat=use.dat,
+                            test.fit=Model1,
+                            pred.vars.cont=pred.vars,
+                            pred.vars.fact=factor.vars,
+                            k=3,
+                            # linear.vars="Length",
+                            null.terms="s(Location,Site,bs='re')",  #TJL removed Sample
+                            max.models=600,
+                            parallel=T)
+  names(out.list)
+  
+  # examine the list of failed models
+  out.list$failed.models
+  # look at the model selection table
+  mod.table=out.list$mod.data.out
+  mod.table=mod.table[order(mod.table$AICc),]
+  # mod.table$cumsum.wi=cumsum(mod.table$wi.AICc) #changed here TJL
+  # best.mods.index=c(1,1+which(mod.table$cumsum.wi<0.9))
+  # out.i=mod.table[ best.mods.index,]
+  out.i=mod.table[which(mod.table$delta.AICc<=4),]
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.per.mod))
+  #write.csv(mod.table,"test_out_modfits_mgcv.csv")
+  
+  # plot the best models
+  for(m in 1:nrow(out.i)){
+    best.model.name=as.character(out.i$modname[m])
+    
+    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    if(best.model.name!="null"){
+      par(mfrow=c(3,1),mar=c(9,4,3,1))
+      best.model=out.list$success.models[[best.model.name]]
+      #       plot(best.model$gam,all.terms=T,pages=1,residuals=T,pch=16) #change if you change the gam function
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=2,text=resp.vars[i],outer=F)}
+    dev.off()
+  }
+}
+
+# Model fits and importance---
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+write.csv(all.mod.fits,file=paste(name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(name,"all.var.imp.csv",sep="_"))
+
+# END OF MODEL
+
+# model.out.Species.mad----
+name<-"model.out.species.mad"
+setwd(model.out)
+dir()
+
+# set predictors---
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+
+dat<-dat.mad.species
+
+# Clean up Response vector---
+unique.vars=unique(as.character(dat$Metric))
+unique.vars.use=character()
+for(i in 1:length(unique.vars)){
+  temp.dat=dat[which(dat$Metric==unique.vars[i]),]
+  if(length(which(temp.dat$response==0))/nrow(temp.dat)<0.9){
+    unique.vars.use=c(unique.vars.use,unique.vars[i])}
+}
+unique.vars.use
+write.csv(unique.vars.use,file=paste("unique.vars.use.csv",sep = "_"))
+
+# Full-subset models---
+head(dat,2)
+resp.vars=unique.vars.use
+use.dat=dat
+out.all=list()
+var.imp=list()
+factor.vars=c("Status","School")
+str(dat)
+
+for(i in 1:length(resp.vars)){
+  use.dat=dat[which(dat$Metric==resp.vars[i]),]
+  
+  Model1=gam(response~s(hard.corals,bs='cr')+s(Location,Site,bs="re"), #TJL removed Sample
+             # family=tw(),
+             family=gaussian(link = "identity"), #this is much quicker! but change to tw() for actual analysis
+             offset=PeriodLength,
+             data=use.dat)
+  out.list=full.subsets.gam(use.dat=use.dat,
+                            test.fit=Model1,
+                            pred.vars.cont=pred.vars,
+                            pred.vars.fact=factor.vars,
+                            k=3,
+                            # linear.vars="Length",
+                            null.terms="s(Location,Site,bs='re')",  #TJL removed Sample
+                            max.models=600,
+                            parallel=T)
+  names(out.list)
+  
+  # examine the list of failed models
+  out.list$failed.models
+  # look at the model selection table
+  mod.table=out.list$mod.data.out
+  mod.table=mod.table[order(mod.table$AICc),]
+  # mod.table$cumsum.wi=cumsum(mod.table$wi.AICc) #changed here TJL
+  # best.mods.index=c(1,1+which(mod.table$cumsum.wi<0.9))
+  # out.i=mod.table[ best.mods.index,]
+  out.i=mod.table[which(mod.table$delta.AICc<=4),]
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.per.mod))
+  #write.csv(mod.table,"test_out_modfits_mgcv.csv")
+  
+  # plot the best models
+  for(m in 1:nrow(out.i)){
+    best.model.name=as.character(out.i$modname[m])
+    
+    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    if(best.model.name!="null"){
+      par(mfrow=c(3,1),mar=c(9,4,3,1))
+      best.model=out.list$success.models[[best.model.name]]
+      #       plot(best.model$gam,all.terms=T,pages=1,residuals=T,pch=16) #change if you change the gam function
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=2,text=resp.vars[i],outer=F)}
+    dev.off()
+  }
+}
+
+# Model fits and importance---
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+write.csv(all.mod.fits,file=paste(name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(name,"all.var.imp.csv",sep="_"))
+
+# END OF MODEL
