@@ -336,6 +336,7 @@ for (i in pred.vars) {
 # # Re-set the predictors for modeling----
 pred.vars=c("Depth","mean.relief","sd.relief","rock","macroalgae","hard.corals","sand") #,"reef"
 
+
 # Check to make sure Response vector has not more than 80% zeros----
 unique.vars=unique(as.character(dat$Metric))
 unique.vars.use=character()
@@ -350,6 +351,10 @@ unique.vars.use
 #"BMS" bivalve Myadora striata
 #"CPN" crustacean Pagrus novaezelandiae
 
+str(dat)
+
+
+
 # Run the full subset model selection----
 setwd(model.out) #Set wd for example outputs - will differ on your computer
 resp.vars=unique.vars.use
@@ -362,7 +367,7 @@ var.imp=list()
 for(i in 1:length(resp.vars)){
   use.dat=dat[which(dat$Metric==resp.vars[i]),]
   
-  Model1=gam(response~s(hard.corals,k=3,bs='cr')+ s(Location,Site,bs="re"),
+  Model1=gam(response~s(sand,k=3,bs='cr')+ s(Location,Site,bs="re"),
              family=tw(), offset=PeriodLength,  data=use.dat)
   out.list=full.subsets.gam(use.dat=use.dat,
                             test.fit=Model1,
