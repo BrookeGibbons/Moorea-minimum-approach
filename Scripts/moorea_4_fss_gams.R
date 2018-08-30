@@ -21,10 +21,7 @@ library(tidyr)
 library(googlesheets)
 library(gamm4)
 library(MuMIn)
-<<<<<<< HEAD
 library(doSNOW)
-=======
-  >>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
 
 function_full_subsets_gam <- getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam/master/function_full_subsets_gam_v1.11.R?token=AOSO6tZYAozKTAZ1Kt-aqlQIsiKuxONjks5ZZCtiwA%3D%3D", ssl.verifypeer = FALSE)
 eval(parse(text = function_full_subsets_gam))
@@ -37,11 +34,7 @@ dat <-read.csv(text=getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam
 
 # Bring in my data ----
 work.dir=("C:/GitHub/Moorea-minimum-approach")
-<<<<<<< HEAD
 #work.dir=("~/Git Projects/Moorea-minimum-approach")
-=======
-  work.dir=("~/Git Projects/Moorea-minimum-approach")
->>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -51,10 +44,10 @@ plots=paste(work.dir,"Plots",sep="/")
 model.out=paste(work.dir,"ModelOut",sep="/")
 
 # Load functions----
-script.dir=paste(work.dir,"Scripts",sep="/")
-setwd(script.dir)
-dir()
-source("function_full_subsets_gam_v1.10.R")
+# script.dir=paste(work.dir,"Scripts",sep="/")
+# setwd(script.dir)
+# dir()
+# source("function_full_subsets_gam_v1.10.R")
 
 # Life history ----
 master <- gs_title("Moorea Species List_170406")%>%
@@ -208,10 +201,9 @@ pred.vars=c("mean.relief","sd.relief","hard.corals","rock")
 pred.vars
 length(pred.vars)
 
-<<<<<<< HEAD
 # Set directory for the model outputs-
 setwd(model.out)
-=======
+
   # Mad data----
 dat.mad<-brooke.dat%>%
   filter(final.mad>0)%>%
@@ -248,13 +240,6 @@ dat.mad.school.min<-dat.mad%>%
 dat.mad.complete<-bind_rows(dat.mad.targetloc,dat.mad.species)
 
 #### Begining of models ----
-#dat$SQRTSA=dat$SA
-#dat$sqrt.rug=sqrt(dat$rugosity)
-#dat$sqrtLC=sqrt(dat$LC)
-#dat$sqrtHC=sqrt(dat$HC)
-#dat$sqrtMacro=sqrt(dat$macro)
->>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
-
 # Clean up response variables--
 unique.vars=unique(as.character(dat$Metric))
 unique.vars.use=character(c(unique.vars))
@@ -264,8 +249,6 @@ setwd(model.out)
 
 # Full-sebset models---  
 resp.vars=unique.vars.use
-head(dat,2)
-#factor.vars=c("Year", "Pipeline")
 factor.vars=c("Status")
 use.dat=dat
 out.all=list() 
@@ -1278,4 +1261,3 @@ write.csv(all.mod.fits,file=paste(name,"all.mod.fits.csv",sep="_"))
 write.csv(all.var.imp,file=paste(name,"all.var.imp.csv",sep="_"))
 
 # END OF MODEL
->>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
