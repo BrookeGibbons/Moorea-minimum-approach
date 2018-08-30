@@ -21,6 +21,10 @@ library(tidyr)
 library(googlesheets)
 library(gamm4)
 library(MuMIn)
+<<<<<<< HEAD
+library(doSNOW)
+=======
+>>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
 
 function_full_subsets_gam <- getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam/master/function_full_subsets_gam_v1.11.R?token=AOSO6tZYAozKTAZ1Kt-aqlQIsiKuxONjks5ZZCtiwA%3D%3D", ssl.verifypeer = FALSE)
 eval(parse(text = function_full_subsets_gam))
@@ -33,7 +37,11 @@ dat <-read.csv(text=getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam
 
 # Bring in my data ----
 work.dir=("C:/GitHub/Moorea-minimum-approach")
+<<<<<<< HEAD
+#work.dir=("~/Git Projects/Moorea-minimum-approach")
+=======
 work.dir=("~/Git Projects/Moorea-minimum-approach")
+>>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -103,7 +111,7 @@ dat.size.class<-brooke.dat%>%
 
 names(dat.size.class)
 unique(dat.size.class$Sample)
-  
+
 dat.2<-dat.size.class%>%
   filter(Genus_species%in%(c("Ctenochaetus striatus","Chlorurus sordidus")))%>%
   dplyr::group_by(Sample,Genus_species,Indicator)%>%
@@ -117,7 +125,7 @@ dat.2<-dat.size.class%>%
 dat.3<-dat.size.class%>%
   filter(!is.na(TargetLoc))%>%
   group_by(Sample,Indicator,TargetLoc)%>%
-  summarise(Response=sum(Response))%>%
+  dplyr::summarise(Response=sum(Response))%>%
   ungroup()%>%
   inner_join(dat.factor, by="Sample")%>%
   mutate(Metric=paste("Abundance.TargetLoc",TargetLoc,Indicator,sep="."))%>%
@@ -143,13 +151,67 @@ dat.4<-schools%>%
 # Combine datasets together ----
 
 combined<-bind_rows(dat.1,dat.2,dat.3,dat.4)
-dat<-spread(combined,Metric,Response)
 
+# Mad data----
+dat.mad<-brooke.dat%>%
+  filter(final.mad>0)%>%
+  filter(!is.na(Length))%>%
+  filter(Length>80)%>%
+  #filter(Length<300)%>%
+  mutate(Indicator="Mad")%>%
+  mutate(TargetLoc=as.factor(TargetLoc))%>%
+  #mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
+  mutate(School=as.factor(School))%>%
+  dplyr::rename(response=final.mad)%>%
+  select(-c(Reef.Lagoon))%>%
+  glimpse()
+
+dat.mad.targetloc<-dat.mad%>%
+  mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
+  select(Sample,TargetLoc,response,Length,School)%>%
+  inner_join(dat.factor, by="Sample")%>%
+  mutate(Metric="TargetLoc")#%>%
+  #select(-c(Reef.Lagoon,Genus_species))
+
+dat.mad.species<-dat.mad%>%
+  mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
+  select(Sample,Genus_species,response,Length,School)%>%
+  filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
+  inner_join(dat.factor, by="Sample")%>%
+  mutate(Metric=Genus_species)%>%
+  select(-c(Reef.Lagoon,Genus_species))
+
+dat.mad.school.min<-dat.mad%>%
+  filter(!School=="")%>%
+  select(Sample,School,response,Length)%>%
+  dplyr::group_by(Sample,School)%>%
+  dplyr::summarise(response=min(response),min.length=min(Length),num.individuals=n())
+
+dat.mad.individuals<-dat.mad%>%
+  filter(!grepl("School",School))%>%
+  mutate(num.individuals=Number)%>%
+  mutate(min.length=Length)
+
+dat.mad.schools<-bind_rows(dat.mad.school.min,dat.mad.individuals)%>%
+  select(Sample,response,min.length,num.individuals)%>%
+  inner_join(dat.factor, by="Sample")
+
+############ Begining of models ----
+#### Abundance models -----
+
+# Set the Pred.vars for all models----
 dat<-combined%>%
   dplyr::rename(response=Response)
+names(dat)
 
-colnames(dat)
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock") 
+pred.vars
+length(pred.vars)
 
+<<<<<<< HEAD
+# Set directory for the model outputs-
+setwd(model.out)
+=======
 # Mad data----
 dat.mad<-brooke.dat%>%
   filter(final.mad>0)%>%
@@ -191,236 +253,43 @@ dat.mad.complete<-bind_rows(dat.mad.targetloc,dat.mad.species)
 #dat$sqrtLC=sqrt(dat$LC)
 #dat$sqrtHC=sqrt(dat$HC)
 #dat$sqrtMacro=sqrt(dat$macro)
+>>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
 
-#cat.preds="ZONE"
-cat.preds="Status"
-
-#null.vars=c("depth","site","SQRTSA") # use as random effect and null model
-null.vars=c("Site","Location")
-
-#cont.preds=c("complexity","sqrt.rug","sqrtLC","sqrtHC","sqrtMacro","SCORE1","SCORE2") # use as continuous predictors.
-cont.preds=c("Depth","mean.relief","sd.relief","rock","macroalgae","hard.corals","sand","reef") # use as continuous predictors.
-
-cor(dat[,cont.preds])
-str(dat)
-# have a look at the distribution of the continuous predictors
-
-pdf(file="pred_vars.pdf",onefile=T)
-for(p in 1:length(cont.preds)){
-  par(mfrow=c(2,1))
-  hist(dat[,cont.preds[p]],main=cont.preds[p])
-  plot(jitter(dat[,cont.preds[p]]))
-}
-dev.off()
-
-# remove extreme outliers
-#dat$Piscivore.abundance[which(dat$Piscivore.abundance>150)]=NA
-#dat$Piscivore.biomass[which(dat$Piscivore.biomass>40000)]=NA
-#dat$Invertivore.biomass[which(dat$Invertivore.biomass>40000)]=NA
-
-resp.vars.fams=list("Abundance.Chlorurus sordidus.large"=tw(),
-                    "Abundance.Chlorurus sordidus.small"=tw(),
-                    "Abundance.Ctenochaetus striatus.large"=tw(),
-                    "Abundance.Ctenochaetus striatus.small"=tw(),
-                    "Number.of.schools"=tw(),
-                    "School.Total"=tw(),
-                    "Species.Richness"=tw(),
-                    "Total.Abundance"=tw())
-resp.vars=names(resp.vars.fams)
-
-# take a look at the response variables
-pdf(file="resp_vars.pdf",onefile=T)
-for(r in 1:length(resp.vars)){
-  par(mfrow=c(2,1))
-  hist(dat[,resp.vars[r]],main=resp.vars[r])
-  plot(jitter(dat[,resp.vars[r]]))
-}
-dev.off()
-
-### now fit the models ---------------------------------------------------------
-i=1
-out.all=list()
-var.imp=list()
-fss.all=list()
-top.all=list()
-pdf(file="mod_fits_functional_biomass.pdf",onefile=T)
-for(i in 1:length(resp.vars)){
-  use.dat=na.omit(dat[,c(null.vars,cont.preds,cat.preds,resp.vars[i])])
-  use.dat$response=use.dat[,resp.vars[i]]
-  Model1=gam(response~s(hard.corals,k=3,bs='cr')+s(Location,Site,bs="re"),
-             family=resp.vars.fams[[i]],
-             data=use.dat)#,
-             #offset=PeriodLength)
-  out.list=full.subsets.gam(use.dat=use.dat,
-                            max.predictors=2, 
-                            test.fit=Model1,
-                            k=3,
-                            pred.vars.cont=cont.preds,
-                            pred.vars.fact=cat.preds,
-                            null.terms="s(Location,Site,bs='re')")
-  #names(out.list)
-  # examine the list of failed models
-  #out.list$failed.models
-  #out.list$success.models
-  fss.all=c(fss.all,list(out.list))
-  mod.table=out.list$mod.data.out
-  mod.table=mod.table[order(mod.table$AICc),]
-  out.i=mod.table
-  out.all=c(out.all,list(out.i))
-  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw))
-  all.less.2AICc=mod.table[which(mod.table$delta.AICc<2),]
-  top.all=c(top.all,list(all.less.2AICc))
-  
-  # plot the all best models
-  par(oma=c(1,1,4,1))
-  for(r in 1:nrow(all.less.2AICc)){
-    best.model.name=as.character(all.less.2AICc$modname[r])
-    best.model=out.list$success.models[[best.model.name]]
-    if(best.model.name!="null"){
-      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
-      mtext(side=3,text=resp.vars[i],outer=T)}
-  }
-}
-dev.off()
-
-names(out.all)=resp.vars
-names(var.imp)=resp.vars
-names(top.all)=resp.vars
-names(fss.all)=resp.vars
-
-all.mod.fits=do.call("rbind",out.all)
-all.var.imp=do.call("rbind",var.imp)
-top.mod.fits=do.call("rbind",top.all)
-
-require(car)
-require(doBy)
-require(gplots)
-require(RColorBrewer)
-
-pdf(file="var_importance_heatmap_functional_biomass.pdf",height=5,width=7,pointsize=10)
-heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
-          col=colorRampPalette(c("white","yellow","orange","red"))(30),
-          trace="none",key.title = "",keysize=2,
-          notecol="black",key=T,
-          sepcolor = "black",margins=c(12,14), lhei=c(3,10),lwid=c(3,10),
-          Rowv=FALSE,Colv=FALSE)
-dev.off()
-
-write.csv(all.mod.fits[,-2],"all_model_fits_functional_biomass.csv")
-write.csv(top.mod.fits[,-2],"top_model_fits_functional_biomass.csv")
-write.csv(out.list$predictor.correlations,"predictor_correlations.csv")
-
-#### pretty plots of best models -----------------------------------------------
-zones=levels(dat$ZONE)
-pdf("best_top_model_quick_plots.pdf",height=8,width=7,pointsize=12)
-par(mfcol=c(4,2),mar=c(4,4,0.5,0.5),oma=c(2,0.5,0.5,0.5),bty="l")
-for(r in 1:length(resp.vars)){
-  tab.r=out.all[[resp.vars[r]]]
-  top.mods.r=tab.r[1,]
-  mod.r.m=as.character(top.mods.r[1,"modname"])
-  mod.m=fss.all[[resp.vars[r]]]$success.models[[mod.r.m]]
-  mod.vars=unique(unlist(strsplit(unlist(strsplit(mod.r.m,split="+",fixed=T)),
-                                  split=".by.")))
-  # which continuous predictor is the variable included?
-  plot.var=as.character(na.omit(mod.vars[match(cont.preds,mod.vars)]))
-  # plot that variables, with symbol colours for zone
-  plot(dat[,plot.var],dat[,resp.vars[r]],pch=16,
-       ylab=resp.vars[r],xlab=plot.var,col=dat$ZONE)
-  legend("topleft",legend=paste("(",LETTERS[r],")",sep=""),
-         bty="n")
-  range.v=range(dat[,plot.var])
-  seq.v=seq(range.v[1],range.v[2],length=20)
-  newdat.list=list(seq.v,# across the range of the included variable
-                   mean(use.dat$depth), # for a median depth
-                   mean(use.dat$SQRTSA),# for a median SQRTSA
-                   "MANGROVE", # pick the first site, except don't predict on
-                   # this by setting terms=c(plot.var,"ZONE")
-                   zones)  # for each zone
-  names(newdat.list)=c(plot.var,"depth","SQRTSA","site","ZONE")
-  pred.vals=predict(mod.m,newdata=expand.grid(newdat.list),
-                    type="response",se=T,exclude=c("site","SQRTSA","depth"))
-  for(z in 1:length(zones)){
-    zone.index=which(expand.grid(newdat.list)$ZONE==zones[z])
-    lines(seq.v,pred.vals$fit[zone.index],col=z)
-    lines(seq.v,pred.vals$fit[zone.index]+pred.vals$se[zone.index]*1.96,lty=3,col=z)
-    lines(seq.v,pred.vals$fit[zone.index]-pred.vals$se[zone.index]*1.96,lty=3,col=z)}
-}
-legend("bottom",legend= zones,bty="n",ncol=2,col=c(1,2),pch=c(16,16),
-       inset=-0.61,xpd=NA,cex=.8)
-dev.off()
-
-
-## Try second script ----
-# Set predictor variables---
-pred.vars=c("Depth","mean.relief","sd.relief","rock","macroalgae","hard.corals","sand") #,"reef"
-
-# Check for correalation of predictor variables- remove anything highly correlated (>0.95)---
-round(cor(dat[,pred.vars]),2)
-# nothing is highly correlated 
-
-# Plot of likely transformations - thanks to Anna Cresswell for this loop!
-par(mfrow=c(3,2))
-for (i in pred.vars) {
-  x<-dat[ ,i]
-  x = as.numeric(unlist(x))
-  hist((x))#Looks best
-  plot((x),main = paste(i))
-  hist(sqrt(x))
-  plot(sqrt(x))
-  hist(log(x+1))
-  plot(log(x+1))
-}
-
-# Review of individual predictors - we have to make sure they have an even distribution---
-#If the data are squewed to low numbers try sqrt>log or if squewed to high numbers try ^2 of ^3
-# Decided that X4mm, X2mm, X1mm and X500um needed a sqrt transformation
-#Decided Depth, x63um, InPreds and BioTurb were not informative variables. 
-
-
-
-# # Re-set the predictors for modeling----
-pred.vars=c("Depth","mean.relief","sd.relief","rock","macroalgae","hard.corals","sand") #,"reef"
-
-
-# Check to make sure Response vector has not more than 80% zeros----
+# Clean up response variables--
 unique.vars=unique(as.character(dat$Metric))
-unique.vars.use=character()
-for(i in 1:length(unique.vars)){
-  temp.dat=dat[which(dat$Metric==unique.vars[i]),]
-  if(length(which(temp.dat$response==0))/nrow(temp.dat)<0.8){
-    unique.vars.use=c(unique.vars.use,unique.vars[i])}
-}
-unique.vars.use     
+unique.vars.use=character(c(unique.vars))
+unique.vars.use
 
-#"BDS" bivalve Dosina subrosea
-#"BMS" bivalve Myadora striata
-#"CPN" crustacean Pagrus novaezelandiae
+setwd(model.out)
+
+# Full-sebset models---  
+resp.vars=unique.vars.use
+head(dat,2)
+#factor.vars=c("Year", "Pipeline")
+factor.vars=c("Status")
+use.dat=dat
+out.all=list() 
+var.imp=list()
 
 str(dat)
 
+name<-"abundance.models"
 
-
-# Run the full subset model selection----
-setwd(model.out) #Set wd for example outputs - will differ on your computer
-resp.vars=unique.vars.use
-use.dat=dat
-factor.vars=c("Status")# Status as a Factor with two levels
-out.all=list()
-var.imp=list()
-
-# Loop through the FSS function for each Taxa----
+# for new function
 for(i in 1:length(resp.vars)){
   use.dat=dat[which(dat$Metric==resp.vars[i]),]
   
-  Model1=gam(response~s(sand,k=3,bs='cr')+ s(Location,Site,bs="re"),
-             family=tw(), offset=PeriodLength,  data=use.dat)
+  Model1=gam(response~s(hard.corals, k=3, bs='cr')+s(Site,Location,bs='re'),
+             family=tw(), 
+             offset=PeriodLength,
+             data=use.dat)
+  
   out.list=full.subsets.gam(use.dat=use.dat,
                             test.fit=Model1,
                             pred.vars.cont=pred.vars,
                             pred.vars.fact=factor.vars,
-                            #linear.vars="Distance",
                             k=3,
-                            null.terms="s(Location,Site,bs='re')",
+                            null.terms="s(Site,Location,bs='re')" ,
                             max.models=600,
                             parallel=T)  
   names(out.list)
@@ -429,10 +298,12 @@ for(i in 1:length(resp.vars)){
   mod.table=out.list$mod.data.out  # look at the model selection table
   mod.table=mod.table[order(mod.table$AICc),]
   mod.table$cumsum.wi=cumsum(mod.table$wi.AICc)
-  out.i=mod.table[which(mod.table$delta.AICc<=3),]
+  out.i=mod.table[which(mod.table$delta.AICc<=2),]
   out.all=c(out.all,list(out.i))
-  # var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw)) #Either raw importance score
-  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw)) #Or importance score weighted by r2
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw)) 
+  #Either raw importance score
+  #var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.r2.scaled)) 
+  #Or importance score weighted by r2...this doesn't exist in Rebecca Fisher's model
   
   # plot the best models
   for(m in 1:nrow(out.i)){
@@ -448,20 +319,326 @@ for(i in 1:length(resp.vars)){
   }
 }
 
+
 # Model fits and importance---
 names(out.all)=resp.vars
 names(var.imp)=resp.vars
 all.mod.fits=do.call("rbind",out.all)
 all.var.imp=do.call("rbind",var.imp)
-write.csv(all.mod.fits[,-2],file=paste(name,"all.mod.fits.csv",sep="_"))
-write.csv(all.var.imp,file=paste(name,"all.var.imp.csv",sep="_"))
+write.csv(all.mod.fits,file=paste(Sys.Date(),name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(Sys.Date(),name,"all.var.imp.csv",sep="_"))
+dev.off()
 
-# Generic importance plots-
-heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
-          col=colorRampPalette(c("white","yellow","red"))(10),
-          trace="none",key.title = "",keysize=2,
-          notecol="black",key=T,
-          sepcolor = "black",margins=c(12,8), lhei=c(4,15),Rowv=FALSE,Colv=FALSE)
+
+########### MAD models (School as Factor)----
+## TargetLoc as factor ----
+dat<-dat.mad.targetloc
+names(dat)
+
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+
+# Set directory for the model outputs-
+setwd(model.out)
+
+# Clean up response variables--
+unique.vars=unique(as.character(dat$Metric))
+unique.vars.use=as.character(c(unique.vars))
+unique.vars.use
+
+setwd(model.out)
+# Full-sebset models---  
+resp.vars=unique.vars.use
+factor.vars=c("Status","School","TargetLoc")
+use.dat=dat
+out.all=list() 
+var.imp=list()
+name<-"mad.targetloc.as.fac"
+
+# for new function
+for(i in 1:length(resp.vars)){
+  use.dat=dat[which(dat$Metric==resp.vars[i]),]
+  
+  Model1=gam(response~s(hard.corals, k=3, bs='cr')+s(Site,Location,bs='re'),
+             family=gaussian(link = "identity"),
+             offset=PeriodLength,
+             data=use.dat)
+  
+  out.list=full.subsets.gam(use.dat=use.dat,
+                            test.fit=Model1,
+                            pred.vars.cont=pred.vars,
+                            pred.vars.fact=factor.vars,
+                            k=3,
+                            null.terms="s(Site,Location,bs='re')" ,
+                            max.models=600,
+                            parallel=T)  
+  names(out.list)
+  
+  out.list$failed.models # examine the list of failed models
+  mod.table=out.list$mod.data.out  # look at the model selection table
+  mod.table=mod.table[order(mod.table$AICc),]
+  mod.table$cumsum.wi=cumsum(mod.table$wi.AICc)
+  out.i=mod.table[which(mod.table$delta.AICc<=2),]
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw)) 
+  #Either raw importance score
+  #var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.r2.scaled)) 
+  #Or importance score weighted by r2...this doesn't exist in Rebecca Fisher's model
+  
+  # plot the best models
+  for(m in 1:nrow(out.i)){
+    best.model.name=as.character(out.i$modname[m])
+    
+    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    if(best.model.name!="null"){
+      par(mfrow=c(3,1),mar=c(9,4,3,1))
+      best.model=out.list$success.models[[best.model.name]]
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=2,text=resp.vars[i],outer=F)}  
+    dev.off()
+  }
+}
+
+
+# Model fits and importance---
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+write.csv(all.mod.fits,file=paste(Sys.Date(),name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(Sys.Date(),name,"all.var.imp.csv",sep="_"))
+dev.off()
+
+## Species MAD models ----
+dat<-dat.mad.species
+names(dat)
+
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+
+# Set directory for the model outputs-
+setwd(model.out)
+
+# Clean up response variables--
+unique.vars=unique(as.character(dat$Metric))
+unique.vars.use=as.character(c(unique.vars))
+unique.vars.use
+
+setwd(model.out)
+# Full-sebset models---  
+resp.vars=unique.vars.use
+factor.vars=c("Status","School")
+use.dat=dat
+out.all=list() 
+var.imp=list()
+name<-"mad.species"
+
+# for new function
+for(i in 1:length(resp.vars)){
+  use.dat=dat[which(dat$Metric==resp.vars[i]),]
+  
+  Model1=gam(response~s(hard.corals, k=3, bs='cr')+s(Site,Location,bs='re'),
+             family=gaussian(link = "identity"),
+             offset=PeriodLength,
+             data=use.dat)
+  
+  out.list=full.subsets.gam(use.dat=use.dat,
+                            test.fit=Model1,
+                            pred.vars.cont=pred.vars,
+                            pred.vars.fact=factor.vars,
+                            k=3,
+                            null.terms="s(Site,Location,bs='re')" ,
+                            max.models=600,
+                            parallel=T)  
+  names(out.list)
+  
+  out.list$failed.models # examine the list of failed models
+  mod.table=out.list$mod.data.out  # look at the model selection table
+  mod.table=mod.table[order(mod.table$AICc),]
+  mod.table$cumsum.wi=cumsum(mod.table$wi.AICc)
+  out.i=mod.table[which(mod.table$delta.AICc<=2),]
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw)) 
+  #Either raw importance score
+  #var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.r2.scaled)) 
+  #Or importance score weighted by r2...this doesn't exist in Rebecca Fisher's model
+  
+  # plot the best models
+  for(m in 1:nrow(out.i)){
+    best.model.name=as.character(out.i$modname[m])
+    
+    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    if(best.model.name!="null"){
+      par(mfrow=c(3,1),mar=c(9,4,3,1))
+      best.model=out.list$success.models[[best.model.name]]
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=2,text=resp.vars[i],outer=F)}  
+    dev.off()
+  }
+}
+
+
+# Model fits and importance---
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+write.csv(all.mod.fits,file=paste(Sys.Date(),name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(Sys.Date(),name,"all.var.imp.csv",sep="_"))
+dev.off()
+
+########### MAD models (School as pred var)----
+## TargetLoc as factor ----
+dat<-dat.mad.targetloc
+names(dat)
+
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length","num.o")
+
+# Set directory for the model outputs-
+setwd(model.out)
+
+# Clean up response variables--
+unique.vars=unique(as.character(dat$Metric))
+unique.vars.use=as.character(c(unique.vars))
+unique.vars.use
+
+setwd(model.out)
+# Full-sebset models---  
+resp.vars=unique.vars.use
+factor.vars=c("Status","School","TargetLoc")
+use.dat=dat
+out.all=list() 
+var.imp=list()
+name<-"mad.targetloc.as.fac"
+
+# for new function
+for(i in 1:length(resp.vars)){
+  use.dat=dat[which(dat$Metric==resp.vars[i]),]
+  
+  Model1=gam(response~s(hard.corals, k=3, bs='cr')+s(Site,Location,bs='re'),
+             family=gaussian(link = "identity"),
+             offset=PeriodLength,
+             data=use.dat)
+  
+  out.list=full.subsets.gam(use.dat=use.dat,
+                            test.fit=Model1,
+                            pred.vars.cont=pred.vars,
+                            pred.vars.fact=factor.vars,
+                            k=3,
+                            null.terms="s(Site,Location,bs='re')" ,
+                            max.models=600,
+                            parallel=T)  
+  names(out.list)
+  
+  out.list$failed.models # examine the list of failed models
+  mod.table=out.list$mod.data.out  # look at the model selection table
+  mod.table=mod.table[order(mod.table$AICc),]
+  mod.table$cumsum.wi=cumsum(mod.table$wi.AICc)
+  out.i=mod.table[which(mod.table$delta.AICc<=2),]
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw)) 
+  #Either raw importance score
+  #var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.r2.scaled)) 
+  #Or importance score weighted by r2...this doesn't exist in Rebecca Fisher's model
+  
+  # plot the best models
+  for(m in 1:nrow(out.i)){
+    best.model.name=as.character(out.i$modname[m])
+    
+    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    if(best.model.name!="null"){
+      par(mfrow=c(3,1),mar=c(9,4,3,1))
+      best.model=out.list$success.models[[best.model.name]]
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=2,text=resp.vars[i],outer=F)}  
+    dev.off()
+  }
+}
+
+
+# Model fits and importance---
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+write.csv(all.mod.fits,file=paste(Sys.Date(),name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(Sys.Date(),name,"all.var.imp.csv",sep="_"))
+dev.off()
+
+## Species MAD models ----
+dat<-dat.mad.species
+names(dat)
+
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+
+# Set directory for the model outputs-
+setwd(model.out)
+
+# Clean up response variables--
+unique.vars=unique(as.character(dat$Metric))
+unique.vars.use=as.character(c(unique.vars))
+unique.vars.use
+
+setwd(model.out)
+# Full-sebset models---  
+resp.vars=unique.vars.use
+factor.vars=c("Status","School")
+use.dat=dat
+out.all=list() 
+var.imp=list()
+name<-"mad.species"
+
+# for new function
+for(i in 1:length(resp.vars)){
+  use.dat=dat[which(dat$Metric==resp.vars[i]),]
+  
+  Model1=gam(response~s(hard.corals, k=3, bs='cr')+s(Site,Location,bs='re'),
+             family=gaussian(link = "identity"),
+             offset=PeriodLength,
+             data=use.dat)
+  
+  out.list=full.subsets.gam(use.dat=use.dat,
+                            test.fit=Model1,
+                            pred.vars.cont=pred.vars,
+                            pred.vars.fact=factor.vars,
+                            k=3,
+                            null.terms="s(Site,Location,bs='re')" ,
+                            max.models=600,
+                            parallel=T)  
+  names(out.list)
+  
+  out.list$failed.models # examine the list of failed models
+  mod.table=out.list$mod.data.out  # look at the model selection table
+  mod.table=mod.table[order(mod.table$AICc),]
+  mod.table$cumsum.wi=cumsum(mod.table$wi.AICc)
+  out.i=mod.table[which(mod.table$delta.AICc<=2),]
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw)) 
+  #Either raw importance score
+  #var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.r2.scaled)) 
+  #Or importance score weighted by r2...this doesn't exist in Rebecca Fisher's model
+  
+  # plot the best models
+  for(m in 1:nrow(out.i)){
+    best.model.name=as.character(out.i$modname[m])
+    
+    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    if(best.model.name!="null"){
+      par(mfrow=c(3,1),mar=c(9,4,3,1))
+      best.model=out.list$success.models[[best.model.name]]
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=2,text=resp.vars[i],outer=F)}  
+    dev.off()
+  }
+}
+
+
+# Model fits and importance---
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+write.csv(all.mod.fits,file=paste(Sys.Date(),name,"all.mod.fits.csv",sep="_"))
+write.csv(all.var.imp,file=paste(Sys.Date(),name,"all.var.imp.csv",sep="_"))
+dev.off()
 
 
 # Part 2 - custom plot of importance scores----
@@ -825,6 +1002,8 @@ combine.plot<-arrangeGrob(ggmod.bds.status,ggmod.bds.distance.x.status,ggmod.bds
                           ggmod.cpn.lobster,ggmod.cpn.4mm,blank,nrow=3,ncol=3)
 
 ggsave(combine.plot,file="Langlois_gamm.plot.png", width = 30, height = 30,units = "cm")
+<<<<<<< HEAD
+=======
 
 #### OLD SCRIPT ----
 setwd(model.out)
@@ -1099,3 +1278,4 @@ write.csv(all.mod.fits,file=paste(name,"all.mod.fits.csv",sep="_"))
 write.csv(all.var.imp,file=paste(name,"all.var.imp.csv",sep="_"))
 
 # END OF MODEL
+>>>>>>> 873e7282d1ff16dcfaaff6e7dad615484ddd62a3
