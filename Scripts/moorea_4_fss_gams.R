@@ -33,8 +33,8 @@ eval(parse(text = function_check_correlations))
 dat <-read.csv(text=getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam/master/case_study1_dataset.csv?token=AcAXe95Jzzp5XRZ1SJZBNm2d8fxXaJUOks5ZaBGbwA%3D%3D"))
 
 # Bring in my data ----
-work.dir=("C:/GitHub/Moorea-minimum-approach")
-#work.dir=("~/Git Projects/Moorea-minimum-approach")
+#work.dir=("C:/GitHub/Moorea-minimum-approach") # Windows
+work.dir=("~/Git Projects/Moorea-minimum-approach") # Mac
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -43,13 +43,7 @@ summaries=paste(work.dir,"Data/Summaries",sep="/")
 plots=paste(work.dir,"Plots",sep="/")
 model.out=paste(work.dir,"ModelOut",sep="/")
 
-# Load functions----
-# script.dir=paste(work.dir,"Scripts",sep="/")
-# setwd(script.dir)
-# dir()
-# source("function_full_subsets_gam_v1.10.R")
-
-# Life history ----
+# Moorea life history ----
 master <- gs_title("Moorea Species List_170406")%>%
   gs_read_csv(ws = "Sheet1")%>%
   mutate(Max=as.numeric(Max))%>%
@@ -69,8 +63,10 @@ brooke.dat<-read.csv("2018-08-27_mad.schools_combined.factors.habitat.csv")%>%
   glimpse()
 
 # Make factors and sample list ----
-dat.sample<-brooke.dat%>%distinct(Sample)
-dat.factor<-brooke.dat%>%distinct(Sample,Depth,Location,Status,Site,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength)
+dat.sample<-brooke.dat%>%
+  distinct(Sample)
+dat.factor<-brooke.dat%>%
+  distinct(Sample,Depth,Location,Status,Site,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength)
 
 # Make TA and SR for gams ----
 ta.sr<-brooke.dat%>%
@@ -78,6 +74,7 @@ ta.sr<-brooke.dat%>%
   dplyr::summarise(Abundance = sum(Number))%>%
   spread(Genus_species,Abundance, fill = 0)%>%
   mutate(Total.Abundance=rowSums(.[,2:(ncol(.))],na.rm = TRUE ))#Add in Totals
+
 Presence.Absence <- ta.sr[,2:(ncol(ta.sr))-1]
 for (i in 1:dim(Presence.Absence)[2]){
   Presence.Absence[,i] <- ifelse(Presence.Absence[,i]>0,1,0)
@@ -142,7 +139,6 @@ dat.4<-schools%>%
   gather(key=Metric, value = Response, (match("reef",names(.))+1):ncol(.))
 
 # Combine datasets together ----
-
 combined<-bind_rows(dat.1,dat.2,dat.3,dat.4)
 
 # Mad data----
@@ -154,40 +150,49 @@ dat.mad<-brooke.dat%>%
   mutate(Indicator="Mad")%>%
   mutate(TargetLoc=as.factor(TargetLoc))%>%
   #mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
-  mutate(School=as.factor(School))%>%
+  #mutate(School=as.factor(School))%>%
   dplyr::rename(response=final.mad)%>%
   select(-c(Reef.Lagoon))%>%
   glimpse()
 
-dat.mad.targetloc<-dat.mad%>%
-  mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
-  select(Sample,TargetLoc,response,Length,School)%>%
-  inner_join(dat.factor, by="Sample")%>%
-  mutate(Metric="TargetLoc")#%>%
-#select(-c(Reef.Lagoon,Genus_species))
 
-dat.mad.species<-dat.mad%>%
-  mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
-  select(Sample,Genus_species,response,Length,School)%>%
-  filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
-  inner_join(dat.factor, by="Sample")%>%
-  mutate(Metric=Genus_species)%>%
-  select(-c(Reef.Lagoon,Genus_species))
+dat.mad.schools<-dat.mad%>%
+  filter(grepl("School",School)) # filter to only those in schools
 
-dat.mad.school.min<-dat.mad%>%
-  filter(!School=="")%>%
-  select(Sample,School,response,Length)%>%
-  dplyr::group_by(Sample,School)%>%
-  dplyr::summarise(response=min(response),min.length=min(Length),num.individuals=n())
+dat.mad.school.size<-dat.mad.schools%>%
+  group_by(Sample,School)%>%
+  filter(!School%in%c(""))%>%
+  summarise(school.size=sum(Number))
 
 dat.mad.individuals<-dat.mad%>%
-  filter(!grepl("School",School))%>%
-  mutate(num.individuals=Number)%>%
-  mutate(min.length=Length)
+  filter(!grepl("School",School)) # filter to only individuals
+dat.mad.individuals<-dat.mad.individuals%>%
+  mutate(School=paste("School",1:nrow(dat.mad.individuals),sep=".")) # make a unique id for each individual
 
-dat.mad.schools<-bind_rows(dat.mad.school.min,dat.mad.individuals)%>%
-  select(Sample,response,min.length,num.individuals)%>%
+dat.mad<-bind_rows(dat.mad.schools,dat.mad.individuals)
+
+dat.mad.targetloc<-dat.mad%>%
+  select(Sample,TargetLoc,response,Length,School)%>% 
+  group_by(Sample,TargetLoc,School)%>% # need to summarise min mad for these columns, and create length vars
+  summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
+  ungroup()%>%
+  left_join(dat.mad.school.size)%>% # bring in school size for actual schools
+  replace_na(list(school.size=1))%>% # make school size 1 for individuals
+  mutate(Metric="TargetLoc")%>% # make metric name to feed into gams
+  inner_join(dat.factor, by="Sample") # bring in co-vars
+
+dat.mad.species<-dat.mad%>%
+  select(Sample,Genus_species,response,Length,School)%>%
+  filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
+  mutate(Metric=Genus_species)%>%
+  group_by(Sample,Metric,School)%>% # need to summarise min mad for these columns, and create length vars
+  summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
+  ungroup()%>%
+  left_join(dat.mad.school.size)%>%
+  replace_na(list(school.size=1))%>%
   inner_join(dat.factor, by="Sample")
+
+dat.mad.complete<-bind_rows(dat.mad.targetloc,dat.mad.species)
 
 ############ Begining of models ----
 #### Abundance models -----
@@ -204,45 +209,8 @@ length(pred.vars)
 # Set directory for the model outputs-
 setwd(model.out)
 
-  # Mad data----
-dat.mad<-brooke.dat%>%
-  filter(final.mad>0)%>%
-  filter(!is.na(Length))%>%
-  filter(Length>80)%>%
-  #filter(Length<300)%>%
-  mutate(Indicator="Mad")%>%
-  mutate(TargetLoc=as.factor(TargetLoc))%>%
-  mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
-  mutate(School=as.factor(School))%>%
-  dplyr::rename(response=final.mad)%>%
-  select(-c(Reef.Lagoon))%>%
-  glimpse()
-
-dat.mad.targetloc<-dat.mad%>%
-  select(Sample,TargetLoc,response,Length,School)%>%
-  inner_join(dat.factor, by="Sample")%>%
-  mutate(Metric="TargetLoc")%>%
-  select(-c(Reef.Lagoon,Genus_species))
-
-dat.mad.species<-dat.mad%>%
-  select(Sample,Genus_species,response,Length,School)%>%
-  filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
-  inner_join(dat.factor, by="Sample")%>%
-  mutate(Metric=Genus_species)%>%
-  select(-c(Reef.Lagoon,Genus_species))
-
-dat.mad.school.min<-dat.mad%>%
-  filter(!School=="")%>%
-  select(Sample,School,response,Length)%>%
-  dplyr::group_by(Sample,School)%>%
-  summarise(min.mad=min(final.mad),avg.length=mean(Length),min.length=min(Length),max.length=max(Length))
-
-dat.mad.complete<-bind_rows(dat.mad.targetloc,dat.mad.species)
-
-#### Begining of models ----
-# Clean up response variables--
 unique.vars=unique(as.character(dat$Metric))
-unique.vars.use=character(c(unique.vars))
+unique.vars.use=as.character(c(unique.vars))
 unique.vars.use
 
 setwd(model.out)
@@ -318,7 +286,7 @@ dev.off()
 dat<-dat.mad.targetloc
 names(dat)
 
-pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","mean.length","min.length","max.length","school.size")
 
 # Set directory for the model outputs-
 setwd(model.out)
@@ -331,7 +299,7 @@ unique.vars.use
 setwd(model.out)
 # Full-sebset models---  
 resp.vars=unique.vars.use
-factor.vars=c("Status","School","TargetLoc")
+factor.vars=c("Status","TargetLoc")
 use.dat=dat
 out.all=list() 
 var.imp=list()
@@ -395,7 +363,7 @@ dev.off()
 dat<-dat.mad.species
 names(dat)
 
-pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","mean.length","min.length","max.length","school.size")
 
 # Set directory for the model outputs-
 setwd(model.out)
@@ -408,7 +376,7 @@ unique.vars.use
 setwd(model.out)
 # Full-sebset models---  
 resp.vars=unique.vars.use
-factor.vars=c("Status","School")
+factor.vars=c("Status") # ,"School"
 use.dat=dat
 out.all=list() 
 var.imp=list()
