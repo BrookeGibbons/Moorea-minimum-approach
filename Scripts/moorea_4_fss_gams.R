@@ -1,10 +1,5 @@
 # A simple function for full subsets multiple regression in ecology with R
-#
-# R. Fisher
-# S.K. Wilson
-# S.M. Sin
-# A.C. Lee
-# T.J. Langlois
+# R. Fisher, S.K. Wilson, S.M. Sin, A.C. Lee & T.J. Langlois
 
 rm(list=ls())
 study<-"mad.schools"
