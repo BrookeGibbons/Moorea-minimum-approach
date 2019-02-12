@@ -1,0 +1,41 @@
+"","modname","formula","AICc","BIC","delta.AICc","delta.BIC","wi.AICc","wi.BIC","r2.vals","edf","edf.less.1","mean.relief","sd.relief","hard.corals","rock","Status","cumsum.wi"
+"Total.Abundance.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",842.916342594218,874.016575148381,0,0,0.412,0.457,0.263,14.03,0,0,0,0,1,0,0.412
+"Total.Abundance.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",842.963227382807,874.131550399822,0.047,0.115,0.402,0.431,0.257,14.08,0,0,0,0,1,1,0.814
+"Total.Abundance.9","Status+rock.by.Status","s(rock, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",844.501579267833,876.827630015478,1.585,2.811,0.186,0.112,0.256,14.99,0,0,0,0,1,1,1
+"Species.Richness.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",533.707773781196,564.523054299801,0,0,0.408,0.436,0.182,13.72,0,0,0,0,1,1,0.408
+"Species.Richness.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",533.801384201086,564.643582872875,0.094,0.121,0.389,0.41,0.191,13.76,0,0,0,0,1,0,0.797
+"Species.Richness.9","Status+rock.by.Status","s(rock, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",535.506890767827,567.428350374653,1.799,2.905,0.166,0.102,0.179,14.58,0,0,0,0,1,1,0.963
+"Abundance.Chlorurus sordidus.large.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",480.987725876866,511.938134002235,0,0,0.472,0.516,0.542,13.73,0,0,0,0,1,0,0.472
+"Abundance.Chlorurus sordidus.large.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",481.372296934573,512.537549304531,0.385,0.599,0.39,0.382,0.539,13.88,0,0,0,0,1,1,0.862
+"Abundance.Chlorurus sordidus.small.1","null","intercept + s(Site, Location, bs = ""re"") - 1",517.985459787425,546.392484693742,0,0,0.244,0.351,0.368,11.92,0,0,0,0,0,0,0.244
+"Abundance.Chlorurus sordidus.small.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",518.514912978583,548.024331216456,0.529,1.632,0.187,0.155,0.358,12.66,0,0,0,0,1,0,0.431
+"Abundance.Chlorurus sordidus.small.6","Status","Status + s(Site, Location, bs = ""re"")",518.555061082419,547.161893387076,0.57,0.769,0.183,0.239,0.357,11.99,0,0,0,0,0,1,0.614
+"Abundance.Chlorurus sordidus.small.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",519.050610138132,548.802468739975,1.065,2.41,0.143,0.105,0.351,12.8,0,0,0,0,1,1,0.757
+"Abundance.Ctenochaetus striatus.large.2","mean.relief","s(mean.relief, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",516.225532724032,548.691577992043,0,0.272,0.385,0.291,0.762,15,0,1,0,0,0,0,0.385
+"Abundance.Ctenochaetus striatus.large.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",517.005679576433,548.419918195397,0.78,0,0.261,0.333,0.777,14.27,0,0,0,0,1,0,0.646
+"Abundance.Ctenochaetus striatus.large.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",517.104005745949,548.631429502102,0.878,0.212,0.248,0.3,0.776,14.37,0,0,0,0,1,1,0.894
+"Abundance.Ctenochaetus striatus.small","sd.relief+hard.corals","s(sd.relief, k = 3, bs = ""cr"") + s(hard.corals, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",646.267422320923,676.75416766884,0,0,1,1,0.247,13.5,0,0,1,1,0,0,1
+"Abundance.TargetLoc.0.large.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",515.556377460119,548.518935681576,0,0.635,0.25,0.165,0.439,14.67,0,0,0,0,1,1,0.25
+"Abundance.TargetLoc.0.large.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",515.637071531655,548.546616368138,0.081,0.663,0.24,0.163,0.446,14.68,0,0,0,0,1,0,0.49
+"Abundance.TargetLoc.0.large.9","Status+rock.by.Status","s(rock, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",515.698505982087,549.508557238155,0.142,1.625,0.233,0.101,0.44,15.69,0,0,0,0,1,1,0.723
+"Abundance.TargetLoc.1.large.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",507.91442726274,539.959306089696,0,1.015,0.26,0.148,0.078,13.57,0,0,0,0,1,0,0.26
+"Abundance.TargetLoc.1.large.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",508.353521811149,540.725083449278,0.439,1.781,0.209,0.101,0.076,13.86,0,0,0,0,1,1,0.469
+"Abundance.TargetLoc.1.large.9","Status+rock.by.Status","s(rock, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",509.67780110644,542.959906899889,1.763,4.016,0.108,0.033,0.078,14.78,0,0,0,0,1,1,0.577
+"Abundance.TargetLoc.1.large.2","mean.relief","s(mean.relief, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",509.686937390194,539.802732965299,1.773,0.859,0.107,0.16,0.071,12.87,0,1,0,0,0,0,0.684
+"Abundance.TargetLoc.1.large.4","hard.corals","s(hard.corals, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",509.791337449598,541.730489358558,1.877,2.787,0.102,0.061,0.076,13.84,0,0,0,1,0,0,0.786
+"Abundance.TargetLoc.2.large.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",695.999844660999,727.503251295622,0,0,0.385,0.444,0.6,14.15,0,0,0,0,1,0,0.385
+"Abundance.TargetLoc.2.large.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",696.068035781832,727.669315693025,0.068,0.166,0.372,0.408,0.595,14.23,0,0,0,0,1,1,0.757
+"Abundance.TargetLoc.2.large.9","Status+rock.by.Status","s(rock, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",696.947407992003,729.760266040796,0.948,2.257,0.24,0.144,0.593,15.21,0,0,0,0,1,1,0.997
+"Abundance.TargetLoc.0.small","sd.relief+hard.corals","s(sd.relief, k = 3, bs = ""cr"") + s(hard.corals, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",691.59138650659,724.223749343852,0,0,0.89,0.838,0.292,14.98,0,0,1,1,0,0,0.89
+"Abundance.TargetLoc.1.small.1","null","intercept + s(Site, Location, bs = ""re"") - 1",116.090735367938,142.026726497124,0,0,0.515,0.613,0.192,10.12,0,0,0,0,0,0,0.515
+"Abundance.TargetLoc.1.small.6","Status","Status + s(Site, Location, bs = ""re"")",117.727865913155,143.635809617464,1.637,1.609,0.227,0.274,0.168,9.86,0,0,0,0,0,1,0.742
+"Abundance.TargetLoc.2.small.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",631.874878521655,662.158110232023,0,0.177,0.28,0.237,0.305,13.28,0,0,0,0,1,0,0.28
+"Abundance.TargetLoc.2.small.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",632.215416295258,662.689464005028,0.341,0.708,0.237,0.182,0.298,13.41,0,0,0,0,1,1,0.517
+"Abundance.TargetLoc.2.small.1","null","intercept + s(Site, Location, bs = ""re"") - 1",632.99181003512,661.981149811811,1.117,0,0.16,0.259,0.31,12.36,0,0,0,0,0,0,0.677
+"Abundance.TargetLoc.2.small.6","Status","Status + s(Site, Location, bs = ""re"")",633.25396514178,662.400704473088,1.379,0.42,0.141,0.21,0.3,12.45,0,0,0,0,0,1,0.818
+"School.Total.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",842.916342594218,874.016575148381,0,0,0.412,0.457,0.263,14.03,0,0,0,0,1,0,0.412
+"School.Total.8","rock+Status","s(rock, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",842.963227382807,874.131550399822,0.047,0.115,0.402,0.431,0.257,14.08,0,0,0,0,1,1,0.814
+"School.Total.9","Status+rock.by.Status","s(rock, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",844.501579267833,876.827630015478,1.585,2.811,0.186,0.112,0.256,14.99,0,0,0,0,1,1,1
+"Number.of.schools.9","Status+rock.by.Status","s(rock, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",448.816533827201,479.548524426,0,2.553,0.327,0.116,0.163,12.31,0,0,0,0,1,1,0.327
+"Number.of.schools.5","rock","s(rock, k = 3, bs = ""cr"") + s(Site, Location, bs = ""re"")",450.016377715867,479.890777046128,1.2,2.896,0.18,0.098,0.112,11.5,0,0,0,0,1,0,0.507
+"Number.of.schools.1","null","intercept + s(Site, Location, bs = ""re"") - 1",450.362074186743,476.995045537767,1.546,0,0.151,0.417,0.099,10.38,0,0,0,0,0,0,0.658

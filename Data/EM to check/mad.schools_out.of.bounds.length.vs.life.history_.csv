@@ -1,7 +1,6 @@
 "OpCode","Genus_species","Length","Min_length","Max_length","Difference"
 "TiIL2","Mulloidichthys flavolineatus",488.085,0,430,58.085
 "MaIL2","Mulloidichthys vanicolensis",429.913,0,380,49.913
-"TiOL5","Chlorurus sordidus",435.987,0,400,35.987
 "NOL3S","Scarus globiceps",485.716,0,450,35.716
 "POL3W","Ctenochaetus striatus",294.64,0,260,34.64
 "TiIR1","Acanthurus guttatus",293.835,0,260,33.835
@@ -34,7 +33,6 @@
 "TiIL2","Acanthurus nigrofuscus",229.57,0,210,19.57
 "TiIL2","Ctenochaetus striatus",278.901,0,260,18.901
 "TiOL4W","Chlorurus sordidus",418.009,0,400,18.009
-"TiOL5","Ctenochaetus striatus",277.985,0,260,17.985
 "TiIL2","Ctenochaetus striatus",277.969,0,260,17.969
 "TiOL3W","Ctenochaetus striatus",277.642,0,260,17.642
 "POL4W","Halichoeres hortulanus",286.981,0,270,16.981
@@ -67,7 +65,6 @@
 "POL3W","Thalassoma hardwicke",189.334,0,180,9.334
 "POL4W","Chaetodon lunulatus",128.759,0,120,8.75899999999999
 "NOL1S","Scarus oviceps",308.621,0,300,8.62099999999998
-"TiOL5","Zebrasoma scopas",208.479,0,200,8.47900000000001
 "TiIL3","Scarus oviceps",307.95,0,300,7.94999999999999
 "NOL4S","Thalassoma hardwicke",187.768,0,180,7.768
 "MaIL3","Thalassoma hardwicke",187.465,0,180,7.465
@@ -88,16 +85,13 @@
 "MaOL2N","Chaetodon lunulatus",126.458,0,120,6.458
 "MaIL3","Thalassoma hardwicke",186.3,0,180,6.30000000000001
 "POL3W","Ctenochaetus striatus",266.26,0,260,6.25999999999999
-"TeOL4N","Thalassoma hardwicke",186.044,0,180,6.04400000000001
 "MaOL1N","Chaetodon lunulatus",125.919,0,120,5.919
 "MaOL2N","Chaetodon lunulatus",125.853,0,120,5.85299999999999
 "NIR2","Acanthurus nigrofuscus",215.811,0,210,5.81100000000001
 "MaOL1N","Chaetodon lunulatus",125.686,0,120,5.68600000000001
-"TiOL5","Chaetodon lunulatus",125.195,0,120,5.19499999999999
 "POL3W","Thalassoma hardwicke",185.053,0,180,5.053
 "NOL3S","Thalassoma hardwicke",185.016,0,180,5.01599999999999
 "MaOL3W","Thalassoma hardwicke",184.496,0,180,4.49600000000001
-"TiOL5","Chaetodon lunulatus",124.496,0,120,4.496
 "MaOL1N","Ctenochaetus striatus",264.371,0,260,4.37099999999998
 "MaIL3","Thalassoma hardwicke",184.367,0,180,4.36699999999999
 "MaOR3W","Scarus psittacus",303.868,0,300,3.86799999999999
@@ -121,7 +115,6 @@
 "TeOL2S","Chaetodon lunulatus",122.476,0,120,2.476
 "POL4W","Thalassoma hardwicke",182.354,0,180,2.35400000000001
 "NIR1","Zebrasoma scopas",202.338,0,200,2.33799999999999
-"TiOL5","Thalassoma hardwicke",182.318,0,180,2.31800000000001
 "POL3W","Ctenochaetus striatus",262.29,0,260,2.29000000000002
 "TiIR1","Chaetodon pelewensis",127.253,0,125,2.253
 "NOL3S","Ctenochaetus striatus",262.238,0,260,2.238

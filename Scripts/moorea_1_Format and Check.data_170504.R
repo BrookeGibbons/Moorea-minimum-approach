@@ -32,6 +32,7 @@ library(dplyr)
 library(ggplot2)
 library(readxl)
 library(googlesheets)
+library(stringr)
 
 
 # Set directories----
@@ -72,9 +73,11 @@ length.outside.ellen<-read.delim("outside sites_Ellen.TXT",skip = 4, header=T, s
   mutate(Range=Range..mm.)%>%
   mutate(Genus = ifelse(is.na(Genus), Family,Genus))%>% #fill in any blank Genus names with family
   mutate(Genus_species = paste(Genus, Species, sep = ' '))%>% #paste Genus species together
-  dplyr::rename(TapeReader=Tape.Reader)%>%
+  #dplyr::rename(TapeReader=Tape.Reader)%>%
   mutate(Comment=paste(Comment,Comment.1,sep=""))%>%
   mutate(Comment=str_replace_all(.$Comment,"NA",""))
+
+names(length.outside.ellen)
 
 # Check length
 head(length.outside.ellen,2)
@@ -94,7 +97,7 @@ length.outside.brooke<-read.delim("outside sites_Brooke.TXT",skip = 4, header=T,
   mutate(Range=Range..mm.)%>%
   mutate(Genus = ifelse(is.na(Genus), Family,Genus))%>% #fill in any blank Genus names with family
   mutate(Genus_species = paste(Genus, Species, sep = ' '))%>% #paste Genus species together
-  dplyr::rename(TapeReader=Tape.Reader)%>%
+  #dplyr::rename(TapeReader=Tape.Reader)%>%
   mutate(Comment=paste(Comment,Comment.1,sep=""))%>%
   mutate(Comment=str_replace_all(.$Comment,"NA",""))
 

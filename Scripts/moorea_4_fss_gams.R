@@ -28,8 +28,8 @@ eval(parse(text = function_check_correlations))
 dat <-read.csv(text=getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam/master/case_study1_dataset.csv?token=AcAXe95Jzzp5XRZ1SJZBNm2d8fxXaJUOks5ZaBGbwA%3D%3D"))
 
 # Bring in my data ----
-#work.dir=("C:/GitHub/Moorea-minimum-approach") # Windows
-work.dir=("~/Git Projects/Moorea-minimum-approach") # Mac
+work.dir=("C:/GitHub/Moorea-minimum-approach") # Windows
+#work.dir=("~/Git Projects/Moorea-minimum-approach") # Mac
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -52,7 +52,7 @@ master <- gs_title("Moorea Species List_170406")%>%
 setwd(tidy.data)
 dir()
 
-brooke.dat<-read.csv("2018-08-27_mad.schools_combined.factors.habitat.csv")%>%
+brooke.dat<-read.csv("2019-02-12_mad.schools_combined.factors.habitat.csv")%>%
   filter(Reef.Lagoon=="Lagoon")%>% # I am only looking at Lagoon sites
   filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
   glimpse()
@@ -157,7 +157,7 @@ dat.mad.schools<-dat.mad%>%
 dat.mad.school.size<-dat.mad.schools%>%
   group_by(Sample,School)%>%
   filter(!School%in%c(""))%>%
-  summarise(school.size=sum(Number))
+  dplyr::summarise(school.size=sum(Number))
 
 dat.mad.individuals<-dat.mad%>%
   filter(!grepl("School",School)) # filter to only individuals
@@ -169,7 +169,7 @@ dat.mad<-bind_rows(dat.mad.schools,dat.mad.individuals)
 dat.mad.targetloc<-dat.mad%>%
   select(Sample,TargetLoc,response,Length,School)%>% 
   group_by(Sample,TargetLoc,School)%>% # need to summarise min mad for these columns, and create length vars
-  summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
+  dplyr::summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
   ungroup()%>%
   left_join(dat.mad.school.size)%>% # bring in school size for actual schools
   replace_na(list(school.size=1))%>% # make school size 1 for individuals
@@ -181,7 +181,7 @@ dat.mad.species<-dat.mad%>%
   filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
   mutate(Metric=Genus_species)%>%
   group_by(Sample,Metric,School)%>% # need to summarise min mad for these columns, and create length vars
-  summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
+  dplyr::summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
   ungroup()%>%
   left_join(dat.mad.school.size)%>%
   replace_na(list(school.size=1))%>%
