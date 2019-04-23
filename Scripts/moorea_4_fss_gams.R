@@ -136,6 +136,8 @@ dat.4<-schools%>%
 # Combine datasets together ----
 combined<-bind_rows(dat.1,dat.2,dat.3,dat.4)
 
+unique(combined$Site)
+
 # Mad data----
 dat.mad<-brooke.dat%>%
   filter(final.mad>0)%>%
