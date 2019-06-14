@@ -1,0 +1,15 @@
+"","mean.relief","sd.relief","hard.corals","rock","Status"
+"Total.Abundance",0,0,0,0.412,0.402
+"Species.Richness",0.001,0.003,0.011,0.408,0.408
+"Abundance.Chlorurus sordidus.large",0.001,0.004,0.062,0.472,0.39
+"Abundance.Chlorurus sordidus.small",0.031,0.081,0.069,0.187,0.183
+"Abundance.Ctenochaetus striatus.large",0.385,0,0.001,0.261,0.248
+"Abundance.Ctenochaetus striatus.small",0,1,1,0,0
+"Abundance.TargetLoc.0.large",0.036,0.038,0.025,0.25,0.25
+"Abundance.TargetLoc.1.large",0.107,0.029,0.102,0.26,0.209
+"Abundance.TargetLoc.2.large",0,0,0.002,0.385,0.372
+"Abundance.TargetLoc.0.small",0,0.89,0.89,0,0
+"Abundance.TargetLoc.1.small",0.068,0.03,0,0.088,0.227
+"Abundance.TargetLoc.2.small",0.009,0.045,0.04,0.28,0.237
+"School.Total",0,0,0,0.412,0.402
+"Number.of.schools",0.005,0.095,0.082,0.327,0.327

@@ -1,0 +1,43 @@
+"","modname","AICc","BIC","r2.vals","r2.vals.unique","edf","edf.less.1","delta.AICc","delta.BIC","wi.AICc","wi.BIC","rock","sd.relief","hard.corals","sand","Status","cumsum.wi"
+"Total.Abundance.rock","rock",842.916342594218,874.016575148381,0.2628,NA,14.03,0,0,0,0.408,0.455,1,0,0,0,0,0.408
+"Total.Abundance.rock+Status","rock+Status",842.963227382807,874.131550399822,0.25732,NA,14.08,0,0.047,0.115,0.399,0.43,1,0,0,0,1,0.807
+"Total.Abundance.rock.by.Status+Status","rock.by.Status+Status",844.501579267833,876.827630015478,0.25585,NA,14.99,0,1.585,2.811,0.185,0.112,1,0,0,0,1,0.992
+"Species.Richness.rock+Status","rock+Status",533.707773781196,564.523054299801,0.18243,NA,13.72,0,0,0,0.395,0.425,1,0,0,0,1,0.395
+"Species.Richness.rock","rock",533.801384201086,564.643582872875,0.19131,NA,13.76,0,0.094,0.121,0.377,0.4,1,0,0,0,0,0.772
+"Species.Richness.rock.by.Status+Status","rock.by.Status+Status",535.506890767827,567.428350374653,0.17898,NA,14.58,0,1.799,2.905,0.161,0.099,1,0,0,0,1,0.933
+"Abundance.Chlorurus sordidus.large.rock","rock",480.987725876866,511.938134002235,0.54175,NA,13.73,0,0,0,0.462,0.511,1,0,0,0,0,0.462
+"Abundance.Chlorurus sordidus.large.rock+Status","rock+Status",481.372296934573,512.537549304531,0.53877,NA,13.88,0,0.385,0.599,0.381,0.379,1,0,0,0,1,0.843
+"Abundance.Chlorurus sordidus.small.null","null",517.985459787425,546.392484693742,0.36819,NA,11.92,0,0,0,0.218,0.323,0,0,0,0,0,0.218
+"Abundance.Chlorurus sordidus.small.rock","rock",518.514912978583,548.024331216456,0.35827,NA,12.66,0,0.529,1.632,0.167,0.143,1,0,0,0,0,0.385
+"Abundance.Chlorurus sordidus.small.Status","Status",518.555061082419,547.161893387076,0.35694,NA,11.99,0,0.57,0.769,0.164,0.22,0,0,0,0,1,0.549
+"Abundance.Chlorurus sordidus.small.rock+Status","rock+Status",519.050610138132,548.802468739975,0.35062,NA,12.8,0,1.065,2.41,0.128,0.097,1,0,0,0,1,0.677
+"Abundance.Chlorurus sordidus.small.sand","sand",519.726598132933,549.357281843545,0.37188,NA,12.77,0,1.741,2.965,0.091,0.073,0,0,0,1,0,0.768
+"Abundance.Ctenochaetus striatus.large.rock","rock",517.005679576433,548.419918195397,0.77706,NA,14.27,0,0,0,0.328,0.411,1,0,0,0,0,0.328
+"Abundance.Ctenochaetus striatus.large.rock+Status","rock+Status",517.104005745949,548.631429502102,0.77601,NA,14.37,0,0.098,0.212,0.312,0.37,1,0,0,0,1,0.64
+"Abundance.Ctenochaetus striatus.large.rock.by.Status+Status","rock.by.Status+Status",518.901264659621,551.659879092949,0.77518,NA,15.36,0,1.896,3.24,0.127,0.081,1,0,0,0,1,0.767
+"Abundance.Ctenochaetus striatus.small","sand.by.Status+Status",566.913125005334,599.945475614796,0.28292,NA,14.57,0,0,0,1,1,0,0,0,1,1,1
+"Abundance.TargetLoc.0.large.rock+Status","rock+Status",515.556377460119,548.518935681576,0.43884,NA,14.67,0,0,0.635,0.226,0.147,1,0,0,0,1,0.226
+"Abundance.TargetLoc.0.large.rock","rock",515.637071531655,548.546616368138,0.44555,NA,14.68,0,0.081,0.663,0.217,0.145,1,0,0,0,0,0.443
+"Abundance.TargetLoc.0.large.rock.by.Status+Status","rock.by.Status+Status",515.698505982087,549.508557238155,0.43986,NA,15.69,0,0.142,1.625,0.21,0.09,1,0,0,0,1,0.653
+"Abundance.TargetLoc.1.large.hard.corals+sand","hard.corals+sand",507.85696751859,542.290407539569,0.09307,NA,15.42,0,0,3.347,0.219,0.05,0,0,1,1,0,0.219
+"Abundance.TargetLoc.1.large.rock","rock",507.91442726274,539.959306089696,0.07757,NA,13.57,0,0.057,1.015,0.213,0.162,1,0,0,0,0,0.432
+"Abundance.TargetLoc.1.large.rock+Status","rock+Status",508.353521811149,540.725083449278,0.07566,NA,13.86,0,0.497,1.781,0.171,0.11,1,0,0,0,1,0.603
+"Abundance.TargetLoc.1.large.rock.by.Status+Status","rock.by.Status+Status",509.67780110644,542.959906899889,0.07803,NA,14.78,0,1.821,4.016,0.088,0.036,1,0,0,0,1,0.691
+"Abundance.TargetLoc.1.large.hard.corals","hard.corals",509.791337449598,541.730489358558,0.07644,NA,13.84,0,1.934,2.787,0.083,0.067,0,0,1,0,0,0.774
+"Abundance.TargetLoc.2.large.rock","rock",695.999844660999,727.503251295622,0.60005,NA,14.15,0,0,0,0.383,0.443,1,0,0,0,0,0.383
+"Abundance.TargetLoc.2.large.rock+Status","rock+Status",696.068035781832,727.669315693025,0.59478,NA,14.23,0,0.068,0.166,0.37,0.408,1,0,0,0,1,0.753
+"Abundance.TargetLoc.2.large.rock.by.Status+Status","rock.by.Status+Status",696.947407992003,729.760266040796,0.59274,NA,15.21,0,0.948,2.257,0.239,0.143,1,0,0,0,1,0.992
+"Abundance.TargetLoc.0.small","hard.corals+sd.relief",691.59127869426,724.223602286003,0.29235,NA,14.98,0,0,0,0.645,0.677,0,1,1,0,0,0.645
+"Abundance.TargetLoc.1.small.null","null",116.090735367938,142.026726497124,0.19217,NA,10.12,0,0,0,0.418,0.525,0,0,0,0,0,0.418
+"Abundance.TargetLoc.1.small.Status","Status",117.727865913155,143.635809617464,0.168,NA,9.86,0,1.637,1.609,0.184,0.235,0,0,0,0,1,0.602
+"Abundance.TargetLoc.2.small.rock","rock",631.874878521655,662.158110232023,0.30485,NA,13.28,0,0,0.177,0.213,0.198,1,0,0,0,0,0.213
+"Abundance.TargetLoc.2.small.rock+Status","rock+Status",632.215416295258,662.689464005028,0.29813,NA,13.41,0,0.341,0.708,0.179,0.152,1,0,0,0,1,0.392
+"Abundance.TargetLoc.2.small.sand","sand",632.783021679376,663.25864206354,0.32515,NA,13.38,0,0.908,1.277,0.135,0.114,0,0,0,1,0,0.527
+"Abundance.TargetLoc.2.small.null","null",632.99181003512,661.981149811811,0.30954,NA,12.36,0,1.117,0,0.122,0.217,0,0,0,0,0,0.649
+"Abundance.TargetLoc.2.small.Status","Status",633.25396514178,662.400704473088,0.30005,NA,12.45,0,1.379,0.42,0.107,0.176,0,0,0,0,1,0.756
+"School.Total.rock","rock",842.916342594218,874.016575148381,0.2628,NA,14.03,0,0,0,0.408,0.455,1,0,0,0,0,0.408
+"School.Total.rock+Status","rock+Status",842.963227382807,874.131550399822,0.25732,NA,14.08,0,0.047,0.115,0.399,0.43,1,0,0,0,1,0.807
+"School.Total.rock.by.Status+Status","rock.by.Status+Status",844.501579267833,876.827630015478,0.25585,NA,14.99,0,1.585,2.811,0.185,0.112,1,0,0,0,1,0.992
+"Number.of.schools.rock.by.Status+Status","rock.by.Status+Status",448.816533827201,479.548524426,0.16251,NA,12.31,0,0,2.553,0.276,0.096,1,0,0,0,1,0.276
+"Number.of.schools.rock","rock",450.016377715867,479.890777046128,0.1117,NA,11.5,0,1.2,2.896,0.152,0.081,1,0,0,0,0,0.428
+"Number.of.schools.null","null",450.362074186743,476.995045537767,0.0988,NA,10.38,0,1.546,0,0.128,0.346,0,0,0,0,0,0.556
