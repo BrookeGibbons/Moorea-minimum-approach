@@ -1,31 +1,3 @@
-
-###### Checking and writing tidy MaxN, Length and 3D points from EventMeasure queries ######
-
-### Written by Tim Langlois 
-### Any errors are due to Tim Langlois
-### Please forward any updates and improvements to timothy.langlois@uwa.edu.au
-
-# The following code forms an appendix to the manuscript:
-#  "Langlois et al. 2015. Length selectivity of commercial fish traps assessed from in situ comparisons with stereo-videos: is there evidence of sampling bias? Fisheries Research"
-# Please cite it if you like it
-
-### Designed to: 
-#   check data resulting in queries from EventMeasure. 
-#   write tidy data for futher analyses. 
-
-### objective is to 
-# 1. Import data and add Genus_species column
-# 2. run BASIC data checks
-# 3. Limit length data by range and precision rules
-# 4. run SERIOUS checks against a master species list
-# 5. Remove species that can never be ID'd
-# 6. Visualise what MaxN are missing in the stereoMaxN
-
-# Naming conventions----
-# data objects in lower case
-# column names Capitalized
-
-
 # Libraries required
 library(tidyr)
 library(dplyr)
@@ -147,15 +119,19 @@ unique(length$School)%>%sort()
 str(length)
 
 # Make Factors to merge back in after summarises -----
-gs_ls()
-sheet <- gs_title("MEG_Labsheets")#register a sheet
+# gs_ls()
+# sheet <- gs_title("MEG_Labsheets")#register a sheet
+# 
+# factors<-sheet%>%
+#   gs_read_csv(ws = "2016 stereo-DOV OpCode track")%>%
+#   select(CampaignID,Sample,Depth,Location,Status,Site,Observer,Region,Reef.Lagoon)%>%
+#   distinct(CampaignID,Sample,Depth,Location,Status,Site,Observer,Region,Reef.Lagoon)%>%
+#   rename(OpCode=Sample)%>%
+#   glimpse()
 
-factors<-sheet%>%
-  gs_read_csv(ws = "2016 stereo-DOV OpCode track")%>%
-  select(CampaignID,Sample,Depth,Location,Status,Site,Observer,Region,Reef.Lagoon)%>%
-  distinct(CampaignID,Sample,Depth,Location,Status,Site,Observer,Region,Reef.Lagoon)%>%
-  rename(OpCode=Sample)%>%
-  glimpse()
+# CSV version for offline - BG 09/08/2019
+
+
 
 # Use  Observer to indicate if  Length were possible to collect - giving us our true zeros 
 length.factors<-factors%>%

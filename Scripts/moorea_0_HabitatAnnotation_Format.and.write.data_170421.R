@@ -1,24 +1,10 @@
-###### Importing Habitat Annotation points from TransectMeasure (Stereo)----
-
-
-### Written by Tim Langlois 
-### Any errors are due to Tim Langlois
-### Please forward any updates and improvements to timothy.langlois@uwa.edu.au or make a pull request on the GitHub
-
-
-### Designed to take direct output from an TransectMeasure project. 
-
-### objective is to 
-# 1 Import and combine data from .txt file data collected in a 4 x 5 grid of CATAMI and relief codes
-# 2 Make % scores and levels for different groups
-
-
 # Set directories----
 rm(list=ls())
 study<-"mad.schools"
 
 # Add you work dir here-
 work.dir=("C:/GitHub/Moorea-minimum-approach")
+
 habitat.data=paste(work.dir,"Data/Habitat",sep="/")
 tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
 plots=paste(work.dir,"Plots",sep="/")
@@ -32,6 +18,7 @@ library(stringr)
 # Load and format habitat annotation data from TransectMeasure----
 setwd(habitat.data)
 dir()
+
 hab<-read.delim("170421_inside_outside_habitat.TXT",header=T,skip=4,stringsAsFactors=FALSE)%>%
   setNames(tolower(names(.)))%>%
   separate(filename, c("OpCode", "B"),sep="_")%>%
@@ -44,6 +31,7 @@ hab<-read.delim("170421_inside_outside_habitat.TXT",header=T,skip=4,stringsAsFac
 
 # Create %fov----
 hab$row <- 1:nrow(hab)
+
 fov<-hab%>%
   select(-c(broad,relief))%>%
   filter(!fieldofview=="")%>%
