@@ -55,7 +55,7 @@ gsr <- function(Source, Search, Replace) {
 
 # Add you work dir here-
 work.dir=("C:/GitHub/Moorea-minimum-approach")
-
+work.dir=("Y:/Moorea-minimum-approach")
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -65,6 +65,7 @@ plots=paste(work.dir,"Plots",sep="/")
 # Read in data files----
 setwd(em.export)
 dir()
+
 # Bring in Ellen outside sites-
 length.outside.ellen<-read.delim("outside sites_Ellen.TXT",skip = 4, header=T, stringsAsFactors = FALSE,strip.white = TRUE,na.strings = c("", " "))%>%
   mutate(Period=as.numeric(Period))%>%

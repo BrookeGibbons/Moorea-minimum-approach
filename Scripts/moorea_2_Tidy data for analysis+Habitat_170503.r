@@ -29,6 +29,7 @@ study<-"mad.schools"
 
 # Add you work dir here-
 work.dir=("C:/GitHub/Moorea-minimum-approach")
+work.dir=("Y:/Moorea-minimum-approach")
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
