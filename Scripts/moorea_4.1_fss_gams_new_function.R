@@ -1,8 +1,6 @@
 # librarys----
-detach("package:plyr", unload=TRUE)#will error - don't worry
 library(tidyr)
 library(dplyr)
-options(dplyr.width = Inf) #enables head() to display all coloums
 library(mgcv)
 library(MuMIn)
 library(car)
@@ -12,6 +10,7 @@ library(RColorBrewer)
 library(doParallel) #this can removed?
 library(doSNOW)
 library(gamm4)
+library(googlesheets)
 library(RCurl) #needed to download data from GitHub
 
 rm(list=ls())
@@ -25,7 +24,7 @@ name<-"moorea.schools"
 
 # Bring in my data ----
 work.dir=("C:/GitHub/Moorea-minimum-approach") # Windows
-#work.dir=("~/Git Projects/Moorea-minimum-approach") # Mac
+work.dir=("~/Git Projects/current/Moorea-minimum-approach") # Mac
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
