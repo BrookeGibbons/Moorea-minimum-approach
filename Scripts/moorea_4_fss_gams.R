@@ -30,6 +30,7 @@ dat <-read.csv(text=getURL("https://raw.githubusercontent.com/beckyfisher/FSSgam
 # Bring in my data ----
 work.dir=("C:/GitHub/Moorea-minimum-approach") # Windows
 #work.dir=("~/Git Projects/Moorea-minimum-approach") # Mac
+work.dir=("Y:/Moorea-minimum-approach") # Windows
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -39,13 +40,16 @@ plots=paste(work.dir,"Plots",sep="/")
 model.out=paste(work.dir,"ModelOut",sep="/")
 
 # Moorea life history ----
-master <- gs_title("Moorea Species List_170406")%>%
-  gs_read_csv(ws = "Sheet1")%>%
+url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
+
+master <- googlesheets4::read_sheet(url)%>%
   mutate(Max=as.numeric(Max))%>%
   mutate(Max_length=Max*10)%>%
   mutate(Min_length=0)%>%
   dplyr::rename(diet=`Diet 7cl2`)%>%
-  select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+  dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+  mutate(TargetLoc=as.character(TargetLoc))%>%
+  mutate(Commercial=as.character(Commercial))%>%
   glimpse()
 
 # Bring in length data ----
@@ -166,19 +170,19 @@ dat.mad.individuals<-dat.mad%>%
 dat.mad.individuals<-dat.mad.individuals%>%
   mutate(School=paste("School",1:nrow(dat.mad.individuals),sep=".")) # make a unique id for each individual
 
-dat.mad<-bind_rows(dat.mad.schools,dat.mad.individuals)
+dat.mad.sum<-bind_rows(dat.mad.schools,dat.mad.individuals)
 
-dat.mad.targetloc<-dat.mad%>%
+dat.mad.targetloc<-dat.mad.sum%>%
   select(Sample,TargetLoc,response,Length,School)%>% 
-  group_by(Sample,TargetLoc,School)%>% # need to summarise min mad for these columns, and create length vars
+  group_by(Sample,School)%>% # need to summarise min mad for these columns, and create length vars # TargetLoc, 03/02 BG removed
   dplyr::summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
   ungroup()%>%
   left_join(dat.mad.school.size)%>% # bring in school size for actual schools
   replace_na(list(school.size=1))%>% # make school size 1 for individuals
-  mutate(Metric="TargetLoc")%>% # make metric name to feed into gams
+  mutate(Metric="MAD")%>% # make metric name to feed into gams
   inner_join(dat.factor, by="Sample") # bring in co-vars
 
-dat.mad.species<-dat.mad%>%
+dat.mad.species<-dat.mad.sum%>%
   select(Sample,Genus_species,response,Length,School)%>%
   filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
   mutate(Metric=Genus_species)%>%
@@ -280,7 +284,7 @@ dev.off()
 
 ########### MAD models (School as Factor)----
 ## TargetLoc as factor ----
-dat<-dat.mad.targetloc
+dat<-dat.mad
 names(dat)
 
 pred.vars=c("mean.relief","sd.relief","hard.corals","rock","mean.length","min.length","max.length","school.size")
@@ -296,7 +300,7 @@ unique.vars.use
 setwd(model.out)
 # Full-sebset models---  
 resp.vars=unique.vars.use
-factor.vars=c("Status","TargetLoc")
+factor.vars=c("Status") #,"TargetLoc"
 use.dat=dat
 out.all=list() 
 var.imp=list()
