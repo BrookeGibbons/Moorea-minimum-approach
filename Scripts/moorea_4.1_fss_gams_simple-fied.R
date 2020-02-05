@@ -47,19 +47,20 @@ master <- gs_title("Moorea Species List_170406")%>%
 setwd(tidy.data)
 dir()
 
-brooke.dat<-read.csv("2019-02-12_mad.schools_combined.factors.habitat.csv")%>%
+raw.data<-read.csv("2019-02-12_mad.schools_combined.factors.habitat.csv")%>%
   filter(Reef.Lagoon=="Lagoon")%>% # I am only looking at Lagoon sites
   filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
   glimpse()
 
 # Make factors and sample list ----
-dat.sample<-brooke.dat%>%
+samples<-raw.data%>%
   distinct(Sample)
-dat.factor<-brooke.dat%>%
+
+factors<-raw.data%>%
   distinct(Sample,Depth,Location,Status,Site,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength)
 
 # Make TA and SR for gams ----
-ta.sr<-brooke.dat%>%
+ta.sr<-raw.data%>%
   group_by(Genus_species,Sample) %>%
   dplyr::summarise(Abundance = sum(Number))%>%
   spread(Genus_species,Abundance, fill = 0)%>%
@@ -69,104 +70,97 @@ Presence.Absence <- ta.sr[,2:(ncol(ta.sr))-1]
 for (i in 1:dim(Presence.Absence)[2]){
   Presence.Absence[,i] <- ifelse(Presence.Absence[,i]>0,1,0)
 }
-dat.1<-ta.sr%>%
+total.abundance.species.richness<-ta.sr%>%
   mutate(Species.Richness = rowSums(Presence.Absence,na.rm = TRUE))%>%
-  inner_join(dat.factor, by="Sample")%>%
+  inner_join(factors, by="Sample")%>%
   select(Depth,Location,Status,Site,Sample,PeriodLength,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,Total.Abundance,Species.Richness)%>%
   gather(key=Metric, value = Response, (match("reef",names(.))+1):ncol(.))
 
 ## Make size class data ----
-dat.size.class<-brooke.dat%>%
+size.class<-raw.data%>%
   dplyr::rename(Response=Number)%>%
   filter(!is.na(Length))%>%
   mutate(Indicator=ifelse(Length<=(Max_length/3),"small","large"))%>%
   dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,Feeding,DayPoaching,NightPoaching,Size,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length,final.mad,School))%>%
-  left_join(dat.sample,.,by="Sample")%>%
+  left_join(samples,.,by="Sample")%>%
   tidyr::complete(Sample,tidyr::nesting(Family,Genus_species),Indicator)%>%
-  left_join(dat.factor,., by = "Sample")%>%
+  left_join(factors,., by = "Sample")%>%
   replace_na(list(Response=0))%>%
   filter(Reef.Lagoon=="Lagoon")%>% # I am only looking at Lagoon sites
   filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
   left_join(master, by = c("Family", "Genus_species"))
 
-names(dat.size.class)
-unique(dat.size.class$Sample)
-
-dat.2<-dat.size.class%>%
-  filter(Genus_species%in%(c("Ctenochaetus striatus","Chlorurus sordidus")))%>%
-  dplyr::group_by(Sample,Genus_species,Indicator)%>%
-  dplyr::summarise(Response=sum(Response))%>%
-  ungroup()%>%
-  inner_join(dat.factor, by="Sample")%>%
-  mutate(Metric=paste("Abundance",Genus_species,Indicator,sep="."))%>%
-  select(-c(Genus_species,Indicator,Reef.Lagoon))
+names(size.class)
+unique(size.class$Sample)
 
 # Abundance by size and TargetLoc ----
-dat.3<-dat.size.class%>%
+size.class.target<-size.class%>%
   filter(!is.na(TargetLoc))%>%
   group_by(Sample,Indicator,TargetLoc)%>%
   dplyr::summarise(Response=sum(Response))%>%
   ungroup()%>%
-  inner_join(dat.factor, by="Sample")%>%
+  inner_join(factors, by="Sample")%>%
   mutate(Metric=paste("Abundance.TargetLoc",TargetLoc,Indicator,sep="."))%>%
   select(-c(TargetLoc,Indicator,Reef.Lagoon))%>%
   glimpse()
 
 # Number and size of schools ----
-schools<-brooke.dat%>%
+schools<-raw.data%>%
   group_by(School,Sample) %>%
   dplyr::summarise(Abundance = sum(Number))%>%
   spread(School,Abundance, fill = 0)%>%
-  mutate(School.Total=rowSums(.[,2:(ncol(.))],na.rm = TRUE ))#Add in Totals
+  mutate(School.Total=rowSums(.[,2:(ncol(.))],na.rm = TRUE )) # Add in Totals
+
 Presence.Absence <- schools[,2:(ncol(schools))-1]
 for (i in 1:dim(Presence.Absence)[2]){
   Presence.Absence[,i] <- ifelse(Presence.Absence[,i]>0,1,0)
 }
-dat.4<-schools%>%
+
+schools<-schools%>%
   mutate(Number.of.schools = rowSums(Presence.Absence,na.rm = TRUE))%>%
-  inner_join(dat.factor, by="Sample")%>%
+  inner_join(factors, by="Sample")%>%
   select(Depth,Location,Status,Site,Sample,PeriodLength,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,School.Total,Number.of.schools)%>%
   gather(key=Metric, value = Response, (match("reef",names(.))+1):ncol(.))
 
 # Combine datasets together ----
-combined<-bind_rows(dat.1,dat.2,dat.3,dat.4)
+combined.abundance.dataframes<-bind_rows(total.abundance.species.richness,
+                                         size.class.target,
+                                         schools)
 
-unique(combined$Site)
+unique(combined.abundance.dataframes$Site)
 
 # Mad data----
-dat.mad<-brooke.dat%>%
+mad.data<-raw.data%>%
   filter(final.mad>0)%>%
   filter(!is.na(Length))%>%
   filter(Length>80)%>%
   #filter(Length<300)%>%
   mutate(Indicator="Mad")%>%
   mutate(TargetLoc=as.factor(TargetLoc))%>%
-  #mutate(School=ifelse((is.na(School)|School==""),"Individual","School"))%>%
-  #mutate(School=as.factor(School))%>%
   dplyr::rename(response=final.mad)%>%
   select(-c(Reef.Lagoon))%>%
   glimpse()
 
-dat.mad.schools<-dat.mad%>%
+mad.schools<-mad.data%>%
   filter(grepl("School",School)) # filter to only those in schools
 
-dat.mad.school.size<-dat.mad.schools%>%
+mad.school.size<-mad.schools%>%
   group_by(Sample,School)%>%
   filter(!School%in%c(""))%>%
   dplyr::summarise(school.size=sum(Number))
 
-dat.mad.individuals<-dat.mad%>%
+mad.individuals<-mad.data%>%
   filter(!grepl("School",School)) # filter to only individuals
 
-dat.mad.individuals<-dat.mad.individuals%>%
-  mutate(School=paste("School",1:nrow(dat.mad.individuals),sep=".")) # make a unique id for each individual
+mad.individuals<-mad.individuals%>%
+  mutate(School=paste("School",1:nrow(mad.individuals), sep=".")) # make a unique id for each individual
 
-dat.mad<-bind_rows(dat.mad.schools,dat.mad.individuals)
+mad<-bind_rows(mad.schools, mad.individuals)
 
 # BG 04/09/19
 # trying to figure out if we have schools of mixed target level
 
-test.schools<-dat.mad%>%
+test.schools<-mad%>%
   mutate(TargetLoc=as.numeric(TargetLoc))%>%
   group_by(Sample,School)%>%
   summarise(number=length(unique(TargetLoc)),average=mean(TargetLoc))
@@ -184,65 +178,36 @@ schools.with.mutliple.targetlocs<-test.schools%>%
 # 2nd idea - rename 1 and 2 as both targeted and 0 as non-target
 # will then have less groups to remove and only 2 gams yay
 
-dat.mad.final<-dat.mad%>%
-  anti_join(schools.with.mutliple.targetlocs)
+mad.final<-mad%>%
+  anti_join(schools.with.mutliple.targetlocs)%>%
+  mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
 
-dat.targetloc0<-dat.mad.final%>%
-  filter(TargetLoc%in%c(0))%>%
-  mutate(Metric="non-target")
+# mad.targetloc0<-mad.final%>%
+#   filter(TargetLoc%in%c(0))%>%
+#   mutate(Metric="non-target")
+# 
+# mad.targetloc1<-mad.final%>%
+#   filter(TargetLoc%in%c(1))%>%
+#   mutate(Metric="mod-target")
+# 
+# mad.targetloc2<-mad.final%>%
+#   filter(TargetLoc%in%c(2))%>%
+#   mutate(Metric="high-target")
 
-dat.targetloc1<-dat.mad.final%>%
-  filter(TargetLoc%in%c(1))%>%
-  mutate(Metric="mod-target")
-  
-dat.targetloc2<-dat.mad.final%>%
-  filter(TargetLoc%in%c(2))%>%
-  mutate(Metric="high-target")
-
-combined.data<-bind_rows(dat.targetloc0,dat.targetloc1,dat.targetloc2)
+#combined.mad.data<-bind_rows(mad.targetloc0,mad.targetloc1,mad.targetloc2)
 
 # Need to make a row for each school
 # with min, mean and max length
 # and school size
-
-dat.mad.sum<-combined.data%>%
+mad.sum<-mad.final%>%
   group_by(Sample,School,Metric)%>% # need to keep target loc in
   summarise(response=min(response),min.length=min(Length),mean.length=mean(Length),max.length=max(Length))%>%
   ungroup()%>%
-  left_join(dat.mad.school.size)%>%
+  left_join(mad.school.size)%>%
   replace_na(list(school.size=1))%>%
-  left_join(dat.factor)%>%
-  mutate(Metric=as.factor(Metric),School=as.factor(School))%>%
-  glimpse()
-
-# Not doing these anymore ----
-
-# dat.mad.targetloc<-dat.mad%>%
-#   select(Sample,TargetLoc,response,Length,School)%>% 
-#   group_by(Sample,TargetLoc,School)%>% # need to summarise min mad for these columns, and create length vars
-#   dplyr::summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
-#   ungroup()%>%
-#   left_join(dat.mad.school.size)%>% # bring in school size for actual schools
-#   replace_na(list(school.size=1))%>% # make school size 1 for individuals
-#   mutate(Metric="TargetLoc")%>% # make metric name to feed into gams
-#   inner_join(dat.factor, by="Sample") # bring in co-vars
-# 
-# dat.mad.species<-dat.mad%>%
-#   select(Sample,Genus_species,response,Length,School)%>%
-#   filter(Genus_species%in%c("Ctenochaetus striatus","Chlorurus sordidus"))%>%
-#   mutate(Metric=Genus_species)%>%
-#   group_by(Sample,Metric,School)%>% # need to summarise min mad for these columns, and create length vars
-#   dplyr::summarise(response=min(response),mean.length=mean(Length),min.length=min(Length),max.length=max(Length))%>%
-#   ungroup()%>%
-#   left_join(dat.mad.school.size)%>%
-#   replace_na(list(school.size=1))%>%
-#   inner_join(dat.factor, by="Sample")
-# 
-# dat.mad.complete<-bind_rows(dat.mad.targetloc,dat.mad.species)
-# 
-# dat<-combined
-# 
-# names(dat)
+  left_join(factors)%>%
+  #mutate(Metric=as.factor(Metric),School=as.factor(School))%>%
+  as.data.frame()
 
 # Set predictor variables ----
 pred.vars=c("Depth","PeriodLength","sd.relief","rock","hard.corals","sand") 
@@ -251,6 +216,8 @@ pred.vars=c("Depth","PeriodLength","sd.relief","rock","hard.corals","sand")
 # reef - correlated with sand
 # macroalgae - too few
 # Depth didnt used to be in but maybe keep it??? BG
+
+dat<-combined.abundance.dataframes
 
 # Check for correalation of predictor variables- remove anything highly correlated (>0.95)---
 round(cor(dat[,pred.vars]),2)
@@ -271,21 +238,19 @@ for (i in pred.vars) {
 }
 
 # Review of individual predictors - we have to make sure they have an even distribution---
-#If the data are squewed to low numbers try sqrt>log or if squewed to high numbers try ^2 of ^3
+# If the data are squewed to low numbers try sqrt>log or if squewed to high numbers try ^2 of ^3
 # Decided that X4mm, X2mm, X1mm and X500um needed a sqrt transformation
-#Decided Depth, x63um, InPreds and BioTurb were not informative variables. 
+# Decided Depth, x63um, InPreds and BioTurb were not informative variables. 
 
-dat<-combined%>%
+dat<-combined.abundance.dataframes%>%
   dplyr::rename(response=Response)
 
 glimpse(dat)
 
 dat<-as.data.frame(dat)
 
-
 ## ABUNDANCE ----
-
-# # Re-set the predictors for modeling----
+# Re-set the predictors for modeling----
 pred.vars=c("rock","sd.relief","hard.corals","sand") 
 
 # Set name of models ----
@@ -302,7 +267,7 @@ for(i in 1:length(unique.vars)){
 unique.vars.use     
 
 # Run the full subset model selection----
-setwd(model.out) #Set wd for example outputs - will differ on your computer
+setwd(model.out) # Set wd for example outputs - will differ on your computer
 resp.vars=unique.vars.use
 use.dat=dat
 factor.vars=c("Status")# Status as a Factor with two levels
@@ -351,7 +316,7 @@ for(i in 1:length(resp.vars)){
   }
 }
 
-# Model fits and importance---
+# Model fits and importance ----
 names(out.all)=resp.vars
 names(var.imp)=resp.vars
 all.mod.fits=do.call("rbind",out.all)
@@ -368,17 +333,21 @@ heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
 
 ### MAD
 # Need to change all of this (copied from abundance)----
-
-
 # # Re-set the predictors for modeling----
-pred.vars=c("mean.relief","sd.relief","hard.corals","rock","mean.length","min.length","max.length","school.size")
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","min.length","school.size")
+
+#pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+
+names(dat)
 
 # Set name of models ----
 name<-"mad.output"
 
 # Data
+dat<-mad.sum
+dat<-mad.final%>%
+  rename(Metric=Indicator)
 
-dat<-dat.mad.sum
 
 # Check to make sure Response vector has not more than 80% zeros----
 unique.vars=unique(as.character(dat$Metric))
@@ -445,8 +414,6 @@ for(i in 1:length(resp.vars)){
     dev.off()
   }
 }
-
-rlang::last_error()
 
 # Model fits and importance---
 names(out.all)=resp.vars
