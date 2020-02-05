@@ -11,12 +11,13 @@ library(doParallel) #this can removed?
 library(doSNOW)
 library(gamm4)
 library(googlesheets)
+library(googlesheets4)
 library(RCurl) #needed to download data from GitHub
 
 rm(list=ls())
 
 # install package----
-devtools::install_github("beckyfisher/FSSgam_package", force =TRUE) #run once
+#devtools::install_github("beckyfisher/FSSgam_package", force =TRUE) #run once
 library(FSSgam)
 
 # Bring in and format the data----
@@ -24,7 +25,7 @@ name<-"moorea.schools"
 
 # Bring in my data ----
 work.dir=("C:/GitHub/Moorea-minimum-approach") # Windows
-work.dir=("~/Git Projects/current/Moorea-minimum-approach") # Mac
+#work.dir=("~/Git Projects/current/Moorea-minimum-approach") # Mac
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -34,20 +35,23 @@ plots=paste(work.dir,"Plots",sep="/")
 model.out=paste(work.dir,"ModelOut",sep="/")
 
 # Moorea life history ----
-master <- gs_title("Moorea Species List_170406")%>%
-  gs_read_csv(ws = "Sheet1")%>%
+url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
+
+master <- googlesheets4::read_sheet(url)%>%
   mutate(Max=as.numeric(Max))%>%
   mutate(Max_length=Max*10)%>%
   mutate(Min_length=0)%>%
   dplyr::rename(diet=`Diet 7cl2`)%>%
-  select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+  dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+  mutate(TargetLoc=as.character(TargetLoc))%>%
+  mutate(Commercial=as.character(Commercial))%>%
   glimpse()
 
 # Bring in length data ----
 setwd(tidy.data)
 dir()
 
-raw.data<-read.csv("2019-02-12_mad.schools_combined.factors.habitat.csv")%>%
+raw.data<-read.csv("2020-02-05_mad.schools_combined.factors.habitat.csv")%>%
   filter(Reef.Lagoon=="Lagoon")%>% # I am only looking at Lagoon sites
   filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
   glimpse()
@@ -81,14 +85,16 @@ size.class<-raw.data%>%
   dplyr::rename(Response=Number)%>%
   filter(!is.na(Length))%>%
   mutate(Indicator=ifelse(Length<=(Max_length/3),"small","large"))%>%
-  dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,Feeding,DayPoaching,NightPoaching,Size,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length,final.mad,School))%>%
+  dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,TargetLoc,Commercial,Max_length,final.mad,School))%>%
   left_join(samples,.,by="Sample")%>%
   tidyr::complete(Sample,tidyr::nesting(Family,Genus_species),Indicator)%>%
   left_join(factors,., by = "Sample")%>%
   replace_na(list(Response=0))%>%
   filter(Reef.Lagoon=="Lagoon")%>% # I am only looking at Lagoon sites
   filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
-  left_join(master, by = c("Family", "Genus_species"))
+  left_join(master, by = c("Family", "Genus_species"))%>%
+  dplyr::select(-c(Resilience.x,Resilience.y,diet,CommLoc,CommReg,Ciguatera,Commercial,Max_length))%>%
+  glimpse()
 
 names(size.class)
 unique(size.class$Sample)
@@ -101,25 +107,25 @@ size.class.target<-size.class%>%
   ungroup()%>%
   inner_join(factors, by="Sample")%>%
   mutate(Metric=paste("Abundance.TargetLoc",TargetLoc,Indicator,sep="."))%>%
-  select(-c(TargetLoc,Indicator,Reef.Lagoon))%>%
+  dplyr::select(-c(TargetLoc,Indicator,Reef.Lagoon))%>%
   glimpse()
 
 # Number and size of schools ----
-schools<-raw.data%>%
+schools.summary<-raw.data%>%
   group_by(School,Sample) %>%
   dplyr::summarise(Abundance = sum(Number))%>%
   spread(School,Abundance, fill = 0)%>%
   mutate(School.Total=rowSums(.[,2:(ncol(.))],na.rm = TRUE )) # Add in Totals
 
-Presence.Absence <- schools[,2:(ncol(schools))-1]
+Presence.Absence <- schools.summary[,2:(ncol(schools.summary))-1]
 for (i in 1:dim(Presence.Absence)[2]){
   Presence.Absence[,i] <- ifelse(Presence.Absence[,i]>0,1,0)
 }
 
-schools<-schools%>%
+schools<-schools.summary%>%
   mutate(Number.of.schools = rowSums(Presence.Absence,na.rm = TRUE))%>%
   inner_join(factors, by="Sample")%>%
-  select(Depth,Location,Status,Site,Sample,PeriodLength,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,School.Total,Number.of.schools)%>%
+  dplyr::select(Depth,Location,Status,Site,Sample,PeriodLength,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,School.Total,Number.of.schools)%>%
   gather(key=Metric, value = Response, (match("reef",names(.))+1):ncol(.))
 
 # Combine datasets together ----
@@ -178,9 +184,13 @@ schools.with.mutliple.targetlocs<-test.schools%>%
 # 2nd idea - rename 1 and 2 as both targeted and 0 as non-target
 # will then have less groups to remove and only 2 gams yay
 
+# 3rd idea - have none, low, high and mixed
+
 mad.final<-mad%>%
   anti_join(schools.with.mutliple.targetlocs)%>%
   mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
+# Only removes 266 fish (5179-4913)
+
 
 # mad.targetloc0<-mad.final%>%
 #   filter(TargetLoc%in%c(0))%>%
@@ -201,13 +211,14 @@ mad.final<-mad%>%
 # and school size
 mad.sum<-mad.final%>%
   group_by(Sample,School,Metric)%>% # need to keep target loc in
-  summarise(response=min(response),min.length=min(Length),mean.length=mean(Length),max.length=max(Length))%>%
+  dplyr::summarise(response=min(response),min.length=min(Length),mean.length=mean(Length),max.length=max(Length))%>%
   ungroup()%>%
   left_join(mad.school.size)%>%
   replace_na(list(school.size=1))%>%
   left_join(factors)%>%
   #mutate(Metric=as.factor(Metric),School=as.factor(School))%>%
-  as.data.frame()
+  as.data.frame()%>%
+  glimpse()
 
 # Set predictor variables ----
 pred.vars=c("Depth","PeriodLength","sd.relief","rock","hard.corals","sand") 
@@ -331,10 +342,10 @@ heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
           notecol="black",key=T,
           sepcolor = "black",margins=c(12,8), lhei=c(4,15),Rowv=FALSE,Colv=FALSE)
 
-### MAD
+### MAD ----
 # Need to change all of this (copied from abundance)----
-# # Re-set the predictors for modeling----
-pred.vars=c("mean.relief","sd.relief","hard.corals","rock","min.length","school.size")
+# Re-set the predictors for modeling----
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","min.length","school.size") # "max.length","mean.length",
 
 #pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
 
@@ -345,9 +356,8 @@ name<-"mad.output"
 
 # Data
 dat<-mad.sum
-dat<-mad.final%>%
-  rename(Metric=Indicator)
 
+#dat<-mad.final%>%dplyr::rename(Metric=Indicator)
 
 # Check to make sure Response vector has not more than 80% zeros----
 unique.vars=unique(as.character(dat$Metric))
@@ -429,3 +439,4 @@ heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
           trace="none",key.title = "",keysize=2,
           notecol="black",key=T,
           sepcolor = "black",margins=c(12,8), lhei=c(4,15),Rowv=FALSE,Colv=FALSE)
+

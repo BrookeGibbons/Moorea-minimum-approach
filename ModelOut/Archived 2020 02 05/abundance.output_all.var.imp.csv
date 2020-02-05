@@ -1,6 +1,10 @@
 "","rock","sd.relief","hard.corals","sand","Status"
 "Total.Abundance",0.807,0,0.007,0.008,0.584
 "Species.Richness",0.772,0.004,0.019,0.02,0.556
+"Abundance.Chlorurus sordidus.large",0.843,0.005,0.076,0.019,0.436
+"Abundance.Chlorurus sordidus.small",0.295,0.093,0.095,0.125,0.292
+"Abundance.Ctenochaetus striatus.large",0.64,0.001,0.095,0.162,0.439
+"Abundance.Ctenochaetus striatus.small",0,0,0,1,1
 "Abundance.TargetLoc.0.large",0.443,0.048,0.05,0.087,0.436
 "Abundance.TargetLoc.1.large",0.384,0.042,0.302,0.239,0.259
 "Abundance.TargetLoc.2.large",0.753,0,0.006,0.004,0.609

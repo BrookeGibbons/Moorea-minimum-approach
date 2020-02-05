@@ -5,6 +5,17 @@
 "Species.Richness.rock+Status","rock+Status",533.707773781196,564.523054299801,0.18243,NA,13.72,0,0,0,0.395,0.425,1,0,0,0,1,0.395
 "Species.Richness.rock","rock",533.801384201086,564.643582872875,0.19131,NA,13.76,0,0.094,0.121,0.377,0.4,1,0,0,0,0,0.772
 "Species.Richness.rock.by.Status+Status","rock.by.Status+Status",535.506890767827,567.428350374653,0.17898,NA,14.58,0,1.799,2.905,0.161,0.099,1,0,0,0,1,0.933
+"Abundance.Chlorurus sordidus.large.rock","rock",480.987725876866,511.938134002235,0.54175,NA,13.73,0,0,0,0.462,0.511,1,0,0,0,0,0.462
+"Abundance.Chlorurus sordidus.large.rock+Status","rock+Status",481.372296934573,512.537549304531,0.53877,NA,13.88,0,0.385,0.599,0.381,0.379,1,0,0,0,1,0.843
+"Abundance.Chlorurus sordidus.small.null","null",517.985459787425,546.392484693742,0.36819,NA,11.92,0,0,0,0.218,0.323,0,0,0,0,0,0.218
+"Abundance.Chlorurus sordidus.small.rock","rock",518.514912978583,548.024331216456,0.35827,NA,12.66,0,0.529,1.632,0.167,0.143,1,0,0,0,0,0.385
+"Abundance.Chlorurus sordidus.small.Status","Status",518.555061082419,547.161893387076,0.35694,NA,11.99,0,0.57,0.769,0.164,0.22,0,0,0,0,1,0.549
+"Abundance.Chlorurus sordidus.small.rock+Status","rock+Status",519.050610138132,548.802468739975,0.35062,NA,12.8,0,1.065,2.41,0.128,0.097,1,0,0,0,1,0.677
+"Abundance.Chlorurus sordidus.small.sand","sand",519.726598132933,549.357281843545,0.37188,NA,12.77,0,1.741,2.965,0.091,0.073,0,0,0,1,0,0.768
+"Abundance.Ctenochaetus striatus.large.rock","rock",517.005679576433,548.419918195397,0.77706,NA,14.27,0,0,0,0.328,0.411,1,0,0,0,0,0.328
+"Abundance.Ctenochaetus striatus.large.rock+Status","rock+Status",517.104005745949,548.631429502102,0.77601,NA,14.37,0,0.098,0.212,0.312,0.37,1,0,0,0,1,0.64
+"Abundance.Ctenochaetus striatus.large.rock.by.Status+Status","rock.by.Status+Status",518.901264659621,551.659879092949,0.77518,NA,15.36,0,1.896,3.24,0.127,0.081,1,0,0,0,1,0.767
+"Abundance.Ctenochaetus striatus.small","sand.by.Status+Status",566.913125005334,599.945475614796,0.28292,NA,14.57,0,0,0,1,1,0,0,0,1,1,1
 "Abundance.TargetLoc.0.large.rock+Status","rock+Status",515.556377460119,548.518935681576,0.43884,NA,14.67,0,0,0.635,0.226,0.147,1,0,0,0,1,0.226
 "Abundance.TargetLoc.0.large.rock","rock",515.637071531655,548.546616368138,0.44555,NA,14.68,0,0.081,0.663,0.217,0.145,1,0,0,0,0,0.443
 "Abundance.TargetLoc.0.large.rock.by.Status+Status","rock.by.Status+Status",515.698505982087,549.508557238155,0.43986,NA,15.69,0,0.142,1.625,0.21,0.09,1,0,0,0,1,0.653
