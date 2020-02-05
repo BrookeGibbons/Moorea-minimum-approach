@@ -21,7 +21,7 @@ library(dplyr)
 library(ggplot2)
 library(readxl)
 library(googlesheets)
-
+library(googlesheets4)
 
 # Set directories----
 rm(list=ls())
@@ -29,7 +29,7 @@ study<-"mad.schools"
 
 # Add you work dir here-
 work.dir=("C:/GitHub/Moorea-minimum-approach")
-work.dir=("Y:/Moorea-minimum-approach")
+# work.dir=("Y:/Moorea-minimum-approach")
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -52,15 +52,17 @@ unique(length.factors$OpCode)
 unique(length$Comment.1)
 
 # Import from Life_history----
-gs_ls()
-Life_history <- gs_title("Moorea Species List_170406")#register a sheet
-master<-Life_history%>%
-  gs_read_csv(ws = "Sheet1")%>%
+url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
+
+master <- googlesheets4::read_sheet(url)%>%
   mutate(Max=as.numeric(Max))%>%
   mutate(Max_length=Max*10)%>%
   mutate(Min_length=0)%>%
   dplyr::rename(diet=`Diet 7cl2`)%>%
-  select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%glimpse()
+  dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+  mutate(TargetLoc=as.character(TargetLoc))%>%
+  mutate(Commercial=as.character(Commercial))%>%
+  glimpse()
 
 names(master)
 unique(master$CommLoc)
@@ -92,7 +94,7 @@ length.expanded.factors<-length.factors%>%
 unique(length.expanded.factors$Region)
 unique(length.expanded.factors$OpCode)
 
-write.csv(length.expanded.factors, file=paste(study,name,".csv",sep = "."), row.names=FALSE)
+write.csv(length.expanded.factors, file=paste(study,name,"csv",sep = "."), row.names=FALSE)
 
 # Bring in the enviromental data----
 setwd(tidy.data)
@@ -106,6 +108,7 @@ unique(dov.fine.habitat$Sample)
 # Bring in period time ----
 setwd(em.export)
 dir()
+
 period.times<-read.delim("period.lengths.TXT", header=T,skip=4,stringsAsFactors = FALSE)%>%
   setNames(tolower(names(.)))%>%
   select(period,period.length..mins.,opcode)%>%
@@ -119,9 +122,15 @@ unique(period.times$Sample)
 
 
 ## Bring in Fish Feeding and Poaching levels
-feeding <- gs_title("170503_Moorea MPA")%>%
-  gs_read_csv(ws = "Sheet2")%>%
-  select(Location, Size, Feeding, DayPoaching, NightPoaching)
+# url <- ("")
+# 
+# feeding <- googlesheets4::read_sheet(url)%>%
+#   dplyr::select(Location, Size, Feeding, DayPoaching, NightPoaching)%>%
+#   glimpse()
+
+# feeding <- gs_title("170503_Moorea MPA")%>%
+#   gs_read_csv(ws = "Sheet2")%>%
+#   select(Location, Size, Feeding, DayPoaching, NightPoaching)
 
 # Write final data----
 setwd(tidy.data)
@@ -133,12 +142,12 @@ head(dov.fine.habitat)
 data<-length.expanded.factors%>%
   inner_join(dov.fine.habitat, by="Sample")%>%
   left_join(period.times, by="Sample")%>%
-  left_join(feeding, by="Location")%>%
+  #left_join(feeding, by="Location")%>%
   glimpse()
 
 # Data corrections - that should be investigated and fixed where possible----
 final.data<-data%>%
-  select(final.mad,Depth,Location,Status,Site,Region,Reef.Lagoon,Genus_species,Family,Length,Number,Sample,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef, PeriodLength, Feeding, Size, DayPoaching,NightPoaching,School)%>%
+  select(final.mad,Depth,Location,Status,Site,Region,Reef.Lagoon,Genus_species,Family,Length,Number,Sample,diet,TargetLoc,Commercial,Resilience,Max_length,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef, PeriodLength, School)%>% #Feeding, Size, DayPoaching,NightPoaching,CommLoc,CommReg,Ciguatera,
   mutate(Region=as.character(Region))%>%
   mutate(Region=ifelse(Region=="East","Northeast",ifelse(Region=="North","Northeast",Region)))%>%
   mutate(Region=as.factor(Region))%>%

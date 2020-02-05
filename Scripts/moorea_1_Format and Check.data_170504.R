@@ -5,7 +5,7 @@ library(ggplot2)
 library(readxl)
 library(googlesheets)
 library(stringr)
-
+library(googlesheets4)
 
 # Set directories----
 rm(list=ls()) #clear memory
@@ -27,7 +27,7 @@ gsr <- function(Source, Search, Replace) {
 
 # Add you work dir here-
 work.dir=("C:/GitHub/Moorea-minimum-approach")
-work.dir=("Y:/Moorea-minimum-approach")
+# work.dir=("Y:/Moorea-minimum-approach")
 
 em.export=paste(work.dir,"Data/EM export",sep="/")
 em.check=paste(work.dir,"Data/EM to check",sep="/")
@@ -203,15 +203,19 @@ gg.check.range.vs.length
 ggsave(gg.check.range.vs.length,file=paste( study,"gg.check.range.vs.length.png",sep = "_"),width = 8, height = 8,units = "in")
 
 # SERIOUS data checking to compare taxa and min/max lengths----
-# using life history from google sheets
-gs_ls()
-Life_history <- gs_title("Moorea Species List_170406")#register a sheet
-master<-Life_history%>%
-  gs_read_csv(ws = "Sheet1")%>%
+# Moorea life history ----
+url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
+
+master <- googlesheets4::read_sheet(url)%>%
   mutate(Max=as.numeric(Max))%>%
   mutate(Max_length=Max*10)%>%
   mutate(Min_length=0)%>%
+  dplyr::rename(diet=`Diet 7cl2`)%>%
+  dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+  mutate(TargetLoc=as.character(TargetLoc))%>%
+  mutate(Commercial=as.character(Commercial))%>%
   glimpse()
+
 
 # # Update names of species that may have changed----
 # Check for taxa.not.match----
