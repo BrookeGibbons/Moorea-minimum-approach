@@ -1,0 +1,4 @@
+"","modname","AICc","BIC","r2.vals","r2.vals.unique","edf","edf.less.1","delta.AICc","delta.BIC","wi.AICc","wi.BIC","mean.relief","sd.relief","hard.corals","rock","min.length","school.size","Status"
+"response","min.length.by.Status+rock+Status",64236.2511249609,64364.2718479143,0.31483,NA,19.49,0,0,0,0.856,0.544,0,0,0,1,1,0,1
+"NA","min.length.by.Status+rock+Status",64236.2511249609,64364.2718479143,0.31483,NA,19.49,0,0,0,0.856,0.544,0,0,0,1,1,0,1
+"NA1","min.length.by.Status+rock+Status",64236.2511249609,64364.2718479143,0.31483,NA,19.49,0,0,0,0.856,0.544,0,0,0,1,1,0,1
