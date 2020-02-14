@@ -442,6 +442,133 @@ heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
 
 #### New Script 2020/02/05 -----
 
+cat.preds="Status"
+null.vars=c("Location","Site") # use as random effect and null model # ,"PeriodLength"
+
+# HOW DO I ADD AN OFFSET FOR PERIODLENGth
+
+cont.preds=c("mean.relief","sd.relief","hard.corals","rock","min.length","school.size") # use as continuous predictors.
+cor(dat[,cont.preds])
+
+# have a look at the distribution of the continuous predictors
+pdf(file="pred_vars.pdf",onefile=T)
+for(p in 1:length(cont.preds)){
+  par(mfrow=c(2,1))
+  hist(dat[,cont.preds[p]],main=cont.preds[p])
+  plot(jitter(dat[,cont.preds[p]]))
+}
+dev.off()
+
+resp.vars.fams=list("response"=gaussian(link = "identity")#,
+                    #"mod-target"=gaussian(link = "identity"),
+                    #"non-target"=gaussian(link = "identity")
+                    )
+
+resp.vars=names(resp.vars.fams)
+
+# take a look at the response variables
+pdf(file="resp_vars.pdf",onefile=T)
+for(r in 1:length(resp.vars)){
+  par(mfrow=c(2,1))
+  hist(dat[,resp.vars[r]],main=resp.vars[r])
+  plot(jitter(dat[,resp.vars[r]]))
+}
+dev.off()
+
+dat=mad.sum
+use.dat=dat
+
+
+i=1
+out.all=list()
+var.imp=list()
+fss.all=list()
+top.all=list()
+
+pdf(file="mod_fits_functional_biomass.pdf",onefile=T)
+for(i in 1:length(resp.vars)){
+  use.dat=na.omit(dat[,c(null.vars,cont.preds,cat.preds,resp.vars[i])])
+  use.dat$response=use.dat[,resp.vars[i]]
+  
+  Model1=gam(response~s(hard.corals,k=3,bs='cr')+s(Location,Site,bs="re"),
+             family=gaussian(link = "identity"),  
+             #offset=PeriodLength, 
+             data=use.dat)
+  # Model1=gam(response~s(hard.corals,k=3,bs='cr')+s(Location,Site,bs="re"),
+  #            family=gaussian(link = "identity"),  
+  #            offset=PeriodLength, 
+  #            data=use.dat)
+  
+  model.set=generate.model.set(use.dat=use.dat,
+                               max.predictors=3,   # limit size here because null model already complex
+                               test.fit=Model1,
+                               k=3,
+                               pred.vars.cont=cont.preds,
+                               pred.vars.fact=cat.preds,
+                               null.terms="s(Location,Site,bs='re')")
+  
+  # model.set=generate.model.set(use.dat=use.dat,
+  #                              test.fit=Model1,
+  #                              pred.vars.cont=pred.vars,
+  #                              pred.vars.fact=factor.vars,
+  #                              k=3,
+  #                              null.terms="s(Location,Site,bs='re')")
+  
+  
+  out.list=fit.model.set(model.set)
+  #names(out.list)
+  # examine the list of failed models
+  #out.list$failed.models
+  #out.list$success.models
+  fss.all=c(fss.all,list(out.list))
+  mod.table=out.list$mod.data.out
+  mod.table=mod.table[order(mod.table$AICc),]
+  out.i=mod.table
+  out.all=c(out.all,list(out.i))
+  var.imp=c(var.imp,list(out.list$variable.importance$aic$variable.weights.raw))
+  all.less.2AICc=mod.table[which(mod.table$delta.AICc<2),]
+  top.all=c(top.all,list(all.less.2AICc))
+  
+  # plot the all best models
+  par(oma=c(1,1,4,1))
+  for(r in 1:nrow(all.less.2AICc)){
+    best.model.name=as.character(all.less.2AICc$modname[r])
+    best.model=out.list$success.models[[best.model.name]]
+    if(best.model.name!="null"){
+      plot(best.model,all.terms=T,pages=1,residuals=T,pch=16)
+      mtext(side=3,text=resp.vars[i],outer=T)}
+  }
+}
+dev.off()
+
+names(out.all)=resp.vars
+names(var.imp)=resp.vars
+names(top.all)=resp.vars
+names(fss.all)=resp.vars
+
+all.mod.fits=do.call("rbind",out.all)
+all.var.imp=do.call("rbind",var.imp)
+top.mod.fits=do.call("rbind",top.all)
+
+require(car)
+require(doBy)
+require(gplots)
+require(RColorBrewer)
+
+pdf(file="var_importance_heatmap_functional_biomass.pdf",height=5,width=7,pointsize=10)
+heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
+          col=colorRampPalette(c("white","yellow","orange","red"))(30),
+          trace="none",key.title = "",keysize=2,
+          notecol="black",key=T,
+          sepcolor = "black",margins=c(12,14), lhei=c(3,10),lwid=c(3,10),
+          Rowv=FALSE,Colv=FALSE)
+dev.off()
+
+write.csv(all.mod.fits[,-2],"all_model_fits_functional_biomass.csv")
+write.csv(top.mod.fits[,-2],"top_model_fits_functional_biomass.csv")
+write.csv(model.set$predictor.correlations,"predictor_correlations.csv")
+
+
 
 #### pretty plots of best models -----------------------------------------------
 zones=levels(dat$ZONE)
