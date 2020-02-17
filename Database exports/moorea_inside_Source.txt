@@ -1,0 +1,21 @@
+OpCode	ExportVersion	DateTimeCreate	PictureDirectory	EMObs
+MaIL2	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20170301\	MaIL2.EMObs
+MaIL3	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20170301\	MaIL3.EMObs
+MaIR1	1.08	2020 02 17 09:33:18	X:\Project Folders\Moorea_2016\Working\Video Analysis\Temp folder for vollies\	MaIR1.EMObs
+MaIR2	1.08	2020 02 17 09:33:18	Y:\Project Folders\Moorea_2016\Working\Video Analysis\Temp folder for vollies\	MaIR2.EMObs
+NIL2	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20170312\	NIL2.EMObs
+NIL3	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20170312\	NIL3.EMObs
+NIR1	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20170312\	NIR1.EMObs
+NIR2	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20170312\	NIR2.EMObs
+PIL1	1.08	2020 02 17 09:33:18	F:\Moorea 2016\Video Analysis\Converted\20161205\	PIL1.EMObs
+PIL2	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20161205\	PIL2.EMObs
+TeIL1	1.08	2020 02 17 09:33:18	F:\Moorea 2016\Video Analysis\Converted\20161104\	TeIL1.EMObs
+TeIL4	1.08	2020 02 17 09:33:18	F:\Moorea 2016\Video Analysis\Converted\20161104\	TeIL4.EMObs
+TeIR1	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20170301\	TeIR1.EMObs
+TeIR2	1.08	2020 02 17 09:33:18	X:\Project Folders\Moorea_2016\Working\Video Analysis\Temp folder for vollies\	TeIR2.EMObs
+TiIL2	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20161101\	TiIL2.EMObs
+TiIL3	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20161013\	TiIL3.EMObs
+TiIL4	1.08	2020 02 17 09:33:18	F:\Moorea 2016\Video Analysis\Converted\20161101\	TiIL4.EMObs
+TiIR1	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20161102\	TiIR1.EMObs
+TiIR3	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20161102\	TiIR3.EMObs
+TiIR4	1.08	2020 02 17 09:33:18	E:\Moorea 2016\Video Analysis\Converted\20161102\	TiIR4.EMObs

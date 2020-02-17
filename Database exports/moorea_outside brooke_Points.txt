@@ -1,0 +1,14 @@
+OpCode	PointIndex	Filename	Frame	Time	Period	PeriodTime	ImageCol	ImageRow	Family	Genus	Species	Code	Number	Stage	Activity	Comment	Attribute9	Attribute10
+TeOL2S	0	TeOL2S_L461.avi	53783	14.93972	1	0.99639	293.23636	560.94828	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TeOL2S	1	TeOL2S_L461.avi	53790	14.94167	1	0.99833	17.31959	592.57732	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+TeOL2S	2	TeOL2S_L461.avi	53833	14.95361	1	1.01028	70.51546	826.39175	Mullidae	Parupeneus	multifasciatus	37355026	1	AD	Passing			
+TeOL2S	3	TeOL2S_L461.avi	57613	16.00361	1	2.06028	1874.22680	847.42268	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+TeOL2S	4	TeOL2S_L461.avi	65041	18.06694	2	0.91083	1785.15464	352.57732	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TeOL2S	5	TeOL2S_L461.avi	65041	18.06694	2	0.91083	1832.16495	338.96907	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TeOL2S	6	TeOL2S_L461.avi	97952	27.20889	5	0.66472	262.26804	296.90722	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TeOL2S	7	TeOL2S_L461.avi	100837	28.01028	5	1.46611	1832.16495	707.62887	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	School Multispecies G		
+TeOL2S	8	TeOL2S_L461.avi	108836	30.23222	6	1.06750	393.40206	894.43299	Tetraodontidae	Canthigaster			1	AD	Passing	ID		
+TeOL2S	9	TeOL2S_L461.avi	108836	30.23222	6	1.06750	377.31959	937.73196	Tetraodontidae	Canthigaster			1	AD	Passing	ID		
+TeOL3N	0	TiOL3W_L461.avi	51971	14.43639	1	2.09278	1800.85919	434.34571	Unknown	Unknown			1	AD	Passing			
+TeOL3N	1	TiOL3W_L461.avi	70680	19.63333	3	1.08611	166.73259	312.18401	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing			
+TeOL3N	2	TiOL3W_L461.avi	70680	19.63333	3	1.08611	262.08441	335.00329	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing			

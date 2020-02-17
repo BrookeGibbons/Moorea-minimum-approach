@@ -1,0 +1,712 @@
+OpCode	PointIndex	Filename	Frame	Time	Period	PeriodTime	ImageCol	ImageRow	Family	Genus	Species	Code	Number	Stage	Activity	Comment	Attribute9	Attribute10
+MaOL1N	0	MaOL1N_L461.avi	26466	7.35164	1	0.05167	249.82162	531.94030	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+MaOL1N	1	MaOL1N_L461.avi	28000	7.77775	1	0.47778	110.33104	284.08435	Chaetodontidae	Chaetodon	lunulatus	37365059	1	AD	Passing			
+MaOL1N	2	MaOL1N_L461.avi	28175	7.82636	1	0.52639	739.93754	785.12764	Unknown			37000000	1	AD	Passing			
+MaOL1N	3	MaOL1N_L461.avi	29328	8.14663	1	0.84666	927.02061	369.18979	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	4	MaOL1N_L461.avi	30757	8.54358	1	1.24361	721.94878	559.77802	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	5	MaOL1N_L461.avi	30760	8.54441	1	1.24444	681.17427	574.16204	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	check - gaimard		
+MaOL1N	6	MaOL1N_L461.avi	30800	8.55552	1	1.25555	1639.37539	643.68479	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	or striatus		
+MaOL1N	7	MaOL1N_L461.avi	42278	11.74384	2	1.36749	1726.92067	550.18868	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+MaOL1N	8	MaOL1N_L461.avi	50527	14.03522	3	0.11278	1249.61899	646.08213	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	9	MaOL1N_L461.avi	50587	14.05189	3	0.12944	790.30606	680.84351	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	10	MaOL1N_L461.avi	50918	14.14383	3	0.22139	387.35790	839.06770	Labridae	Halichoeres	hortulanus	37384112	1	AD	Passing			
+MaOL1N	11	MaOL1N_L461.avi	50939	14.14967	3	0.22722	811.89257	631.69811	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	12	MaOL1N_L461.avi	50939	14.14967	3	0.22722	744.73454	613.71809	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	13	MaOL1N_L461.avi	50982	14.16161	3	0.23917	1192.05497	618.51276	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	14	MaOL1N_L461.avi	51009	14.16911	3	0.24667	1541.03685	433.91787	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	15	MaOL1N_L461.avi	51028	14.17439	3	0.25194	1704.13492	468.67925	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	16	MaOL1N_L461.avi	51252	14.23661	3	0.31417	1864.83448	553.78468	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			Y
+MaOL1N	17	MaOL1N_L461.avi	53091	14.74744	3	0.82500	1674.15365	394.36182	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+MaOL1N	18	MaOL1N_L461.avi	65196	18.10993	4	0.75694	1857.52190	308.74305	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+MaOL1N	19	MaOL1N_L461.avi	65793	18.27576	4	0.92277	1003.25407	377.21913	Chaetodontidae	Chaetodon	vagabundus	37365062	1	AD	Passing	check		
+MaOL1N	20	MaOL1N_L461.avi	68263	18.96187	4	1.60888	288.36045	456.50723	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	21	MaOL1N_L461.avi	68269	18.96354	4	1.61055	271.53942	493.74861	Unknown			37000000	1	AD	Passing	striatus or sordidus		
+MaOL1N	22	MaOL1N_L461.avi	68960	19.15548	4	1.80249	826.63329	533.39266	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+MaOL1N	23	MaOL1N_L461.avi	75486	20.96825	5	0.37333	399.55140	417.40864	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	24	MaOL1N_L461.avi	77880	21.63325	5	1.03833	1710.65421	619.53488	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing			
+MaOL1N	25	MaOL1N_L461.avi	78015	21.67075	5	1.07583	777.57009	540.59801	Mullidae	Parupeneus	multifasciatus	37355026	1	AD	Passing	or P. pleurostigma		
+MaOL1N	26	MaOL1N_L461.avi	78020	21.67214	5	1.07722	454.57944	459.26910	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	27	MaOL1N_L461.avi	78020	21.67214	5	1.07722	512.00000	471.22924	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	28	MaOL1N_L461.avi	78020	21.67214	5	1.07722	550.28037	462.85714	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	29	MaOL1N_L461.avi	78083	21.68964	5	1.09472	450.99065	511.89369	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	30	MaOL1N_L461.avi	78083	21.68964	5	1.09472	459.36449	538.20598	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	31	MaOL1N_L461.avi	78159	21.71075	5	1.11583	618.46729	638.67110	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	32	MaOL1N_L461.avi	78192	21.71991	5	1.12500	264.37383	486.77741	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	33	MaOL1N_L461.avi	78192	21.71991	5	1.12500	260.78505	499.93355	Acanthuridae	Acanthurus	nigroris	37437015	1	AD	Passing			
+MaOL1N	34	MaOL1N_L461.avi	81963	22.76741	5	2.17249	363.66355	663.78738	Unknown			37000000	1	AD	Passing			
+MaOL1N	35	MaOL1N_L461.avi	88387	24.55185	6	0.11361	1717.83178	476.01329	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL1N	36	MaOL1N_L461.avi	89983	24.99518	6	0.55694	165.08411	220.06645	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+MaOL1N	37	MaOL1N_L461.avi	92778	25.77156	6	1.33333	537.12150	943.65449	Chaetodontidae	Chaetodon	vagabundus	37365062	1	AD	Passing			Y
+MaOL2N	0	MaOL2N_L461.avi	49595	13.77633	1	0.00306	447.40187	609.96678	Labridae	Halichoeres	hortulanus	37384112	1	AD	Passing			
+MaOL2N	1	MaOL2N_L461.avi	54156	15.04327	1	1.26999	141.15888	504.71761	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOL2N	2	MaOL2N_L461.avi	54181	15.05022	1	1.27694	159.10280	400.66445	Acanthuridae	Acanthurus	nigroris	37437015	1	AD	Passing			
+MaOL2N	3	MaOL2N_L461.avi	62880	17.46660	2	0.61166	97.01809	599.86696	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL2N	4	MaOL2N_L461.avi	63840	17.73326	2	0.87833	861.18528	692.06208	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL2N	5	MaOL2N_L461.avi	64034	17.78715	2	0.93222	128.15970	1010.55432	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL2N	6	MaOL2N_L461.avi	64181	17.82798	2	0.97305	1784.65377	795.03326	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+MaOL2N	7	MaOL2N_L461.avi	65640	18.23326	2	1.37833	836.03244	422.66075	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL2N	8	MaOL2N_L461.avi	78721	21.86686	3	0.69250	879.15159	450.19956	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			Y
+MaOL2N	9	MaOL2N_L461.avi	78730	21.86936	3	0.69500	839.62570	440.62084	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			Y
+MaOL2N	10	MaOL2N_L461.avi	78765	21.87908	3	0.70472	446.76232	608.24834	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOL2N	11	MaOL2N_L461.avi	78836	21.89880	3	0.72444	225.17779	518.44789	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL2N	12	MaOL2N_L461.avi	80835	22.45408	3	1.27972	806.08858	454.98891	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL2N	13	MaOL2N_L461.avi	81500	22.63880	3	1.46444	1576.24454	536.40798	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+MaOL2N	14	MaOL2N_L461.avi	81533	22.64796	3	1.47361	1643.31878	584.30155	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+MaOL2N	15	MaOL2N_L461.avi	81835	22.73185	3	1.55749	287.46101	583.10421	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing	check		
+MaOL2N	16	MaOL2N_L461.avi	91059	25.29407	4	0.67639	1777.46725	416.67406	Balistidae	Melichthys	vidua	37465058	1	AD	Passing			
+MaOL2N	17	MaOL2N_L461.avi	103420	28.72766	5	0.97722	1904.42920	882.43902	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL2N	18	MaOL2N_L461.avi	106584	29.60655	5	1.85610	1783.45602	573.52550	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+MaOL2N	19	MaOL2N_L461.avi	154773	42.99233	6	0.60583	285.06550	632.19512	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOL2N	20	MaOL2N_L461.avi	155130	43.09149	6	0.70500	1852.92576	729.17960	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOL3W	0	MaOL3W_L461.avi	35063	9.73968	1	0.32167	1807.55140	784.58472	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+MaOL3W	1	MaOL3W_L461.avi	35077	9.74357	1	0.32555	1809.94393	741.52824	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOL3W	2	MaOL3W_L461.avi	37442	10.40051	1	0.98250	163.88785	1033.35548	Serranidae	Cephalopholis	argus	37311082	1	AD	Passing			
+MaOL3W	3	MaOL3W_L461.avi	39530	10.98051	1	1.56249	1732.18692	590.83056	Tetraodontidae	Canthigaster	solandri	10000036	1	AD	Passing			
+MaOL3W	4	MaOL3W_L461.avi	39720	11.03329	1	1.61527	416.29907	633.88704	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+MaOL3W	5	MaOL3W_L461.avi	56730	15.75827	3	0.83277	95.03759	982.58352	Mullidae	Parupeneus	multifasciatus	37355026	1	AD	Passing			
+MaOL3W	6	MaOL3W_L461.avi	56992	15.83105	3	0.90555	69.77444	865.92428	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+MaOL3W	7	MaOL3W_L461.avi	57128	15.86883	3	0.94333	1603.60902	535.18931	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+MaOL3W	8	MaOL3W_L461.avi	58266	16.18494	3	1.25944	1144.06015	562.85078	Lutjanidae	Lutjanus	fulvus	37346043	1	AD	Passing	check		
+MaOL3W	9	MaOL3W_L461.avi	58292	16.19216	3	1.26666	1109.17293	564.05345	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+MaOL3W	10	MaOL3W_L461.avi	58391	16.21966	3	1.29416	1015.33835	920.04454	Tetraodontidae	Canthigaster	solandri	10000036	1	AD	Passing			
+MaOL3W	11	MaOL3W_L461.avi	58391	16.21966	3	1.29416	963.60902	909.22049	Tetraodontidae	Canthigaster	solandri	10000036	1	AD	Passing			
+MaOL3W	12	MaOL3W_L461.avi	58894	16.35938	3	1.43388	1266.76692	804.58797	Unknown			37000000	1	AD	Passing			
+MaOL3W	13	MaOL3W_L461.avi	60560	16.82215	3	1.89666	475.18797	607.34967	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOL3W	14	MaOL3W_L461.avi	69711	19.36409	4	1.68916	975.63910	868.32962	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+MaOL3W	15	MaOL3W_L461.avi	76571	21.26964	5	0.94083	1134.43609	597.72829	Unknown			37000000	1	AD	Passing			
+MaOL3W	16	MaOL3W_L461.avi	76619	21.28297	5	0.95416	1264.36090	562.85078	Unknown			37000000	1	AD	Passing			
+MaOL3W	17	MaOL3W_L461.avi	76843	21.34519	5	1.01638	1661.35338	776.92650	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+MaOR1N	0	MaOR1N_L461.avi	42817	11.90552	1	0.70459	766.80374	686.51163	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR1N	1	MaOR1N_L461.avi	51556	14.33545	2	0.56640	1547.96262	342.05980	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR1N	2	MaOR1N_L461.avi	59183	16.45618	3	0.27750	686.65421	893.42193	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR1N	3	MaOR1N_L461.avi	59451	16.53070	3	0.35202	75.36449	492.75748	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOR1N	4	MaOR1N_L461.avi	63100	17.54532	3	1.36664	56.47059	521.37931	Unknown			37000000	1	AD	Passing			
+MaOR1N	5	MaOR1N_L461.avi	72085	20.04365	4	1.19592	377.27159	804.89433	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR1N	6	MaOR1N_L461.avi	81294	22.60427	5	0.09954	156.19524	695.57286	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+MaOR1N	7	MaOR1N_L461.avi	84255	23.42759	5	0.92287	389.28661	977.88654	Labridae	Thalassoma	quinquevittatum	37384170	1	AD	Passing			
+MaOR1N	8	MaOR1N_L461.avi	84640	23.53465	5	1.02992	358.04756	804.89433	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			Y
+MaOR1N	9	MaOR1N_L461.avi	86208	23.97064	5	1.46591	476.99625	628.29811	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing	check		
+MaOR1N	10	MaOR1N_L461.avi	94930	26.39584	6	1.12001	191.03880	816.90768	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MaOR2W	0	MaOR2W_L461.avi	63250	17.58703	1	0.31726	127.35920	1028.34260	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR2W	1	MaOR2W_L461.avi	63250	17.58703	1	0.31726	105.73217	1015.12792	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR2W	2	MaOR2W_L461.avi	66190	18.40452	1	1.13475	486.60826	825.31702	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR2W	3	MaOR2W_L461.avi	68209	18.96591	1	1.69614	147.78473	923.82647	Labridae	Thalassoma	quinquevittatum	37384170	1	AD	Passing			
+MaOR2W	4	MaOR2W_L461.avi	68906	19.15972	1	1.88995	725.70713	1007.91991	Labridae	Thalassoma	quinquevittatum	37384170	1	AD	Passing			
+MaOR2W	5	MaOR2W_L461.avi	68915	19.16222	1	1.89245	1046.50814	1033.14794	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MaOR2W	6	MaOR2W_L461.avi	74287	20.65593	2	0.63786	193.20000	884.40000	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR2W	7	MaOR2W_L461.avi	74398	20.68680	2	0.66872	54.00000	912.00000	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MaOR2W	8	MaOR2W_L461.avi	74690	20.76799	2	0.74992	196.80000	991.20000	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MaOR2W	9	MaOR2W_L461.avi	82161	22.84535	3	0.17823	224.40000	823.20000	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MaOR2W	10	MaOR2W_L461.avi	84505	23.49711	3	0.83000	788.40000	813.60000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MaOR2W	11	MaOR2W_L461.avi	84589	23.52046	3	0.85335	302.40000	934.80000	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MaOR2W	12	MaOR2W_L461.avi	86161	23.95757	3	1.29046	148.80000	727.20000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MaOR2W	13	MaOR2W_L461.avi	86278	23.99010	3	1.32299	649.20000	985.20000	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MaOR2W	14	MaOR2W_L461.avi	94688	26.32855	4	0.75353	277.20000	758.40000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MaOR2W	15	MaOR2W_L461.avi	96746	26.90079	4	1.32577	200.40000	836.40000	Unknown			37000000	1	AD	Passing			
+MaOR2W	16	MaOR2W_L461.avi	104350	29.01513	5	0.13903	213.60000	992.40000	Unknown			37000000	1	AD	Passing			
+MaOR2W	17	MaOR2W_L461.avi	104653	29.09938	5	0.22328	1131.60000	999.60000	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MaOR2W	18	MaOR2W_L461.avi	104788	29.13691	5	0.26082	336.00000	860.40000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MaOR2W	19	MaOR2W_L461.avi	112709	31.33939	5	2.46330	475.20000	788.40000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MaOR2W	20	MaOR2W_L461.avi	113690	31.61217	5	2.73607	205.20000	714.00000	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MaOR2W	21	MaOR2W_L461.avi	114451	31.82377	5	2.94767	1824.00000	680.40000	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MaOR2W	22	MaOR2W_L461.avi	117814	32.75887	6	0.11456	456.00000	912.00000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing	check		
+MaOR2W	23	MaOR2W_L461.avi	119505	33.22906	6	0.58475	288.00000	448.80000	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing			
+MaOR2W	24	MaOR2W_L461.avi	119987	33.36309	6	0.71877	187.20000	811.20000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MaOR2W	25	MaOR2W_L461.avi	120018	33.37171	6	0.72739	375.60000	919.20000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MaOR2W	26	MaOR2W_L461.avi	121676	33.83272	6	1.18841	300.00000	878.40000	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MaOR2W	27	MaOR2W_L461.avi	124394	34.58848	6	1.94417	678.00000	1010.40000	Labridae	Coris	roseoviridis	10000033	1	AD	Passing			
+MaOR2W	28	MaOR2W_L461.avi	124394	34.58848	6	1.94417	879.60000	900.00000	Labridae	Coris	roseoviridis	10000033	1	AD	Passing			
+MaOR2W	29	MaOR2W_L461.avi	124394	34.58848	6	1.94417	912.00000	787.20000	Labridae	Coris	roseoviridis	10000033	1	AD	Passing			
+MaOR3W	0	MaOR3W_L461.avi	62317	17.31021	1	0.73750	740.21210	817.78271	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR3W	1	MaOR3W_L461.avi	62317	17.31021	1	0.73750	741.40986	804.61197	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR3W	2	MaOR3W_L461.avi	64392	17.88660	1	1.31388	572.52651	611.84035	Balistidae	Sufflamen	bursa	37465078	1	AD	Passing			
+MaOR3W	3	MaOR3W_L461.avi	71364	19.82325	2	0.61833	1402.57018	1071.61863	Balistidae	Melichthys	niger	37465081	1	AD	Passing			
+MaOR3W	4	MaOR3W_L461.avi	73491	20.41409	2	1.20916	1710.39301	1050.06652	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR3W	5	MaOR3W_L461.avi	75437	20.95464	2	1.74972	173.67436	763.90244	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR3W	6	MaOR3W_L461.avi	118117	32.81015	3	1.23611	1273.21273	956.67406	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR3W	7	MaOR3W_L461.avi	146878	40.79928	6	1.09444	693.49969	354.41242	Chaetodontidae	Chaetodon	quadrimaculatus	10000019	1	AD	Passing			
+MaOR3W	8	MaOR3W_L461.avi	147221	40.89456	6	1.18972	406.03868	699.24612	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MaOR3W	9	MaOR3W_L461.avi	147733	41.03678	6	1.33194	391.66563	777.07317	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MaOR3W	10	MaOR3W_L461.avi	148587	41.27400	6	1.56916	511.44105	1034.50111	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MaOR3W	11	MaOR3W_L461.avi	149705	41.58456	6	1.87971	89.83157	893.21508	Serranidae	Cephalopholis	argus	37311082	1	AD	Passing			
+MaOR3W	12	MaOR3W_L461.avi	150881	41.91122	6	2.20638	819.26388	170.02217	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MoOR1S	0	MoOR1S_L461.avi	13330	3.70648	1	0.04532	404.27560	691.99085	Unknown			37000000	1	AD	Passing			
+MoOR1S	1	MoOR1S_L461.avi	13442	3.73763	1	0.07647	1059.52350	769.83982	Unknown			37000000	1	AD	Passing			
+MoOR1S	2	MoOR1S_L461.avi	15392	4.27984	1	0.61867	498.04067	690.82147	Unknown			37000000	1	AD	Passing			
+MoOR1S	3	MoOR1S_L461.avi	15989	4.44583	1	0.78467	845.84104	572.53012	Unknown			37000000	1	AD	Passing			
+MoOR1S	4	MoOR1S_L461.avi	16009	4.45140	1	0.79023	307.57856	428.21468	Unknown			37000000	1	AD	Passing			
+MoOR1S	5	MoOR1S_L461.avi	18603	5.17267	1	1.51151	53.19588	456.49485	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+MoOR1S	6	MoOR1S_L461.avi	18834	5.23690	1	1.57574	55.67010	372.37113	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR1S	7	MoOR1S_L461.avi	19301	5.36676	1	1.70559	179.38144	606.18557	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR1S	8	MoOR1S_L461.avi	20110	5.59170	1	1.93054	100.20619	345.15464	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MoOR1S	9	MoOR1S_L461.avi	20771	5.77550	1	2.11434	249.89691	299.38144	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR1S	10	MoOR1S_L461.avi	24361	6.77372	2	0.00250	437.93814	1025.56701	Scaridae	Scarus	sp1		1	AD	Passing			
+MoOR1S	11	MoOR1S_L461.avi	27220	7.56868	2	0.79746	197.93814	853.60825	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MoOR1S	12	MoOR1S_L461.avi	28378	7.89067	2	1.11945	124.94845	1011.95876	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			Yes
+MoOR1S	13	MoOR1S_L461.avi	30426	8.46013	2	1.68891	70.51546	497.31959	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MoOR1S	14	MoOR1S_L461.avi	36500	10.14904	3	0.98376	68.04124	660.61856	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR1S	15	MoOR1S_L461.avi	37658	10.47103	3	1.30575	295.67010	416.90722	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MoOR1S	16	MoOR1S_L461.avi	38035	10.57585	3	1.41058	363.71134	597.52577	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MoOR1S	17	MoOR1S_L461.avi	38155	10.60922	3	1.44394	253.60825	757.11340	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MoOR1S	18	MoOR1S_L461.avi	38259	10.63814	3	1.47286	98.96907	627.21649	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR1S	19	MoOR1S_L461.avi	40003	11.12307	3	1.95779	139.79381	779.38144	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR1S	20	MoOR1S_L461.avi	40017	11.12696	3	1.96168	206.59794	770.72165	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR1S	21	MoOR1S_L461.avi	40102	11.15060	3	1.98532	392.16495	972.37113	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR1S	22	MoOR1S_L461.avi	45375	12.61678	4	0.11067	449.07216	651.95876	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MoOR1S	23	MoOR1S_L461.avi	45542	12.66322	4	0.15710	152.16495	682.88660	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MoOR1S	24	MoOR1S_L461.avi	47096	13.09532	4	0.58920	1576.08247	659.38144	Unknown			37000000	1	AD	Passing			
+MoOR1S	25	MoOR1S_L461.avi	47491	13.20515	4	0.69903	416.90722	835.05155	Unknown			37000000	1	AD	Passing			
+MoOR1S	26	MoOR1S_L461.avi	50201	13.95868	4	1.45256	284.90323	437.20183	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR1S	27	MoOR1S_L461.avi	59176	16.45423	5	0.68735	284.90323	916.51376	Chaetodontidae	Chaetodon	quadrimaculatus	10000019	1	AD	Passing			
+MoOR1S	28	MoOR1S_L461.avi	62061	17.25642	5	1.48955	375.38462	589.20273	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR1S	29	MoOR1S_L461.avi	67278	18.70704	6	0.05506	6.15385	537.53986	Labridae	Thalassoma	lutescens	37384168	1	AD	Passing			
+MoOR2S	0	MoOR2S_L461.avi	45810	12.73774	2	0.15794	23.49002	523.93593	Balistidae	Sufflamen	bursa	37465078	1	AD	Passing			
+MoOR2S	1	MoOR2S_L461.avi	51108	14.21088	2	1.63108	369.65873	720.41190	Chaetodontidae	Chaetodon	pelewensis	37365049	1	AD	Passing			
+MoOR2S	2	MoOR2S_L461.avi	57946	16.11222	3	0.75103	408.69453	329.55429	Unknown		sp3		1	AD	Passing			
+MoOR2S	3	MoOR2S_L461.avi	60884	16.92915	3	1.56796	535.87138	692.43429	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MoOR2S	4	MoOR2S_L461.avi	65587	18.23685	4	0.10010	124.70740	781.30286	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR2S	5	MoOR2S_L461.avi	67103	18.65838	4	0.52163	123.47267	591.22286	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR2S	6	MoOR2S_L461.avi	68230	18.97175	4	0.83500	292.63023	1013.34857	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR2S	7	MoOR2S_L461.avi	80702	22.43966	5	1.70476	262.99678	919.54286	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR2S	8	MoOR2S_L461.avi	87473	24.32238	6	1.06746	1632.67823	718.76712	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+MoOR3N	0	MoOR3N_L461.avi	46834	13.02247	1	0.20771	1332.72031	892.44041	Unknown			37000000	1	AD	Passing			
+MoOR3N	1	MoOR3N_L461.avi	48499	13.48543	1	0.67067	212.10728	1060.38593	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+MoOR3N	2	MoOR3N_L461.avi	50512	14.04516	1	1.23040	118.92720	747.78661	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR3N	3	MoOR3N_L461.avi	67804	18.85330	3	0.00000	522.17054	870.44776	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MoOR3N	4	MoOR3N_L461.avi	80422	22.36181	4	0.28000	1166.28608	1041.82440	Unknown			37000000	1	AD	Passing			
+MoOR3N	5	MoOR3N_L461.avi	80444	22.36792	4	0.28612	1198.30661	1055.37058	Unknown			37000000	1	AD	Passing			
+MoOR3N	6	MoOR3N_L461.avi	81994	22.79891	4	0.71711	408.87749	641.59635	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR3N	7	MoOR3N_L461.avi	84855	23.59443	4	1.51262	703.22001	997.49145	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MoOR3N	8	MoOR3N_L461.avi	86982	24.18585	4	2.10405	98.52470	378.06157	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR3N	9	MoOR3N_L461.avi	87318	24.27928	4	2.19748	39.40988	614.50399	Balistidae	Balistapus	undulatus	37465047	1	AD	Passing			
+MoOR3N	10	MoOR3N_L461.avi	90642	25.20354	5	0.23718	72.84887	536.91429	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR3N	11	MoOR3N_L461.avi	91691	25.49522	5	0.52886	360.54019	538.14857	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR3N	12	MoOR3N_L461.avi	97347	27.06790	5	2.10155	34.57235	549.25714	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			Yes
+MoOR3N	13	MoOR3N_L461.avi	101668	28.26938	6	0.00000	413.63344	955.33714	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR3N	14	MoOR3N_L461.avi	102709	28.55884	6	0.28946	41.98071	615.90857	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR3N	15	MoOR3N_L461.avi	105449	29.32071	6	1.05133	30.86817	576.41143	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+MoOR3N	16	MoOR3N_L461.avi	105943	29.45807	6	1.18869	38.27653	497.41714	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+MoOR3N	17	MoOR3N_L461.avi	107129	29.78784	6	1.51846	98.96907	696.49485	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+MoOR4N	0	MoOR4N_L461.avi	29874	8.30664	1	0.19130	226.97674	915.08611	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR4N	1	MoOR4N_L461.avi	30740	8.54744	1	0.43210	187.28682	895.24684	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MoOR4N	2	MoOR4N_L461.avi	39210	10.90257	2	0.03392	149.69072	915.46392	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+MoOR4N	3	MoOR4N_L461.avi	46275	12.86703	2	1.99839	411.25161	823.62385	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR4N	4	MoOR4N_L461.avi	71622	19.91491	5	0.63536	1831.36619	645.36585	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR4N	5	MoOR4N_L461.avi	71640	19.91992	5	0.64036	1833.76170	641.77384	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+MoOR4N	6	MoOR4N_L461.avi	71903	19.99305	5	0.71349	1876.88085	750.73171	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+MoOR4N	7	MoOR4N_L461.avi	72034	20.02947	5	0.74992	241.94635	818.98004	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR4N	8	MoOR4N_L461.avi	76390	21.24069	5	1.96113	256.31940	850.11086	Cirrhitidae	Paracirrhites			1	AD	Passing	hemistictus or forsteri		
+MoOR4N	9	MoOR4N_L461.avi	79258	22.03815	6	0.07341	632.41422	642.97118	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+MoOR4N	10	MoOR4N_L461.avi	80274	22.32065	6	0.35591	428.79601	894.41242	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+MoOR4N	11	MoOR4N_L461.avi	84956	23.62251	6	1.65777	1269.61946	801.01996	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+NOL1S	0	NOL1S_L461.avi	34743	9.66046	1	0.48799	1297.02790	602.90657	Scaridae	Scarus			1	AD	Passing			
+NOL1S	1	NOL1S_L461.avi	38834	10.79799	1	1.62551	443.55613	810.93426	Serranidae	Epinephelus	fasciatus	37311014	1	AD	Passing			
+NOL1S	2	NOL1S_L461.avi	39455	10.97066	1	1.79818	1893.83517	493.28720	Chaetodontidae	Chaetodon	unimaculatus	37365061	1	AD	Passing			
+NOL1S	3	NOL1S_L461.avi	46751	12.99935	2	0.73629	24.91888	577.99308	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+NOL1S	4	NOL1S_L461.avi	99888	27.77436	3	0.08008	855.66559	893.62286	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL1S	5	NOL1S_L461.avi	100047	27.81857	3	0.12429	172.86174	914.60571	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL1S	6	NOL1S_L461.avi	100047	27.81857	3	0.12429	77.78778	912.13714	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL1S	7	NOL1S_L461.avi	100047	27.81857	3	0.12429	80.25723	928.18286	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL1S	8	NOL1S_L461.avi	100088	27.82997	3	0.13569	232.12862	905.96571	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL1S	9	NOL1S_L461.avi	100088	27.82997	3	0.13569	213.60772	877.57714	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL1S	10	NOL1S_L461.avi	100096	27.83219	3	0.13792	238.30225	831.90857	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL1S	11	NOL1S_L461.avi	100179	27.85527	3	0.16099	14.81672	934.35429	Scaridae	Scarus			1	AD	Passing	multispecies school B		
+NOL1S	12	NOL1S_L461.avi	100179	27.85527	3	0.16099	37.04180	965.21143	Scaridae	Scarus			1	AD	Passing	multispecies school B		
+NOL1S	13	NOL1S_L461.avi	100184	27.85666	3	0.16238	39.51125	931.88571	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school B		
+NOL1S	14	NOL1S_L461.avi	100184	27.85666	3	0.16238	111.12540	889.92000	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school B		
+NOL1S	15	NOL1S_L461.avi	100200	27.86111	3	0.16683	14.81672	822.03429	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school B		
+NOL1S	16	NOL1S_L461.avi	100214	27.86500	3	0.17073	45.68489	877.57714	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school B		
+NOL1S	17	NOL1S_L461.avi	100214	27.86500	3	0.17073	27.16399	781.30286	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school B		
+NOL1S	18	NOL1S_L461.avi	100220	27.86667	3	0.17239	9.87781	744.27429	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school B		
+NOL1S	19	NOL1S_L461.avi	100220	27.86667	3	0.17239	22.22508	761.55429	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school B		
+NOL1S	20	NOL1S_L461.avi	100226	27.86834	3	0.17406	49.38907	788.70857	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school B		
+NOL1S	21	NOL1S_L461.avi	100226	27.86834	3	0.17406	60.50161	760.32000	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school B		
+NOL1S	22	NOL1S_L461.avi	100238	27.87168	3	0.17740	32.10289	812.16000	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school B		
+NOL1S	23	NOL1S_L461.avi	100238	27.87168	3	0.17740	45.68489	772.66286	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school B		
+NOL1S	24	NOL1S_L461.avi	100247	27.87418	3	0.17990	40.74598	749.21143	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school B		
+NOL1S	25	NOL1S_L461.avi	100247	27.87418	3	0.17990	27.16399	780.06857	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school B		
+NOL1S	26	NOL1S_L461.avi	100276	27.88224	3	0.18797	44.45016	786.24000	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school B		
+NOL1S	27	NOL1S_L461.avi	100350	27.90282	3	0.20854	124.70740	929.41714	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL1S	28	NOL1S_L461.avi	100350	27.90282	3	0.20854	18.52090	960.27429	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL1S	29	NOL1S_L461.avi	101050	28.09746	3	0.40318	1890.36656	889.92000	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+NOL1S	30	NOL1S_L461.avi	101450	28.20868	3	0.51440	101.24759	755.38286	Unknown			37000000	1	AD	Passing	hortulanus		
+NOL1S	31	NOL1S_L461.avi	102537	28.51093	3	0.81665	23.45981	724.52571	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOL1S	32	NOL1S_L461.avi	103199	28.69500	3	1.00072	1555.75563	599.86286	Labridae	Cheilio	inermis	37384070	1	AD	Passing			
+NOL1S	33	NOL1S_L461.avi	104427	29.03645	3	1.34217	1887.89711	1067.65714	Chaetodontidae	Chaetodon	lunulatus	37365059	1	AD	Passing			
+NOL1S	34	NOL1S_L461.avi	105071	29.21552	3	1.52124	555.62701	619.61143	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing	check ID - same species school (2) E		
+NOL1S	35	NOL1S_L461.avi	105071	29.21552	3	1.52124	566.73955	536.91429	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing	check ID - same species school (2) E		
+NOL1S	36	NOL1S_L461.avi	105866	29.43657	3	1.74229	172.86174	996.06857	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school F		
+NOL1S	37	NOL1S_L461.avi	105866	29.43657	3	1.74229	302.50804	946.69714	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school F		
+NOL1S	38	NOL1S_L461.avi	105902	29.44658	3	1.75230	311.15113	908.43429	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school F		
+NOL1S	39	NOL1S_L461.avi	105902	29.44658	3	1.75230	425.98071	864.00000	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school F		
+NOL1S	40	NOL1S_L461.avi	105902	29.44658	3	1.75230	487.71704	871.40571	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school F		
+NOL1S	41	NOL1S_L461.avi	105902	29.44658	3	1.75230	498.82958	836.84571	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school F		
+NOL1S	42	NOL1S_L461.avi	117087	32.55663	4	0.11345	154.34084	915.84000	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL1S	43	NOL1S_L461.avi	117109	32.56274	4	0.11956	171.62701	991.13143	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL1S	44	NOL1S_L461.avi	117109	32.56274	4	0.11956	65.44051	975.08571	Unknown			37000000	1	AD	Passing			
+NOL1S	45	NOL1S_L461.avi	121064	33.66245	4	1.21927	1634.77814	560.36571	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing	same species school F		
+NOL1S	46	NOL1S_L461.avi	121064	33.66245	4	1.21927	1663.17685	562.83429	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing	same species school F		
+NOL1S	47	NOL1S_L461.avi	121064	33.66245	4	1.21927	1681.69775	577.64571	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing	same species school F		
+NOL1S	48	NOL1S_L461.avi	121064	33.66245	4	1.21927	1653.29904	572.70857	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing	same species school F		
+NOL1S	49	NOL1S_L461.avi	121064	33.66245	4	1.21927	1664.41158	585.05143	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing	same species school F		
+NOL1S	50	NOL1S_L461.avi	121064	33.66245	4	1.21927	1673.05466	598.62857	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing	same species school F		
+NOL1S	51	NOL1S_L461.avi	121089	33.66940	4	1.22622	100.01286	696.13714	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOL1S	52	NOL1S_L461.avi	121584	33.80704	4	1.36386	1597.73633	703.54286	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL1S	53	NOL1S_L461.avi	127827	35.54294	5	0.31420	729.72347	915.84000	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL1S	54	NOL1S_L461.avi	132227	36.76638	5	1.53764	191.62910	840.27460	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL1S	55	NOL1S_L461.avi	143322	39.85140	6	0.67345	781.35222	867.45995	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL1S	56	NOL1S_L461.avi	143366	39.86363	6	0.68568	410.45718	920.59497	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+NOL1S	57	NOL1S_L461.avi	143429	39.88115	6	0.70320	1626.99292	546.17849	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing	check ID		
+NOL1S	58	NOL1S_L461.avi	146445	40.71976	6	1.54181	380.78558	771.07551	Pomacentridae	Pomacentrus			1	AD	Passing	check ID		
+NOL1S	59	NOL1S_L461.avi	146805	40.81986	6	1.64191	1874.25628	317.57437	Unknown			37000000	1	AD	Passing			
+NOL1S	60	NOL1S_L461.avi	147026	40.88131	6	1.70336	1510.77914	598.07780	Chaetodontidae	Chaetodon	auriga	37365019	1	AD	Passing	check ID - or lineolatus		
+NOL2S	0	NOL2S_L461.avi	28804	8.00912	1	0.35869	171.62701	417.18857	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL2S	1	NOL2S_L461.avi	29612	8.23379	1	0.58336	14.81672	849.18857	Mullidae	Parupeneus	multifasciatus	37355026	1	AD	Passing			
+NOL2S	2	NOL2S_L461.avi	30159	8.38589	1	0.73546	22.22508	777.60000	Scaridae	Scarus			1	AD	Passing			
+NOL2S	3	NOL2S_L461.avi	30179	8.39145	1	0.74102	44.45016	723.29143	Scaridae	Scarus			1	AD	Passing			
+NOL2S	4	NOL2S_L461.avi	30381	8.44761	1	0.79719	1843.20000	665.09174	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing			
+NOL2S	5	NOL2S_L461.avi	31355	8.71844	1	1.06801	1872.98969	672.98969	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL2S	6	NOL2S_L461.avi	31395	8.72956	1	1.07913	1847.01031	685.36082	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL2S	7	NOL2S_L461.avi	31432	8.73985	1	1.08942	1847.01031	634.63918	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL2S	8	NOL2S_L461.avi	31663	8.80408	1	1.15365	1833.40206	602.47423	Mullidae	Mulloidichthys	flavolineatus	37355019	1	AD	Passing			
+NOL2S	9	NOL2S_L461.avi	31871	8.86192	1	1.21149	79.17526	814.02062	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOL2S	10	NOL2S_L461.avi	42750	11.88689	2	0.27778	390.92784	727.42268	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL2S	11	NOL2S_L461.avi	42819	11.90607	2	0.29696	42.06186	966.18557	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL2S	12	NOL2S_L461.avi	43969	12.22584	2	0.61673	1761.64948	429.27835	Scaridae	Scarus			1	AD	Passing			
+NOL2S	13	NOL2S_L461.avi	44102	12.26282	2	0.65371	1151.75258	540.61856	Unknown			37000000	1	AD	Passing	striatus or scarus		
+NOL2S	14	NOL2S_L461.avi	44647	12.41436	2	0.80525	344.48875	757.85143	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL2S	15	NOL2S_L461.avi	44978	12.50640	2	0.89729	76.70103	947.62887	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL2S	16	NOL2S_L461.avi	46788	13.00968	2	1.40057	1791.34021	456.49485	Chaetodontidae	Chaetodon			1	AD	Passing			
+NOL2S	17	NOL2S_L461.avi	53687	14.92798		-1.00000	377.82637	667.74857	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL2S	18	NOL2S_L461.avi	56819	15.79885	3	0.86837	232.12862	435.70286	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOL2S	19	NOL2S_L461.avi	58902	16.37804	3	1.44756	1896.54019	565.30286	Lethrinidae	Monotaxis	grandoculis	37351026	1	AD	Passing	check ID - could be A.sexfasciatus		
+NOL2S	20	NOL2S_L461.avi	60044	16.69558	3	1.76510	429.68489	496.18286	Unknown			37000000	1	AD	Passing			
+NOL2S	21	NOL2S_L461.avi	60044	16.69558	3	1.76510	485.24759	498.65143	Scaridae	Scarus			1	AD	Passing			
+NOL2S	22	NOL2S_L461.avi	60699	16.87771	3	1.94723	674.16077	1009.64571	Unknown			37000000	1	AD	Passing	halichoeres or coris		
+NOL2S	23	NOL2S_L461.avi	75166	20.90034	4	0.56862	1785.41479	383.86286	Unknown			37000000	1	AD	Passing			
+NOL2S	24	NOL2S_L461.avi	77421	21.52736	4	1.19564	1836.03859	631.95429	Unknown			37000000	1	AD	Passing			
+NOL2S	25	NOL2S_L461.avi	77675	21.59799	4	1.26627	1568.10289	572.70857	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing	check ID		
+NOL2S	26	NOL2S_L461.avi	79663	22.15076	4	1.81904	1878.01929	591.22286	Unknown			37000000	1	AD	Passing			
+NOL2S	27	NOL2S_L461.avi	79806	22.19052	4	1.85880	1228.55305	557.89714	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOL2S	28	NOL2S_L461.avi	80174	22.29285	4	1.96113	919.87138	672.68571	Labridae	Cheilinus	trilobatus	37384044	1	AD	Passing			
+NOL2S	29	NOL2S_L461.avi	130352	36.24513	5	0.35313	1789.11897	585.05143	Unknown			37000000	1	AD	Passing			
+NOL2S	30	NOL2S_L461.avi	130632	36.32299	5	0.43099	176.56592	704.77714	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL2S	31	NOL2S_L461.avi	130652	36.32855	5	0.43655	41.98071	707.24571	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL2S	32	NOL2S_L461.avi	130670	36.33356	5	0.44155	124.70740	651.70286	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL2S	33	NOL2S_L461.avi	134843	37.49388	5	1.60188	202.88660	556.70103	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	34	NOL2S_L461.avi	134844	37.49416	5	1.60216	176.90722	534.43299	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	35	NOL2S_L461.avi	134928	37.51752	5	1.62551	256.08247	564.12371	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	36	NOL2S_L461.avi	134933	37.51891	5	1.62690	220.20619	581.44330	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	37	NOL2S_L461.avi	134962	37.52697	5	1.63497	252.37113	559.17526	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	38	NOL2S_L461.avi	134962	37.52697	5	1.63497	240.00000	598.76289	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	39	NOL2S_L461.avi	134972	37.52975	5	1.63775	176.90722	619.79381	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	40	NOL2S_L461.avi	134985	37.53337	5	1.64136	335.25773	456.49485	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	41	NOL2S_L461.avi	135004	37.53865	5	1.64665	107.62887	557.93814	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	multispecies school E		
+NOL2S	42	NOL2S_L461.avi	135025	37.54449	5	1.65249	288.24742	450.30928	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	43	NOL2S_L461.avi	135038	37.54810	5	1.65610	230.10309	493.60825	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+NOL2S	44	NOL2S_L461.avi	135038	37.54810	5	1.65610	111.34021	562.88660	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school E		
+NOL2S	45	NOL2S_L461.avi	135061	37.55450	5	1.66250	127.42268	473.81443	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school E		
+NOL2S	46	NOL2S_L461.avi	140199	38.98315	6	0.62368	410.72165	879.58763	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL2S	47	NOL2S_L461.avi	140476	39.06017	6	0.70070	1676.28866	408.24742	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL2S	48	NOL2S_L461.avi	141925	39.46307	6	1.10360	409.48454	628.45361	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL4S	0	NOL4S_L461.avi	38260	10.63842	1	0.32060	235.05155	786.80412	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL4S	1	NOL4S_L461.avi	38414	10.68124	1	0.36342	1176.49485	905.56701	Labridae	Halichoeres	margaritaceus	37384113	1	J	Passing			
+NOL4S	2	NOL4S_L461.avi	38747	10.77383	1	0.45601	138.55670	938.96907	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL4S	3	NOL4S_L461.avi	38912	10.81971	1	0.50189	1833.40206	727.42268	Unknown			37000000	1	AD	Passing			
+NOL4S	4	NOL4S_L461.avi	41500	11.53932	1	1.22150	73.17829	843.16877	Labridae	Epibulus	insidiator	37384104	1	AD	Passing			
+NOL4S	5	NOL4S_L461.avi	42614	11.84907	1	1.53125	150.07752	652.21584	Scaridae	Scarus			1	J	Passing	school (2) F		
+NOL4S	6	NOL4S_L461.avi	42614	11.84907	1	1.53125	163.72093	663.37543	Scaridae	Scarus			1	J	Passing	school (2) F		
+NOL4S	7	NOL4S_L461.avi	42959	11.94500	1	1.62718	1791.00775	510.86108	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+NOL4S	8	NOL4S_L461.avi	45751	12.72133	2	0.26387	483.71134	1052.78351	Priacanthidae	Heteropriacanthus	cruentatus	37326008	1	AD	Passing			
+NOL4S	9	NOL4S_L461.avi	46347	12.88705	2	0.42960	60.61856	826.39175	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing	or insidiator or damselfish		
+NOL4S	10	NOL4S_L461.avi	46398	12.90123	2	0.44378	74.22680	905.56701	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing			
+NOL4S	11	NOL4S_L461.avi	46596	12.95629	2	0.49883	215.25773	814.02062	Labridae	Halichoeres	margaritaceus	37384113	1	AD	Passing	check ID		
+NOL4S	12	NOL4S_L461.avi	46694	12.98354	2	0.52608	89.07216	898.14433	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL4S	13	NOL4S_L461.avi	46831	13.02163	2	0.56418	566.59794	624.74227	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL4S	14	NOL4S_L461.avi	46834	13.02247	2	0.56501	708.86598	623.50515	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL4S	15	NOL4S_L461.avi	46998	13.06807	2	0.61061	1792.57732	931.54639	Serranidae	Variola	louti	37311166	1	AD	Passing	check ID		
+NOL4S	16	NOL4S_L461.avi	47492	13.20543	2	0.74797	82.88660	635.87629	Unknown			37000000	1	AD	Passing	damsel?		
+NOL4S	17	NOL4S_L461.avi	48697	13.54048	2	1.08303	25.97938	831.34021	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing	multispecies school D		
+NOL4S	18	NOL4S_L461.avi	48697	13.54048	2	1.08303	17.31959	786.80412	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing	multispecies school D		
+NOL4S	19	NOL4S_L461.avi	48697	13.54048	2	1.08303	61.85567	742.26804	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	20	NOL4S_L461.avi	48697	13.54048	2	1.08303	168.24742	765.77320	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	21	NOL4S_L461.avi	48697	13.54048	2	1.08303	141.03093	710.10309	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	22	NOL4S_L461.avi	48697	13.54048	2	1.08303	91.54639	757.11340	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing	multispecies school D		
+NOL4S	23	NOL4S_L461.avi	48697	13.54048	2	1.08303	138.55670	721.23711	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing	multispecies school D		
+NOL4S	24	NOL4S_L461.avi	48697	13.54048	2	1.08303	143.50515	691.54639	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing	multispecies school D		
+NOL4S	25	NOL4S_L461.avi	48697	13.54048	2	1.08303	257.31959	655.67010	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing	multispecies school D		
+NOL4S	26	NOL4S_L461.avi	48752	13.55578	2	1.09832	207.83505	780.61856	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school D		
+NOL4S	27	NOL4S_L461.avi	48780	13.56356	2	1.10611	231.34021	810.30928	Scaridae	Scarus	psittacus	37386024	1	AD	Passing	multispecies school D		
+NOL4S	28	NOL4S_L461.avi	49174	13.67312	2	1.21566	65.56701	659.38144	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL4S	29	NOL4S_L461.avi	50135	13.94033	2	1.48287	398.35052	969.89691	Chaetodontidae	Forcipiger	flavissimus	37365068	1	AD	Passing			
+NOL4S	30	NOL4S_L461.avi	59150	16.44700	3	1.33828	21.03093	698.96907	Scaridae	Scarus			1	AD	Passing			
+NOL4S	31	NOL4S_L461.avi	68288	18.98788	4	0.29224	740.81633	652.65306	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	multispecies school D		
+NOL4S	32	NOL4S_L461.avi	68736	19.11245	4	0.41681	698.51900	1025.62929	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing	check ID		
+NOL4S	33	NOL4S_L461.avi	68799	19.12996	4	0.43432	883.96652	1041.69336	Labridae	Pseudocheilinus	tetrataenia	10000024	1	AD	Passing	check ID		
+NOL4S	34	NOL4S_L461.avi	73307	20.38344	4	1.68780	124.86800	551.12128	Balistidae	Melichthys	vidua	37465058	1	AD	Passing			
+NOL4S	35	NOL4S_L461.avi	73606	20.46658	4	1.77094	22.25370	520.22883	Unknown			37000000	1	AD	Passing			
+NOL4S	36	NOL4S_L461.avi	74776	20.79190	4	2.09626	26.88733	591.31222	Acanthuridae	Acanthurus	guttatus	37437009	1	AD	Passing			
+NOL4S	37	NOL4S_L461.avi	74790	20.79580	4	2.10016	53.77467	675.61086	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOL4S	38	NOL4S_L461.avi	74828	20.80636	4	2.11072	54.99682	568.09955	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL4S	39	NOL4S_L461.avi	76035	21.14198	4	2.44634	1473.91470	1042.12670	Labridae	Halichoeres	hortulanus	37384112	1	AD	Passing			
+NOL4S	40	NOL4S_L461.avi	76036	21.14225	4	2.44661	254.20751	822.21719	Mullidae	Parupeneus	multifasciatus	37355026	1	AD	Passing	multispecies school J		
+NOL4S	41	NOL4S_L461.avi	93163	25.90452	5	0.56835	1709.78994	647.51131	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL4S	42	NOL4S_L461.avi	93216	25.91925	5	0.58308	1337.03374	833.21267	Unknown			37000000	1	AD	Passing			
+NOL4S	43	NOL4S_L461.avi	93416	25.97486	5	0.63869	1907.77849	521.67421	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL4S	44	NOL4S_L461.avi	94626	26.31131	5	0.97514	1441.23711	741.03093	Unknown			37000000	1	AD	Passing			
+NOL4S	45	NOL4S_L461.avi	95138	26.45368	5	1.11751	1886.59794	504.74227	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL4S	46	NOL4S_L461.avi	95873	26.65805	5	1.32188	275.87629	779.38144	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL4S	47	NOL4S_L461.avi	95873	26.65805	5	1.32188	268.45361	689.07216	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOL4S	48	NOL4S_L461.avi	95888	26.66222	5	1.32605	781.85567	1056.49485	Unknown			37000000	1	AD	Passing			
+NOL4S	49	NOL4S_L461.avi	97005	26.97281	5	1.63664	298.14433	879.58763	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	multispecies school D		
+NOL4S	50	NOL4S_L461.avi	97005	26.97281	5	1.63664	269.69072	801.64948	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	51	NOL4S_L461.avi	97005	26.97281	5	1.63664	304.32990	786.80412	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing	multispecies school D		
+NOL4S	52	NOL4S_L461.avi	97040	26.98254	5	1.64637	217.73196	759.58763	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	53	NOL4S_L461.avi	97040	26.98254	5	1.64637	158.35052	732.37113	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	54	NOL4S_L461.avi	97040	26.98254	5	1.64637	241.23711	749.69072	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	55	NOL4S_L461.avi	97040	26.98254	5	1.64637	244.94845	727.42268	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	56	NOL4S_L461.avi	97040	26.98254	5	1.64637	249.89691	698.96907	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	57	NOL4S_L461.avi	97040	26.98254	5	1.64637	262.26804	671.75258	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	58	NOL4S_L461.avi	97040	26.98254	5	1.64637	237.52577	672.98969	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	59	NOL4S_L461.avi	97080	26.99366	5	1.65749	143.50515	668.04124	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school D		
+NOL4S	60	NOL4S_L461.avi	108067	30.04866	6	0.00250	120.00000	950.10309	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL4S	61	NOL4S_L461.avi	108088	30.05450	6	0.00834	248.65979	783.09278	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+NOL4S	62	NOL4S_L461.avi	108196	30.08453	6	0.03837	228.86598	690.30928	Scaridae	Scarus	schlegeli	37386029	1	AD	Passing			
+NOL4S	63	NOL4S_L461.avi	108206	30.08731	6	0.04115	43.29897	691.54639	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL4S	64	NOL4S_L461.avi	109530	30.45546	6	0.40930	1834.30789	544.96552	Scaridae	Scarus	psittacus	37386024	1	AD	Passing			
+NOL4S	65	NOL4S_L461.avi	110689	30.77772	6	0.73156	1790.84088	772.13793	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL4S	66	NOL4S_L461.avi	111373	30.96791	6	0.92176	1902.61320	510.20690	Unknown			37000000	1	AD	Passing			
+NOL4S	67	NOL4S_L461.avi	111682	31.05383	6	1.00767	1905.09702	537.51724	Unknown			37000000	1	AD	Passing			
+NOL4S	68	NOL4S_L461.avi	111913	31.11806	6	1.07191	1013.40233	767.17241	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOL4S	69	NOL4S_L461.avi	112071	31.16200	6	1.11584	1852.93661	967.03448	Unknown			37000000	1	AD	Passing			
+NOL4S	70	NOL4S_L461.avi	112376	31.24680	6	1.20065	1879.01682	471.72414	Unknown			37000000	1	AD	Passing			
+NOL4S	71	NOL4S_L461.avi	112395	31.25209	6	1.20593	1864.11384	479.17241	Unknown			37000000	1	AD	Passing			
+NOL4S	72	NOL4S_L461.avi	112614	31.31298	6	1.26682	1441.86287	507.72414	Unknown			37000000	1	AD	Passing			
+NOL4S	73	NOL4S_L461.avi	112680	31.33133	6	1.28517	1347.47736	639.31034	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+NOL4S	74	NOL4S_L461.avi	113558	31.57546	6	1.52931	55.88616	512.68966	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+NOL4S	75	NOL4S_L461.avi	113798	31.64220	6	1.59604	309.23674	634.34483	Unknown			37000000	1	AD	Passing	striatus or damel?		
+NOL4S	76	NOL4S_L461.avi	113798	31.64220	6	1.59604	176.35188	700.13793	Scaridae	Scarus			1	AD	Passing	school F		
+NOL4S	77	NOL4S_L461.avi	114228	31.76176	6	1.71560	1797.05045	562.34483	Labridae		sp3		1	AD	Passing			
+NOL4S	78	NOL4S_L461.avi	114287	31.77817	6	1.73201	1778.42173	615.72414	Labridae	Cheilinus	trilobatus	37384044	1	AD	Passing			
+NOL4S	79	NOL4S_L461.avi	114671	31.88494	6	1.83878	134.12678	713.79310	Chaetodontidae	Chaetodon	lunulatus	37365059	1	AD	Passing			
+NOR2S	0	NOR2S_L461.avi	39248	10.90218	1	0.48055	174.87211	793.83592	Acanthuridae	Ctenochaetus	flavicauda	10000021	1	AD	Passing			Y
+NOR2S	1	NOR2S_L461.avi	39248	10.90218	1	0.48055	196.43169	686.07539	Acanthuridae	Ctenochaetus	flavicauda	10000021	1	AD	Passing			Y
+NOR2S	2	NOR2S_L461.avi	41109	11.41912	1	0.99750	307.43925	645.84718	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR2S	3	NOR2S_L461.avi	43749	12.15245	1	1.73083	1716.63551	952.02658	Unknown			37000000	1	AD	Passing			
+NOR2S	4	NOR2S_L461.avi	54775	15.21522	2	0.96222	320.59813	867.10963	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR2S	5	NOR2S_L461.avi	55457	15.40466	2	1.15166	1880.52336	711.62791	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+NOR2S	6	NOR2S_L461.avi	61078	16.96604	3	0.15778	175.85047	706.84385	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOR2S	7	NOR2S_L461.avi	63955	17.76521	3	0.95694	687.85047	737.94020	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOR2S	8	NOR2S_L461.avi	64414	17.89271	3	1.08444	21.53271	533.42193	Scaridae	Scarus	oviceps	37386022	1	AD	Passing			
+NOR2S	9	NOR2S_L461.avi	65547	18.20743	3	1.39916	169.86916	664.98339	Unknown			37000000	1	AD	Passing			
+NOR2S	10	NOR2S_L461.avi	66085	18.35687	3	1.54860	367.25234	776.21262	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+NOR2S	11	NOR2S_L461.avi	69265	19.24020	4	0.07389	118.42991	862.32558	Serranidae	Cephalopholis	urodeta	37311142	1	AD	Passing			
+NOR2S	12	NOR2S_L461.avi	71179	19.77187	4	0.60555	1465.42056	990.29900	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR2S	13	NOR2S_L461.avi	77999	21.66630	5	0.03167	122.17093	786.65188	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOR2S	14	NOR2S_L461.avi	80353	22.32019	5	0.68555	1642.12102	1042.88248	Acanthuridae	Acanthurus	nigricans	37437012	1	AD	Passing			
+NOR2S	15	NOR2S_L461.avi	85761	23.82240	6	0.00000	1504.97377	769.70149					1	AD	Passing	check back a few sec		
+NOR2S	16	NOR2S_L461.avi	86274	23.96490	6	0.14250	123.36868	990.19956	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+NOR2S	17	NOR2S_L461.avi	87988	24.44101	6	0.61861	53.89894	862.08426	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR3S	0	NOR3S_L461.avi	18850	5.23609	1	0.21611	321.39390	974.86726	Labridae	Thalassoma	quinquevittatum	37384170	1	AD	Passing			
+NOR3S	1	NOR3S_L461.avi	23071	6.40859	1	1.38861	1187.60423	698.89381	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+NOR3S	2	NOR3S_L461.avi	37043	10.28968	2	1.51916	1780.62578	921.42380	Pomacanthidae	Centropyge	loriculus	10000032	1	AD	Passing			
+NOR3S	3	NOR3S_L461.avi	37066	10.29607	2	1.52555	123.75469	731.61290	Acanthuridae	Ctenochaetus	flavicauda	10000021	1	AD	Passing			
+NOR3S	4	NOR3S_L461.avi	37066	10.29607	2	1.52555	13.21652	786.87430	Acanthuridae	Ctenochaetus	flavicauda	10000021	1	AD	Passing			
+NOR3S	5	NOR3S_L461.avi	40260	11.18329	3	0.00028	559.89987	882.98109	Acanthuridae	Ctenochaetus	flavicauda	10000021	1	AD	Passing			
+NOR3S	6	NOR3S_L461.avi	41093	11.41468	3	0.23167	508.23529	985.09455	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR3S	7	NOR3S_L461.avi	52460	14.57216	4	0.43916	256.00000	999.86711	Acanthuridae	Acanthurus	nigricauda	37437013	1	AD	Passing			
+NOR3S	8	NOR3S_L461.avi	54348	15.09661	4	0.96361	257.19626	888.63787	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR3S	9	NOR3S_L461.avi	56165	15.60133	4	1.46833	467.73832	734.35216	Labridae	Coris	gaimard	37384094	1	AD	Passing			
+NOR3S	10	NOR3S_L461.avi	63487	17.63521	5	0.54778	466.54206	917.34219	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR3S	11	NOR3S_L461.avi	66210	18.39159	5	1.30416	424.67290	761.86047	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR3S	12	NOR3S_L461.avi	71309	19.80798	6	0.05750	356.48598	1051.29568	Serranidae	Cephalopholis	urodeta	37311142	1	AD	Passing			
+NOR3S	13	NOR3S_L461.avi	72505	20.14020	6	0.38972	76.56075	714.01993	Pomacanthidae	Centropyge	loriculus	10000032	1	AD	Passing			
+NOR3S	14	NOR3S_L461.avi	72505	20.14020	6	0.38972	62.20561	631.49502	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+NOR3S	15	NOR3S_L461.avi	72565	20.15686	6	0.40639	385.19626	800.13289	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+NOR3S	16	NOR3S_L461.avi	72644	20.17881	6	0.42833	174.65421	1040.53156	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL3W	0	POL3W_L461.avi	80453	22.37036	1	0.84974	458.08360	493.71429	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL3W	1	POL3W_L461.avi	81519	22.66677	1	1.14614	402.52090	602.33143	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+POL3W	2	POL3W_L461.avi	81543	22.67344	1	1.15282	382.76527	609.73714	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+POL3W	3	POL3W_L461.avi	82250	22.87002	1	1.34940	753.18328	1057.78286	Unknown			37000000	1	AD	Passing	Check (Undersize?)		
+POL3W	4	POL3W_L461.avi	82254	22.87114	1	1.35051	898.88103	845.48571	Unknown			37000000	1	AD	Passing	Check (Undersize?)		
+POL3W	5	POL3W_L461.avi	96363	26.79421	2	0.63258	159.27974	677.62286	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL3W	6	POL3W_L461.avi	96407	26.80645	2	0.64481	1471.79421	520.86857	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+POL3W	7	POL3W_L461.avi	99338	27.62143	2	1.45979	81.64948	804.12371	Unknown			37000000	1	AD	Passing			
+POL3W	8	POL3W_L461.avi	122976	34.19409	4	0.28306	1297.80078	366.20690	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+POL3W	9	POL3W_L461.avi	124029	34.48688	4	0.57585	526.57180	38.48276	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL3W	10	POL3W_L461.avi	124476	34.61117	4	0.70014	288.12419	670.34483	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL3W	11	POL3W_L461.avi	127726	35.51485	4	1.60382	556.37775	517.65517	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL3W	12	POL3W_L461.avi	127780	35.52987	4	1.61884	344.01035	259.44828	Chaetodontidae	Chaetodon	reticulatus	37365054	1	AD	Passing			
+POL3W	13	POL3W_L461.avi	145534	40.46646	5	0.37009	1869.14729	272.78990	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL3W	14	POL3W_L461.avi	147329	40.96557	5	0.86920	1327.13178	272.78990	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	0	POL4W_L461.avi	49045	13.63721	1	1.35607	488.07477	376.74419	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	1	POL4W_L461.avi	49158	13.66863	1	1.38749	552.67290	346.84385	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	2	POL4W_L461.avi	49269	13.69949	1	1.41836	156.71028	293.02326	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	3	POL4W_L461.avi	49486	13.75983	1	1.47870	251.21495	430.56478	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing	check		
+POL4W	4	POL4W_L461.avi	51986	14.45497	1	2.17383	1675.96262	258.33887	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	5	POL4W_L461.avi	52831	14.68992	1	2.40879	302.65421	786.97674	Labridae			37384000	1	AD	Passing			
+POL4W	6	POL4W_L461.avi	60679	16.87210	2	0.12791	203.48374	261.94030	Unknown			37000000	1	AD	Passing			
+POL4W	7	POL4W_L461.avi	60902	16.93411	2	0.18991	1795.08919	610.52239	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	8	POL4W_L461.avi	60925	16.94050	2	0.19631	1748.75131	455.37313	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	9	POL4W_L461.avi	61006	16.96302	2	0.21883	132.96957	870.44776	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	10	POL4W_L461.avi	61066	16.97971	2	0.23551	235.71878	975.22388	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	11	POL4W_L461.avi	61116	16.99361	2	0.24942	362.64428	1017.53731	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+POL4W	12	POL4W_L461.avi	61174	17.00974	2	0.26554	167.21931	852.31343	Serranidae	Epinephelus	merra	37311063	1	AD	Passing	check		
+POL4W	13	POL4W_L461.avi	61248	17.03031	2	0.28612	545.98111	918.80597	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	14	POL4W_L461.avi	61395	17.07119	2	0.32699	273.99790	296.19403	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	15	POL4W_L461.avi	62033	17.24859	2	0.50439	114.83736	477.53731	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	16	POL4W_L461.avi	62033	17.24859	2	0.50439	314.29171	626.64179	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	17	POL4W_L461.avi	62816	17.46630	2	0.72211	26.19098	546.04478	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	18	POL4W_L461.avi	63674	17.70487	2	0.96068	42.30850	344.55224	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	19	POL4W_L461.avi	74883	20.82159	3	0.27277	1182.62329	807.98507	Unknown			37000000	1	AD	Passing			
+POL4W	20	POL4W_L461.avi	75028	20.86191	3	0.31309	1686.29591	1073.95522	Unknown			37000000	1	AD	Passing			
+POL4W	21	POL4W_L461.avi	76023	21.13858	3	0.58975	973.09549	814.02985	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	22	POL4W_L461.avi	76572	21.29123	3	0.74241	78.57293	566.19403	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+POL4W	23	POL4W_L461.avi	77188	21.46251	3	0.91369	1706.44281	308.28358	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	24	POL4W_L461.avi	77210	21.46863	3	0.91981	98.71983	270.00000	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	25	POL4W_L461.avi	78173	21.73639	3	1.18757	259.89507	910.74627	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	26	POL4W_L461.avi	78355	21.78700	3	1.23818	1817.25079	384.85075	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+POL4W	27	POL4W_L461.avi	79285	22.04559	3	1.49677	185.35152	417.08955	Lethrinidae	Gnathodentex	aureolineatus	37351021	1	AD	Passing			
+POL4W	28	POL4W_L461.avi	79362	22.06700	3	1.51818	457.33473	429.17910	Lethrinidae	Gnathodentex	aureolineatus	37351021	1	AD	Passing			
+POL4W	29	POL4W_L461.avi	79368	22.06867	3	1.51985	592.31899	493.65672	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+POL4W	30	POL4W_L461.avi	79633	22.14235	3	1.59353	1623.84050	914.77612	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			Y
+POL4W	31	POL4W_L461.avi	79681	22.15570	3	1.60688	141.02833	731.41791	Lethrinidae	Gnathodentex	aureolineatus	37351021	1	AD	Passing			Y
+POL4W	32	POL4W_L461.avi	79775	22.18184	3	1.63302	213.55719	616.56716	Lethrinidae	Gnathodentex	aureolineatus	37351021	1	AD	Passing			Y
+POL4W	33	POL4W_L461.avi	80014	22.24829	3	1.69947	777.67051	265.97015	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing	check - scopas		
+POL4W	34	POL4W_L461.avi	80467	22.37425	3	1.82543	1434.45960	1049.77612	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			Y
+POL4W	35	POL4W_L461.avi	80716	22.44349	3	1.89467	165.20462	681.04478	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	36	POL4W_L461.avi	89662	24.93097	4	0.02781	1071.81532	342.53731	Unknown			37000000	1	AD	Passing			
+POL4W	37	POL4W_L461.avi	89662	24.93097	4	0.02781	1106.06506	328.43284	Unknown			37000000	1	AD	Passing			
+POL4W	38	POL4W_L461.avi	90432	25.14507	4	0.24191	1150.38825	302.23881	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing	check		
+POL4W	39	POL4W_L461.avi	90753	25.23433	4	0.33116	237.73347	521.86567	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+POL4W	40	POL4W_L461.avi	90847	25.26046	4	0.35730	1833.36831	382.83582	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	41	POL4W_L461.avi	90959	25.29160	4	0.38844	1452.59182	137.01493	Unknown			37000000	1	AD	Passing	S. spinus?		
+POL4W	42	POL4W_L461.avi	91228	25.36640	4	0.46324	237.73347	487.61194	Labridae	Halichoeres	hortulanus	37384112	1	AD	Passing			
+POL4W	43	POL4W_L461.avi	91783	25.52072	4	0.61756	173.26338	670.97015	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+POL4W	44	POL4W_L461.avi	93646	26.03874	4	1.13558	1257.16684	876.49254	Unknown			37000000	1	AD	Passing			
+POL4W	45	POL4W_L461.avi	93647	26.03902	4	1.13585	288.10073	816.04478	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	46	POL4W_L461.avi	102860	28.60074	5	0.00111	286.08604	564.17910	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+POL4W	47	POL4W_L461.avi	103345	28.73559	5	0.13597	233.70409	16.11940	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	48	POL4W_L461.avi	103714	28.83820	5	0.23857	1309.54879	761.64179	Unknown			37000000	1	AD	Passing			
+POL4W	49	POL4W_L461.avi	103714	28.83820	5	0.23857	1353.87198	733.43284	Unknown			37000000	1	AD	Passing			
+POL4W	50	POL4W_L461.avi	105006	29.19744	5	0.59782	558.06925	223.65672	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing	or sordidus		
+POL4W	51	POL4W_L461.avi	106677	29.66207	5	1.06245	116.85205	624.62687	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	52	POL4W_L461.avi	106709	29.67097	5	1.07135	358.61490	805.97015	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	53	POL4W_L461.avi	107318	29.84031	5	1.24068	797.81742	687.08955	Labridae			37384000	1	AD	Passing			
+POL4W	54	POL4W_L461.avi	107339	29.84615	5	1.24652	1349.84260	949.02985	Unknown			37000000	1	AD	Passing			
+POL4W	55	POL4W_L461.avi	107339	29.84615	5	1.24652	1388.12172	987.31343	Unknown			37000000	1	AD	Passing			
+POL4W	56	POL4W_L461.avi	107339	29.84615	5	1.24652	1565.41448	1047.76119	Unknown			37000000	1	AD	Passing			
+POL4W	57	POL4W_L461.avi	107339	29.84615	5	1.24652	1456.62120	989.32836	Unknown			37000000	1	AD	Passing			
+POL4W	58	POL4W_L461.avi	107339	29.84615	5	1.24652	1416.32739	995.37313	Unknown			37000000	1	AD	Passing			
+POL4W	59	POL4W_L461.avi	107500	29.89091	5	1.29129	282.05666	600.44776	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	60	POL4W_L461.avi	107849	29.98795	5	1.38833	1752.78069	394.92537	Unknown			37000000	1	AD	Passing			
+POL4W	61	POL4W_L461.avi	107849	29.98795	5	1.38833	1639.95803	322.38806	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	62	POL4W_L461.avi	107849	29.98795	5	1.38833	1635.92865	227.68657	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	63	POL4W_L461.avi	108180	30.07999	5	1.48036	177.29276	475.52239	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	64	POL4W_L461.avi	108778	30.24627	5	1.64664	130.95488	650.82090	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			Y
+POL4W	65	POL4W_L461.avi	109080	30.33024	5	1.73061	1660.10493	227.68657	Acanthuridae	Zebrasoma	scopas	37437036	1	AD	Passing			
+POL4W	66	POL4W_L461.avi	120153	33.40914		-1.00000	392.86464	866.41791	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	67	POL4W_L461.avi	120153	33.40914		-1.00000	477.48164	1017.53731	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	68	POL4W_L461.avi	120153	33.40914		-1.00000	697.08290	818.05970	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	69	POL4W_L461.avi	120599	33.53315	6	0.12373	473.45226	936.94030	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+POL4W	70	POL4W_L461.avi	120991	33.64215	6	0.23273	157.14586	16.11940	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	71	POL4W_L461.avi	121035	33.65439	6	0.24497	50.36726	459.40299	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	72	POL4W_L461.avi	121097	33.67163	6	0.26221	870.34627	602.46269	Unknown			37000000	1	AD	Passing			
+POL4W	73	POL4W_L461.avi	121115	33.67663	6	0.26721	161.17524	912.76119	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	74	POL4W_L461.avi	121116	33.67691	6	0.26749	241.76285	548.05970	Chaetodontidae	Chaetodon	ephippium	37365037	1	AD	Passing			
+POL4W	75	POL4W_L461.avi	121164	33.69026	6	0.28084	1833.36831	620.59701	Unknown			37000000	1	AD	Passing			
+POL4W	76	POL4W_L461.avi	121164	33.69026	6	0.28084	1722.56034	614.55224	Unknown			37000000	1	AD	Passing			
+POL4W	77	POL4W_L461.avi	121167	33.69109	6	0.28167	1319.62225	537.98507	Unknown			37000000	1	AD	Passing			
+POL4W	78	POL4W_L461.avi	121217	33.70499	6	0.29557	1273.28437	654.85075	Unknown			37000000	1	AD	Passing			
+POL4W	79	POL4W_L461.avi	121217	33.70499	6	0.29557	1341.78384	660.89552	Unknown			37000000	1	AD	Passing			
+POL4W	80	POL4W_L461.avi	121228	33.70805	6	0.29863	1380.06296	703.20896	Unknown			37000000	1	AD	Passing			
+POL4W	81	POL4W_L461.avi	121487	33.78007	6	0.37065	650.74502	1045.74627	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	82	POL4W_L461.avi	121487	33.78007	6	0.37065	850.19937	912.76119	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	83	POL4W_L461.avi	121589	33.80843	6	0.39901	58.42602	10.07463	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+POL4W	84	POL4W_L461.avi	122817	34.14988	6	0.74046	429.12907	862.38806	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			Y
+POL4W	85	POL4W_L461.avi	123541	34.35119	6	0.94177	1442.51836	501.71642	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+POL4W	86	POL4W_L461.avi	123651	34.38178	6	0.97236	1859.55929	409.02985	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+POL4W	87	POL4W_L461.avi	123651	34.38178	6	0.97236	1833.36831	378.80597	Pomacentridae	Abudefduf	sordidus	37372012	1	AD	Passing			
+POL4W	88	POL4W_L461.avi	123740	34.40653	6	0.99711	1684.28122	501.71642	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			Y
+POL4W	89	POL4W_L461.avi	123973	34.47131	6	1.06189	58.42602	10.07463	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+TaOL1N	0	TaOL1N_L461.avi	44767	12.43523	2	0.51333	290.12285	24.75983	Labridae	Thalassoma	lutescens	37384168	1	J	Passing	check ID		
+TaOL1N	1	TaOL1N_L461.avi	61179	16.99410	3	1.49166	435.46392	878.35052	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TaOL1N	2	TaOL1N_L461.avi	71619	19.89409	4	0.94166	1843.29897	618.55670	Pomacanthidae	Centropyge			1	AD	Passing			
+TaOR1S	0	TaOR1S_L461.avi	35798	9.94385	1	1.26888	939.03930	999.77827	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+TaOR1S	1	TaOR1S_L461.avi	49789	13.83022	2	1.75860	1857.63898	770.74362	Chaetodontidae	Chaetodon	quadrimaculatus	10000019	1	AD	Passing			
+TaOR1S	2	TaOR1S_L461.avi	59449	16.51355	3	1.37416	691.96752	927.76915	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TaOR1S	3	TaOR1S_L461.avi	59490	16.52493	3	1.38555	1785.68395	537.00333	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+TaOR1S	4	TaOR1S_L461.avi	59831	16.61966	3	1.48027	659.58776	807.90233	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TaOR1S	5	TaOR1S_L461.avi	67804	18.83437	4	0.58028	413.74141	395.56049	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TaOR1S	6	TaOR1S_L461.avi	71100	19.74992	4	1.49583	1455.89007	566.97003	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TaOR1S	7	TaOR1S_L461.avi	77639	21.56630	5	0.31083	229.05684	907.39179	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TaOR1S	8	TaOR1S_L461.avi	77747	21.59630	5	0.34083	59.96252	685.63818	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TaOR1S	9	TaOR1S_L461.avi	80095	22.24852	5	0.99305	507.28295	900.19978	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TaOR1S	10	TaOR1S_L461.avi	83054	23.07046	5	1.81499	1559.02561	1059.62264	Acanthuridae	Acanthurus	nigroris	37437015	1	AD	Passing			
+TaOR1S	11	TaOR1S_L461.avi	88080	24.46657	6	0.01194	468.90693	1016.47059	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+TaOR1S	12	TaOR1S_L461.avi	88085	24.46796	6	0.01333	486.89569	924.17314	Acanthuridae	Acanthurus	nigroris	37437015	1	AD	Passing			
+TaOR1S	13	TaOR1S_L461.avi	90206	25.05712	6	0.60250	440.12492	741.97558	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TaOR1S	14	TaOR1S_L461.avi	90920	25.25545	6	0.80083	64.75953	606.52608	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TaOR1S	15	TaOR1S_L461.avi	91379	25.38295	6	0.92833	387.35790	735.98224	Acanthuridae	Acanthurus	guttatus	37437009	1	AD	Passing			
+TeOL4N	0	TeOL4N_L461.avi	13670	3.79721	1	0.85861	459.34942	755.59701	Unknown			37000000	1	AD	Passing	can only see on right camera		
+TeOL4N	1	TeOL4N_L461.avi	15182	4.21721	1	1.27861	1132.25603	1035.67164	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TeOL4N	2	TeOL4N_L461.avi	15807	4.39082	1	1.45222	60.44071	886.56716	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TeOL4N	3	TeOL4N_L461.avi	51327	14.25744	4	0.51250	1239.62894	968.43956	Pomacentridae	Stegastes	sp2		1	AD	Passing			
+TeOL4N	4	TeOL4N_L461.avi	51420	14.28328	4	0.53833	1456.92022	962.50549	Pomacentridae	Stegastes	sp2		1	AD	Passing			
+TeOL4N	5	TeOL4N_L461.avi	54328	15.09105	4	1.34611	208.97959	275.34066	Pomacentridae	Stegastes	sp2		1	AD	Passing			
+TeOL4N	6	TeOL4N_L461.avi	54328	15.09105	4	1.34611	167.42115	290.76923	Pomacentridae	Stegastes	sp2		1	AD	Passing			
+TeOL4N	7	TeOL4N_L461.avi	54328	15.09105	4	1.34611	136.54917	300.26374	Pomacentridae	Stegastes	sp2		1	AD	Passing			
+TeOL4N	8	TeOL4N_L461.avi	55287	15.35744	4	1.61249	265.97403	1020.65934	Pomacentridae	Stegastes	sp2		1	AD	Passing			
+TeOL4N	9	TeOL4N_L461.avi	76801	21.33353	6	0.69916	485.35316	410.35242	Pomacentridae	Stegastes	fasciolatus	37372132	1	AD	Passing	check ID		
+TeOR1N	0	TeOR1N_L461.avi	37045	10.29024	1	0.01278	1871.64743	1033.65672	Unknown			37000000	1	AD	Passing			
+TeOR1N	1	TeOR1N_L461.avi	37107	10.30746	1	0.03000	986.27807	1073.95522	Unknown			37000000	1	AD	Passing			
+TeOR1N	2	TeOR1N_L461.avi	37210	10.33607	1	0.05861	1166.71144	843.45149	Unknown			37000000	1	AD	Passing			
+TeOR1N	3	TeOR1N_L461.avi	37640	10.45551	1	0.17805	455.32004	1055.82090	Unknown			37000000	1	AD	Passing			
+TeOR1N	4	TeOR1N_L461.avi	37720	10.47774	1	0.20028	566.12802	1017.53731	Unknown			37000000	1	AD	Passing			
+TeOR1N	5	TeOR1N_L461.avi	37720	10.47774	1	0.20028	485.54040	983.28358	Unknown			37000000	1	AD	Passing			
+TeOR1N	6	TeOR1N_L461.avi	37720	10.47774	1	0.20028	660.81847	953.05970	Unknown			37000000	1	AD	Passing			
+TeOR1N	7	TeOR1N_L461.avi	37720	10.47774	1	0.20028	652.75971	967.16418	Unknown			37000000	1	AD	Passing			
+TeOR1N	8	TeOR1N_L461.avi	37720	10.47774	1	0.20028	642.68625	922.83582	Unknown			37000000	1	AD	Passing			
+TeOR1N	9	TeOR1N_L461.avi	37720	10.47774	1	0.20028	562.09864	979.25373	Unknown			37000000	1	AD	Passing			
+TeOR1N	10	TeOR1N_L461.avi	37720	10.47774	1	0.20028	473.45226	1025.59701	Unknown			37000000	1	AD	Passing			
+TeOR1N	11	TeOR1N_L461.avi	37720	10.47774	1	0.20028	574.18678	932.91045	Unknown			37000000	1	AD	Passing			
+TeOR1N	12	TeOR1N_L461.avi	37882	10.52274	1	0.24528	445.19307	1038.69403	Unknown			37000000	1	AD	Passing			
+TeOR1N	13	TeOR1N_L461.avi	37915	10.53190	1	0.25444	880.41973	870.44776	Unknown			37000000	1	AD	Passing			
+TeOR1N	14	TeOR1N_L461.avi	37915	10.53190	1	0.25444	725.28856	854.32836	Unknown			37000000	1	AD	Passing			
+TeOR1N	15	TeOR1N_L461.avi	37915	10.53190	1	0.25444	1035.55089	805.97015	Unknown			37000000	1	AD	Passing			
+TeOR1N	16	TeOR1N_L461.avi	37915	10.53190	1	0.25444	1005.33054	820.07463	Unknown			37000000	1	AD	Passing			
+TeOR1N	17	TeOR1N_L461.avi	37915	10.53190	1	0.25444	789.75866	797.91045	Unknown			37000000	1	AD	Passing			
+TeOR1N	18	TeOR1N_L461.avi	37915	10.53190	1	0.25444	791.77335	884.55224	Unknown			37000000	1	AD	Passing			
+TeOR1N	19	TeOR1N_L461.avi	37915	10.53190	1	0.25444	918.69885	807.98507	Unknown			37000000	1	AD	Passing			
+TeOR1N	20	TeOR1N_L461.avi	37915	10.53190	1	0.25444	755.50892	848.28358	Unknown			37000000	1	AD	Passing			
+TeOR1N	21	TeOR1N_L461.avi	47727	13.25745	2	0.03583	1814.91307	1035.51487	Unknown			37000000	1	AD	Passing			
+TeOR1N	22	TeOR1N_L461.avi	50208	13.94661	2	0.72500	1624.52028	1072.58581	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+TeOR1N	23	TeOR1N_L461.avi	83392	23.16435	5	1.65999	1288.37383	1051.29568	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TeOR1N	24	TeOR1N_L461.avi	88796	24.66546	6	0.81694	1753.71963	1075.21595	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			Y
+TeOR1N	25	TeOR1N_L461.avi	92682	25.74490	6	1.89638	177.04673	1048.90365	Labridae	Hemigymnus	fasciatus	37384124	1	AD	Passing	check		
+TeOR2N	0	TeOR2N_L461.avi	55322	15.36716	2	0.08056	1451.67810	680.08869	Unknown			37000000	1	AD	Passing			
+TeOR2N	1	TeOR2N_L461.avi	64077	17.79910	2	2.51249	1845.73924	1029.71175	Unknown			37000000	1	AD	Passing			
+TeOR2N	2	TeOR2N_L461.avi	64878	18.02159	2	2.73499	1469.64442	1075.21064	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TeOR2N	3	TeOR2N_L461.avi	119895	33.30403	5	0.58639	1665.60000	1066.80000	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+TeOR2N	4	TeOR2N_L461.avi	122364	33.98986	5	1.27222	1863.60000	625.20000	Serranidae	Cephalopholis	argus	37311082	1	AD	Passing	check in transect?		
+TeOR2N	5	TeOR2N_L461.avi	126011	35.00292	5	2.28527	452.40000	856.80000	Labridae	Coris	gaimard	37384094	1	AD	Passing			
+TeOR3S	0	TeOR3S_L461.avi	28657	7.96028	1	0.00000	75.22388	750.26549	Acanthuridae	Acanthurus	nigroris	37437015	1	AD	Passing			
+TeOR3S	1	TeOR3S_L461.avi	29599	8.22194	1	0.26167	93.13433	686.94690	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TeOR3S	2	TeOR3S_L461.avi	30483	8.46750	1	0.50722	1822.08955	1022.65487	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing	check - thalassoma?		
+TeOR3S	3	TeOR3S_L461.avi	33043	9.17861	1	1.21833	56.11940	792.07965	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TeOR3S	4	TeOR3S_L461.avi	41143	11.42861	2	0.48306	1750.44776	1058.49558	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TeOR3S	5	TeOR3S_L461.avi	42159	11.71083	2	0.76528	1641.79104	993.98230	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TeOR3S	6	TeOR3S_L461.avi	43936	12.20444	2	1.25889	273.43284	991.59292	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TeOR3S	7	TeOR3S_L461.avi	44290	12.30278	2	1.35722	89.55224	964.11504	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TeOR3S	8	TeOR3S_L461.avi	46358	12.87722	2	1.93167	220.89552	673.80531	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TeOR3S	9	TeOR3S_L461.avi	50420	14.00556	3	0.00889	1124.77612	973.67257	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+TeOR3S	10	TeOR3S_L461.avi	51639	14.34417	3	0.34750	1272.83582	1045.35398	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TeOR3S	11	TeOR3S_L461.avi	65780	18.27222	4	1.32639	221.58453	682.48337	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TeOR3S	12	TeOR3S_L461.avi	66622	18.50611	4	1.56028	313.81160	888.42572	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TeOR3S	13	TeOR3S_L461.avi	66622	18.50611	4	1.56028	397.65440	878.84701	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TeOR3S	14	TeOR3S_L461.avi	67255	18.68194	4	1.73611	1802.62009	1015.34368	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TeOR3S	15	TeOR3S_L461.avi	72655	20.18194	5	0.02444	246.73737	792.63858	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing			
+TeOR3S	16	TeOR3S_L461.avi	73637	20.45472	5	0.29722	403.64317	670.50998	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+TeOR3S	17	TeOR3S_L461.avi	75473	20.96472	5	0.80722	263.50593	671.70732	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TeOR3S	18	TeOR3S_L461.avi	80308	22.30778	5	2.15028	1097.14286	1064.43459	Acanthuridae	Acanthurus	nigroris	37437015	1	AD	Passing			
+TeOR3S	19	TeOR3S_L461.avi	88723	24.64528	6	1.24500	681.17427	944.55050	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TeOR3S	20	TeOR3S_L461.avi	88737	24.64917	6	1.24889	1172.86696	1000.88790	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TeOR3S	21	TeOR3S_L461.avi	90749	25.20806	6	1.80778	1644.17239	1042.84129	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TeOR3S	22	TeOR3S_L461.avi	91103	25.30639	6	1.90611	184.68457	982.90788	Unknown			37000000	1	AD	Passing			
+TiOL2E	0	TiOL2E_L461.avi	55105	15.32222	1	0.94900	179.30745	336.49254	Unknown			37000000	1	AD	Passing			
+TiOL2E	1	TiOL2E_L461.avi	56113	15.60250	1	1.22928	1863.58867	433.20896	Scaridae	Scarus			1	AD	Passing	multispecies school C		
+TiOL2E	2	TiOL2E_L461.avi	56116	15.60333	1	1.23012	1837.39769	461.41791	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	multispecies school C		
+TiOL2E	3	TiOL2E_L461.avi	56116	15.60333	1	1.23012	1825.30955	443.28358	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school C		
+TiOL2E	4	TiOL2E_L461.avi	56864	15.81132	1	1.43810	145.05771	666.94030	Labridae	Epibulus	insidiator	37384104	1	AD	Passing	check		
+TiOL2E	5	TiOL2E_L461.avi	56946	15.83412	1	1.46090	1728.60441	461.41791	Unknown			37000000	1	AD	Passing			
+TiOL2E	6	TiOL2E_L461.avi	58553	16.28095	1	1.90774	346.52676	824.10448	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+TiOL2E	7	TiOL2E_L461.avi	58553	16.28095	1	1.90774	306.23295	791.86567	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+TiOL2E	8	TiOL2E_L461.avi	58553	16.28095	1	1.90774	344.51207	743.50746	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+TiOL2E	9	TiOL2E_L461.avi	58553	16.28095	1	1.90774	237.73347	793.88060	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+TiOL2E	10	TiOL2E_L461.avi	58553	16.28095	1	1.90774	243.77754	739.47761	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+TiOL2E	11	TiOL2E_L461.avi	58553	16.28095	1	1.90774	245.79224	761.64179	Scaridae	Scarus			1	AD	Passing	multispecies school E		
+TiOL2E	12	TiOL2E_L461.avi	72025	20.02691	2	1.82404	1533.17943	205.52239	Acanthuridae	Acanthurus	triostegus	37437019	1	AD	Passing	check		
+TiOL2E	13	TiOL2E_L461.avi	96818	26.92073	3	0.28723	235.71878	255.89552	Unknown			37000000	1	AD	Passing			
+TiOL2E	14	TiOL2E_L461.avi	115212	32.03527	4	1.75341	195.42497	586.34328	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL2E	15	TiOL2E_L461.avi	115251	32.04612	4	1.76426	229.67471	481.56716	Chaetodontidae	Chaetodon	lunulatus	37365059	1	AD	Passing			
+TiOL2E	16	TiOL2E_L461.avi	115264	32.04973	4	1.76787	171.24869	761.64179	Chaetodontidae	Chaetodon	citrinellus	37365036	1	AD	Passing			
+TiOL2E	17	TiOL2E_L461.avi	115324	32.06641	4	1.78456	197.43966	537.98507	Serranidae	Epinephelus	merra	37311063	1	AD	Passing			
+TiOL2E	18	TiOL2E_L461.avi	115354	32.07476	4	1.79290	163.18993	527.91045	Chaetodontidae	Chaetodon	auriga	37365019	1	AD	Passing			
+TiOL2E	19	TiOL2E_L461.avi	115411	32.09061	4	1.80875	271.98321	531.94030	Chaetodontidae	Chaetodon	ornatissimus	37365047	1	AD	Passing			
+TiOL2E	20	TiOL2E_L461.avi	115504	32.11646	4	1.83461	74.54355	620.59701	Unknown			37000000	1	AD	Passing	flavissima? or other angelfish		
+TiOL2E	21	TiOL2E_L461.avi	115526	32.12258	4	1.84072	257.88038	507.76119	Tetraodontidae	Canthigaster			1	AD	Passing	solandri		
+TiOL2E	22	TiOL2E_L461.avi	153371	42.64557	5	0.88700	591.60000	444.00000	Unknown			37000000	1	AD	Passing			
+TiOL2E	23	TiOL2E_L461.avi	153383	42.64891	5	0.89033	543.60000	436.80000	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+TiOL2E	24	TiOL2E_L461.avi	156042	43.38826	5	1.62968	1192.96319	535.21064	Unknown			37000000	1	AD	Passing			
+TiOL2E	25	TiOL2E_L461.avi	156075	43.39743	5	1.63886	1615.77043	850.11086	Tetraodontidae	Canthigaster	solandri	10000036	1	AD	Passing			
+TiOL2E	26	TiOL2E_L461.avi	170868	47.51070	6	2.05010	1712.23881	477.87611	Scaridae	Scarus	oviceps	37386022	1	AD	Passing			
+TiOL2E	27	TiOL2E_L461.avi	172190	47.87829	6	2.41769	235.22388	449.20354	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	0	TiOL3W_L461.avi	20298	5.64396	1	1.77816	1289.40189	453.35821	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	1	TiOL3W_L461.avi	20413	5.67594	1	1.81014	1412.29801	560.14925	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	2	TiOL3W_L461.avi	27030	7.51583	2	0.29668	1571.45855	779.77612	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school A		
+TiOL3W	3	TiOL3W_L461.avi	27135	7.54502	2	0.32588	1676.22246	775.74627	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school A		
+TiOL3W	4	TiOL3W_L461.avi	27135	7.54502	2	0.32588	1619.81112	781.79104	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school A		
+TiOL3W	5	TiOL3W_L461.avi	27239	7.57394	2	0.35480	1895.82371	741.49254	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school A		
+TiOL3W	6	TiOL3W_L461.avi	27239	7.57394	2	0.35480	1857.54460	703.20896	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school A		
+TiOL3W	7	TiOL3W_L461.avi	27239	7.57394	2	0.35480	1853.51522	729.40299	Scaridae	Scarus	globiceps	37386018	1	AD	Passing	multispecies school A		
+TiOL3W	8	TiOL3W_L461.avi	33587	9.33903	2	2.11989	1378.04827	525.89552	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL3W	9	TiOL3W_L461.avi	33712	9.37379	2	2.15465	1631.89927	511.79104	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	10	TiOL3W_L461.avi	33712	9.37379	2	2.15465	1565.41448	499.70149	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	11	TiOL3W_L461.avi	33746	9.38324	2	2.16410	1627.86988	515.82090	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	12	TiOL3W_L461.avi	45257	12.58394	3	0.16961	249.82162	475.52239	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TiOL3W	13	TiOL3W_L461.avi	45363	12.61341	3	0.19909	101.74187	749.93284	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	14	TiOL3W_L461.avi	45363	12.61341	3	0.19909	67.49213	819.44776	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL3W	15	TiOL3W_L461.avi	59840	16.63881	4	1.70920	1851.50052	477.53731	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TiOL3W	16	TiOL3W_L461.avi	64796	18.01685	5	0.34896	253.85100	840.22388	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+TiOL3W	17	TiOL3W_L461.avi	68205	18.96474	5	1.29685	1716.51626	306.26866	Unknown			37000000	1	AD	Passing			
+TiOL3W	18	TiOL3W_L461.avi	68811	19.13324	5	1.46535	143.04302	604.47761	Acanthuridae	Ctenochaetus	binotatus	37437021	1	AD	Passing			
+TiOL3W	19	TiOL3W_L461.avi	75823	21.08296	6	0.14097	40.29381	850.29851	Labridae	Halichoeres	hortulanus	37384112	1	AD	Passing			
+TiOL3W	20	TiOL3W_L461.avi	82574	22.96011	6	2.01812	227.66002	660.89552	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TiOL4W	0	TiOL4W_L461.avi	36878	10.25411	1	0.93260	493.59916	602.46269	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TiOL4W	1	TiOL4W_L461.avi	36960	10.27691	1	0.95540	465.39349	1023.58209	Labridae	Gomphosus	varius	37384106	1	AD	Passing			
+TiOL4W	2	TiOL4W_L461.avi	48466	13.47621	2	1.14003	247.80693	261.94030	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TiOL4W	3	TiOL4W_L461.avi	48785	13.56491	2	1.22873	429.12907	523.88060	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TiOL4W	4	TiOL4W_L461.avi	51653	14.36237	2	2.02619	197.43966	896.64179	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TiOL4W	5	TiOL4W_L461.avi	55563	15.44957	3	0.12151	126.92550	278.05970	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TiOL4W	6	TiOL4W_L461.avi	59028	16.41303	3	1.08497	1460.65058	310.29851	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL4W	7	TiOL4W_L461.avi	78146	21.72889	5	0.54193	1327.68101	592.38806	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL4W	8	TiOL4W_L461.avi	78262	21.76114	5	0.57418	1331.71039	652.83582	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL4W	9	TiOL4W_L461.avi	80227	22.30752	5	1.12056	110.80797	409.02985	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			Y
+TiOL4W	10	TiOL4W_L461.avi	87604	24.35873	6	0.02169	1529.15005	382.83582	Acanthuridae	Acanthurus	triostegus	37437019	1	AD	Passing			
+TiOL4W	11	TiOL4W_L461.avi	87666	24.37597	6	0.03893	1835.38300	586.34328	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing	check		Y
+TiOL5	0	TiOL5_L461.avi	58836	16.35964	1	1.32271	231.64179	756.23894	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL5	1	TiOL5_L461.avi	58928	16.38523	1	1.34829	591.04478	996.37168	Labridae	Halichoeres	trimaculatus	37384122	1	AD	Passing			
+TiOL5	2	TiOL5_L461.avi	68642	19.08625	2	0.24524	1551.04478	585.39823	Unknown			37000000	1	AD	Passing			
+TiOL5	3	TiOL5_L461.avi	75086	20.87804	2	2.03703	226.09346	580.06645	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL5	4	TiOL5_L461.avi	75124	20.88860	2	2.04760	216.52336	643.45515	Unknown			37000000	1	AD	Passing			
+TiOL5	5	TiOL5_L461.avi	86268	23.98725	3	1.68891	1643.66355	412.62458	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL5	6	TiOL5_L461.avi	86268	23.98725	3	1.68891	1588.63551	454.48505	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL5	7	TiOL5_L461.avi	93762	26.07099	4	0.81804	970.16822	611.16279	Scaridae	Scarus			1	AD	Passing			
+TiOL5	8	TiOL5_L461.avi	95275	26.49169	4	1.23874	194.99065	588.43854	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL5	9	TiOL5_L461.avi	104704	29.11347	5	0.28362	202.16822	1036.94352	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL5	10	TiOL5_L461.avi	106890	29.72130	5	0.89144	979.73832	541.79402	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+TiOL5	11	TiOL5_L461.avi	108463	30.15868	5	1.32882	1312.29907	535.81395	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOL5	12	TiOL5_L461.avi	108620	30.20233	5	1.37248	1714.24299	534.61794	Chaetodontidae	Chaetodon	ornatissimus	37365047	1	AD	Passing	check		
+TiOL5	13	TiOL5_L461.avi	109422	30.42533	5	1.59548	1870.95327	644.65116	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TiOL5	14	TiOL5_L461.avi	114197	31.75305	6	0.01974	202.16822	467.64120	Labridae	Thalassoma	hardwicke	37384165	1	AD	Passing			
+TiOL5	15	TiOL5_L461.avi	115289	32.05668	6	0.32338	955.81308	507.10963	Scaridae	Scarus	globiceps	37386018	1	AD	Passing			
+TiOL5	16	TiOL5_L461.avi	115342	32.07142	6	0.33811	888.82243	612.35880	Scaridae	Chlorurus	sordidus	37386030	1	AD	Passing			
+TiOL5	17	TiOL5_L461.avi	116245	32.32250	6	0.58920	192.59813	636.27907	Unknown			37000000	1	AD	Passing			
+TiOL5	18	TiOL5_L461.avi	120242	33.43389	6	1.70058	385.19626	608.77076	Labridae	Stethojulis	bandanensis	37384154	1	AD	Passing	check		
+TiOR1W	0	TiOR1W_L461.avi	112484	31.27683	6	1.22567	1355.65891	993.20321	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+TiOR2E	0	TiOR2E_L461.avi	37432	10.40819	2	0.64926	164.74839	629.17431	Labridae	Thalassoma	quinquevittatum	37384170	1	AD	Passing			
+TiOR3E	0	TiOR3E_L461.avi	51545	14.33239	2	0.40179	309.63731	760.59839	Cirrhitidae	Neocirrhites	armatus	37374007	1	AD	Passing			
+TiOR3E	1	TiOR3E_L461.avi	68532	19.05572	3	1.61328	249.94819	990.51784	Chaetodontidae	Chaetodon	pelewensis	37365049	1	AD	Passing			
+TiOR3E	2	TiOR3E_L461.avi	68532	19.05572	3	1.61328	109.43005	832.68124	Acanthuridae	Ctenochaetus	striatus	37437022	1	AD	Passing			
+TiOR3E	3	TiOR3E_L461.avi	80841	22.47831	4	0.57307	338.96444	903.99113	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TiOR3E	4	TiOR3E_L461.avi	82487	22.93599	4	1.03075	180.86089	659.73392	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TiOR3E	5	TiOR3E_L461.avi	91955	25.56862	5	0.68318	1740.56075	987.90698	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TiOR3E	6	TiOR3E_L461.avi	92073	25.60143	5	0.71599	145.94393	943.65449	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TiOR3E	7	TiOR3E_L461.avi	92073	25.60143	5	0.71599	332.56075	1046.51163	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TiOR3E	8	TiOR3E_L461.avi	92670	25.76743	5	0.88199	340.93458	718.80399	Cirrhitidae	Paracirrhites	arcatus	37374009	1	AD	Passing			
+TiOR3E	9	TiOR3E_L461.avi	94548	26.28962	5	1.40418	150.72897	791.76080	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TiOR3E	10	TiOR3E_L461.avi	101679	28.27244	6	0.60700	258.71491	810.59867	Pomacanthidae	Centropyge	flavissima	37365026	1	AD	Passing			
+TiOR4E	0	TiOR4E_L461.avi	30597	8.50767	1	0.16711	1850.54264	703.05396	Acanthuridae	Naso	brachycentron	37437025	1	AD	Passing	not in transect		
+TiOR4E	1	TiOR4E_L461.avi	38208	10.62396	2	0.03893	84.12371	637.11340	Serranidae	Pseudanthias			1	AD	Passing	check		
+TiOR4E	2	TiOR4E_L461.avi	71258	19.81370	5	1.23735	52.38195	729.40299	Unknown			37000000	1	AD	Passing	H. margaritaceus		
+TiOR4E	3	TiOR4E_L461.avi	78090	21.71338	6	0.26527	143.04302	749.55224	Acanthuridae	Acanthurus	nigricans	37437012	1	AD	Passing			
