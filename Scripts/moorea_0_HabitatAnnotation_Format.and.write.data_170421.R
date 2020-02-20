@@ -3,11 +3,11 @@ rm(list=ls())
 study<-"mad.schools"
 
 # Add you work dir here-
-work.dir=("C:/GitHub/Moorea-minimum-approach")
+work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Use this directory name from now on
 
-habitat.data=paste(work.dir,"Data/Habitat",sep="/")
-tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
-plots=paste(work.dir,"Plots",sep="/")
+habitat.data <- paste(work.dir,"Data/Habitat",sep="/")
+tidy.data <- paste(work.dir,"Data/Tidy data",sep="/")
+plots <- paste(work.dir,"Plots",sep="/")
 
 # Libraries required
 library(tidyr)

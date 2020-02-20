@@ -1,2 +1,0 @@
-"","modname","formula","AICc","BIC","delta.AICc","delta.BIC","wi.AICc","wi.BIC","r2.vals","edf","edf.less.1","mean.relief","sd.relief","hard.corals","rock","mean.length","min.length","max.length","school.size","Status","TargetLoc","cumsum.wi"
-"TargetLoc","rock+Status+min.length.by.Status","s(rock, k = 3, bs = ""cr"") + s(min.length, by = Status, k = 3, bs = ""cr"") + Status + s(Site, Location, bs = ""re"")",73051.9007820209,73194.9817552858,0,0,0.81,0.985,0.323,21.44,0,0,0,0,1,0,1,0,0,1,0,0.81
