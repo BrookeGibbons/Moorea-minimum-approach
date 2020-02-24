@@ -2,6 +2,8 @@
 rm(list=ls())
 study<-"mad.schools"
 
+# testing
+
 # Add you work dir here-
 work.dir=("C:/GitHub/Moorea-minimum-approach")
 
