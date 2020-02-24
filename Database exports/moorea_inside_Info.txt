@@ -1,0 +1,21 @@
+OpCode	TapeReader	Depth	Comment	Info5Name	Info5Value	Info6Name	Info6Value	Info7Name	Info7Value	Info8Name	Info8Value	Info9Name	Info9Value	Info10Name	Info10Value	Info11Name	Info11Value	Info12Name	Info12Value
+MaIL2	Brooke																		
+MaIL3	Brooke																		
+MaIR1	Brooke																		
+MaIR2	Brooke																		
+NIL2	Brooke																		
+NIL3	Brooke																		
+NIR1	Brooke																		
+NIR2	Brooke																		
+PIL1	Brooke																		
+PIL2	Brooke																		
+TeIL1	Brooke																		
+TeIL4	Brooke																		
+TeIR1	Brooke																		
+TeIR2	Brooke																		
+TiIL2	Brooke																		
+TiIL3	Brooke																		
+TiIL4	Brooke																		
+TiIR1	Brooke																		
+TiIR3	Brooke																		
+TiIR4	Brooke																		

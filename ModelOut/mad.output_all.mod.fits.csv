@@ -1,10 +1,1 @@
-"","modname","AICc","BIC","r2.vals","r2.vals.unique","edf","edf.less.1","delta.AICc","delta.BIC","wi.AICc","wi.BIC","mean.relief","sd.relief","hard.corals","reef","min.length","school.size","Status","cumsum.wi"
-"high-target.min.length.by.Status+reef.by.Status+Status","min.length.by.Status+reef.by.Status+Status",45558.0790101417,45679.9595982723,0.32674,NA,19.66,0,0,13.031,0.415,0.001,0,0,0,1,1,0,1,0.415
-"high-target.min.length+reef+school.size","min.length+reef+school.size",45558.3294097889,45666.9284046883,0.32555,NA,17.4,0,0.25,0,0.366,0.754,0,0,0,1,1,1,0,0.781
-"high-target.min.length.by.Status+reef+Status","min.length.by.Status+reef+Status",45559.6856496839,45672.1672810397,0.32554,NA,18.06,0,1.607,5.239,0.186,0.055,0,0,0,1,1,0,1,0.967
-"mod-target.min.length+reef","min.length+reef",7424.42423265947,7484.89253271839,0.34344,NA,14.08,0,0,0,0.392,0.717,0,0,0,1,1,0,0,0.392
-"mod-target.min.length+reef+school.size","min.length+reef+school.size",7425.69530021364,7491.4480158711,0.34592,NA,15.42,0,1.271,6.555,0.208,0.027,0,0,0,1,1,1,0,0.6
-"mod-target.hard.corals+min.length+reef","hard.corals+min.length+reef",7425.83055065756,7490.65306416641,0.34499,NA,15.18,0,1.406,5.761,0.194,0.04,0,0,1,1,1,0,0,0.794
-"non-target.min.length+reef.by.Status+Status","min.length+reef.by.Status+Status",11172.7871717688,11236.5701347545,0.18507,NA,13.25,0,0,3.666,0.305,0.101,0,0,0,1,1,0,1,0.305
-"non-target.min.length+reef","min.length+reef",11173.9955227203,11237.378289671,0.18353,NA,13.16,0,1.208,4.474,0.167,0.067,0,0,0,1,1,0,0,0.472
-"non-target.min.length+reef+Status","min.length+reef+Status",11174.3028076204,11238.0710452244,0.18319,NA,13.25,0,1.516,5.167,0.143,0.047,0,0,0,1,1,0,1,0.615
+""

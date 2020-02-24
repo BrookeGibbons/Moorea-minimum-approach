@@ -1,1 +1,1 @@
-"Filename","Frame","Time..mins.","Period","Period.time..mins.","Length..mm.","Precision..mm.","RMS..mm.","Range..mm.","Direction..deg.","Horz..Dir...deg.","Vert..Dir...deg.","Mid.X..mm.","Mid.Y..mm.","Mid.Z..mm.","OpCode","TapeReader","Depth","Comment","X","X.1","X.2","X.3","X.4","X.5","X.6","X.7","Family","Genus","Species","Code","Number","Stage","Activity","Comment.1","MAD","Incoming","Length","Range","Genus_species","School"
+"OpCode","Time","Period","PeriodTime","Length","Range","Family","Genus_species","Genus","Species","Number","Comment","Mad","Incoming","School"

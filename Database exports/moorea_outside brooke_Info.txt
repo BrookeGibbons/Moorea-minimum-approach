@@ -1,0 +1,4 @@
+OpCode	TapeReader	Depth	Comment	Info5Name	Info5Value	Info6Name	Info6Value	Info7Name	Info7Value	Info8Name	Info8Value	Info9Name	Info9Value	Info10Name	Info10Value	Info11Name	Info11Value	Info12Name	Info12Value
+NOL3S	Brooke																		
+TeOL2S	Brooke																		
+TeOL3N	Brooke	0.8 m																	
