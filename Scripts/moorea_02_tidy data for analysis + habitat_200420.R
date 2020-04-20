@@ -35,7 +35,8 @@ dir()
 length.factors<-read.csv(paste(study,"length.factors.csv",sep=".")) #TJL-Need to add this in
 
 length<-read.csv("mad.schools.length.csv")%>%
-  mutate(sample=paste(OpCode,Period,sep="."))
+  mutate(sample=paste(OpCode,Period,sep="."))%>%
+  glimpse()
 
 unique(length$OpCode)
 unique(length.factors$OpCode)
