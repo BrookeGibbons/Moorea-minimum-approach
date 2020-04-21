@@ -30,22 +30,9 @@ tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
 summaries=paste(work.dir,"Data/Summaries",sep="/")
 data.dir=paste(work.dir,"Data",sep="/")
 plots=paste(work.dir,"Plots",sep="/")
-model.out=paste(work.dir,"ModelOut",sep="/")
+model.out=paste(work.dir,"ModelOut/Abundance",sep="/")
 
-# Moorea life history ----
-# url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
-# 
-# master <- googlesheets4::read_sheet(url)%>%
-#   mutate(Max=as.numeric(Max))%>%
-#   mutate(Max_length=Max*10)%>%
-#   mutate(Min_length=0)%>%
-#   dplyr::rename(diet=`Diet 7cl2`)%>%
-#   dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
-#   mutate(TargetLoc=as.character(TargetLoc))%>%
-#   mutate(Commercial=as.character(Commercial))%>%
-#   glimpse()
-
-# When offline ----
+# Mo'orea life history data ----
 setwd(data.dir)
 dir()
 
@@ -149,99 +136,18 @@ combined.abundance.dataframes <- bind_rows(total.abundance.species.richness,
 
 unique(combined.abundance.dataframes$Site)
 
-
-# Mad data----
-mad.data<-raw.data%>%
-  filter(final.mad>0)%>% # NEED TO CREATE SCHOOLS BEFORE FILTERING THESE OUT
-  filter(!is.na(Length))%>%
-  filter(Length>80)%>%
-  #filter(Length<300)%>%
-  mutate(Indicator="Mad")%>%
-  mutate(TargetLoc=as.factor(TargetLoc))%>%
-  dplyr::rename(response=final.mad)%>%
-  select(-c(Reef.Lagoon))%>%
-  glimpse()
-
-mad.schools<-mad.data%>%
-  filter(grepl("School",School)) # filter to only those in schools
-
-mad.school.size<-mad.schools%>%
-  group_by(Sample,School)%>%
-  filter(!School%in%c(""))%>%
-  dplyr::summarise(school.size=sum(Number))
-
-mad.individuals<-mad.data%>%
-  filter(!grepl("School",School)) # filter to only individuals
-
-mad.individuals<-mad.individuals%>%
-  mutate(School=paste("School",1:nrow(mad.individuals), sep=".")) # make a unique id for each individual
-
-mad<-bind_rows(mad.schools, mad.individuals)
-
-# BG 04/09/19
-# trying to figure out if we have schools of mixed target level
-
-test.schools<-mad%>%
-  mutate(TargetLoc=as.numeric(TargetLoc))%>%
-  group_by(Sample,School)%>%
-  summarise(number=length(unique(TargetLoc)),average=mean(TargetLoc))
-
-schools.with.mutliple.targetlocs<-test.schools%>%
-  filter(number>1)%>%
-  distinct(Sample,School)
-
-# Need to ask Tim about this
-# Out of 3894 schools 32 had two levels and 1 had all three
-# Ideas
-# 1st idea - remove the 33 mixed groups
-# Then I only have three groups
-
-# 2nd idea - rename 1 and 2 as both targeted and 0 as non-target
-# will then have less groups to remove and only 2 gams yay
-
-# 3rd idea - have none, low, high and mixed
-
-mad.final<-mad%>%
-  anti_join(schools.with.mutliple.targetlocs)%>%
-  mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
-# Only removes 266 fish (5179-4913)
-
-
-# mad.targetloc0<-mad.final%>%
-#   filter(TargetLoc%in%c(0))%>%
-#   mutate(Metric="non-target")
-# 
-# mad.targetloc1<-mad.final%>%
-#   filter(TargetLoc%in%c(1))%>%
-#   mutate(Metric="mod-target")
-# 
-# mad.targetloc2<-mad.final%>%
-#   filter(TargetLoc%in%c(2))%>%
-#   mutate(Metric="high-target")
-
-#combined.mad.data<-bind_rows(mad.targetloc0,mad.targetloc1,mad.targetloc2)
-
-# Need to make a row for each school
-# with min, mean and max length
-# and school size
-mad.sum<-mad.final%>%
-  group_by(Sample,School,Metric)%>% # need to keep target loc in
-  dplyr::summarise(response=min(response),min.length=min(Length),mean.length=mean(Length),max.length=max(Length))%>%
-  ungroup()%>%
-  left_join(mad.school.size)%>%
-  replace_na(list(school.size=1))%>%
-  left_join(factors)%>%
-  #mutate(Metric=as.factor(Metric),School=as.factor(School))%>%
-  as.data.frame()%>%
-  glimpse()
-
 # Set predictor variables ----
-pred.vars=c("Depth","PeriodLength","sd.relief","rock","hard.corals","sand","reef","macroalgae") 
+pred.vars=c("Depth","PeriodLength","sd.relief","mean.relief","rock","hard.corals","sand","reef","macroalgae") 
 
 # Removed 
 # reef - correlated with sand
 # macroalgae - too few
 # Depth didnt used to be in but maybe keep it??? BG
+
+# NEW DECISIONS 2020
+# Mean relief is correlated with reef + sand - keep reef + sand
+# Reef is correlated with sand - keep reef
+# Keep sd relief, periodlength (offset), remove macroalgae
 
 dat<-combined.abundance.dataframes
 
@@ -263,11 +169,6 @@ for (i in pred.vars) {
   plot(log(x+1))
 }
 
-# Review of individual predictors - we have to make sure they have an even distribution---
-# If the data are squewed to low numbers try sqrt>log or if squewed to high numbers try ^2 of ^3
-# Decided that X4mm, X2mm, X1mm and X500um needed a sqrt transformation
-# Decided Depth, x63um, InPreds and BioTurb were not informative variables. 
-
 dat<-combined.abundance.dataframes%>%
   dplyr::rename(response=Response)
 
@@ -278,7 +179,7 @@ dat<-as.data.frame(dat)
 ## ABUNDANCE ----
 # Re-set the predictors for modeling----
 pred.vars=c("rock","sd.relief","hard.corals","sand") 
-pred.vars=c("reef","sd.relief","mean.relief") 
+pred.vars=c("reef","sd.relief","hard.corals") # NEW PREDICTORS
 
 # Set name of models ----
 name<-"abundance.output"
@@ -445,3 +346,93 @@ heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
           trace="none",key.title = "",keysize=2,
           notecol="black",key=T,
           sepcolor = "black",margins=c(12,8), lhei=c(4,15),Rowv=FALSE,Colv=FALSE)
+
+
+
+
+
+
+# # Mad data----
+# mad.data<-raw.data%>%
+#   filter(final.mad>0)%>% # NEED TO CREATE SCHOOLS BEFORE FILTERING THESE OUT
+#   filter(!is.na(Length))%>%
+#   filter(Length>80)%>%
+#   #filter(Length<300)%>%
+#   mutate(Indicator="Mad")%>%
+#   mutate(TargetLoc=as.factor(TargetLoc))%>%
+#   dplyr::rename(response=final.mad)%>%
+#   select(-c(Reef.Lagoon))%>%
+#   glimpse()
+# 
+# mad.schools<-mad.data%>%
+#   filter(grepl("School",School)) # filter to only those in schools
+# 
+# mad.school.size<-mad.schools%>%
+#   group_by(Sample,School)%>%
+#   filter(!School%in%c(""))%>%
+#   dplyr::summarise(school.size=sum(Number))
+# 
+# mad.individuals<-mad.data%>%
+#   filter(!grepl("School",School)) # filter to only individuals
+# 
+# mad.individuals<-mad.individuals%>%
+#   mutate(School=paste("School",1:nrow(mad.individuals), sep=".")) # make a unique id for each individual
+# 
+# mad<-bind_rows(mad.schools, mad.individuals)
+# 
+# # BG 04/09/19
+# # trying to figure out if we have schools of mixed target level
+# 
+# test.schools<-mad%>%
+#   mutate(TargetLoc=as.numeric(TargetLoc))%>%
+#   group_by(Sample,School)%>%
+#   summarise(number=length(unique(TargetLoc)),average=mean(TargetLoc))
+# 
+# schools.with.mutliple.targetlocs<-test.schools%>%
+#   filter(number>1)%>%
+#   distinct(Sample,School)
+# 
+# # Need to ask Tim about this
+# # Out of 3894 schools 32 had two levels and 1 had all three
+# # Ideas
+# # 1st idea - remove the 33 mixed groups
+# # Then I only have three groups
+# 
+# # 2nd idea - rename 1 and 2 as both targeted and 0 as non-target
+# # will then have less groups to remove and only 2 gams yay
+# 
+# # 3rd idea - have none, low, high and mixed
+# 
+# mad.final<-mad%>%
+#   anti_join(schools.with.mutliple.targetlocs)%>%
+#   mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
+# # Only removes 266 fish (5179-4913)
+# 
+# 
+# # mad.targetloc0<-mad.final%>%
+# #   filter(TargetLoc%in%c(0))%>%
+# #   mutate(Metric="non-target")
+# # 
+# # mad.targetloc1<-mad.final%>%
+# #   filter(TargetLoc%in%c(1))%>%
+# #   mutate(Metric="mod-target")
+# # 
+# # mad.targetloc2<-mad.final%>%
+# #   filter(TargetLoc%in%c(2))%>%
+# #   mutate(Metric="high-target")
+# 
+# #combined.mad.data<-bind_rows(mad.targetloc0,mad.targetloc1,mad.targetloc2)
+# 
+# # Need to make a row for each school
+# # with min, mean and max length
+# # and school size
+# mad.sum<-mad.final%>%
+#   group_by(Sample,School,Metric)%>% # need to keep target loc in
+#   dplyr::summarise(response=min(response),min.length=min(Length),mean.length=mean(Length),max.length=max(Length))%>%
+#   ungroup()%>%
+#   left_join(mad.school.size)%>%
+#   replace_na(list(school.size=1))%>%
+#   left_join(factors)%>%
+#   #mutate(Metric=as.factor(Metric),School=as.factor(School))%>%
+#   as.data.frame()%>%
+#   glimpse()
