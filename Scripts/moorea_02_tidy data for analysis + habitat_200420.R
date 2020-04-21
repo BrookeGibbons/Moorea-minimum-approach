@@ -34,7 +34,7 @@ dir()
 
 length.factors<-read.csv(paste(study,"length.factors.csv",sep=".")) #TJL-Need to add this in
 
-length<-read.csv("mad.schools.length.csv")%>%
+length<-read.csv("mad.schools.length.csv",na.strings=c("NA","NaN", " ",""))%>%
   mutate(sample=paste(OpCode,Period,sep="."))%>%
   glimpse()
 
@@ -43,25 +43,25 @@ unique(length.factors$OpCode)
 unique(length$Comment.1)
 
 # Import from Life_history----
-url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
+# url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
+# 
+# master <- googlesheets4::read_sheet(url)%>%
+#   mutate(Max=as.numeric(Max))%>%
+#   mutate(Max_length=Max*10)%>%
+#   mutate(Min_length=0)%>%
+#   dplyr::rename(diet=`Diet 7cl2`)%>%
+#   dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+#   mutate(TargetLoc=as.character(TargetLoc))%>%
+#   mutate(Commercial=as.character(Commercial))%>%
+#   glimpse()
+# 
+# names(master)
+# unique(master$CommLoc)
+# unique(master$CommReg)
+# unique(master$CommReg)
+# unique(master$diet)
 
-master <- googlesheets4::read_sheet(url)%>%
-  mutate(Max=as.numeric(Max))%>%
-  mutate(Max_length=Max*10)%>%
-  mutate(Min_length=0)%>%
-  dplyr::rename(diet=`Diet 7cl2`)%>%
-  dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
-  mutate(TargetLoc=as.character(TargetLoc))%>%
-  mutate(Commercial=as.character(Commercial))%>%
-  glimpse()
-
-names(master)
-unique(master$CommLoc)
-unique(master$CommReg)
-unique(master$CommReg)
-unique(master$diet)
-
-# For offline ----
+# When offline ----
 setwd(data.dir)
 dir()
 
@@ -159,10 +159,11 @@ final.data <- data%>%
   mutate(Region=as.factor(Region))%>%
   filter(!is.na(Genus_species))%>%# there is 1
   #filter(!is.na(diet))%>%# there are 2
-  filter(!is.na(TargetLoc))#%>%)# there are 2
+  filter(!is.na(TargetLoc))%>%# there are 2
   # filter(!is.na(Max_length))%>%# there is 1
   # filter(!is.na(Resilience)) %>%#there are quite a few
   # filter(!is.na(Commercial))%>%#there are quite a few
+  glimpse()
 
 tests <- data%>%
   #filter(is.na(Family))%>%
@@ -173,3 +174,4 @@ tests <- data%>%
   #filter(is.na(Max_length))
 
 write.csv(final.data, file=paste(Sys.Date(),study,"combined.factors.habitat.csv",sep = "_"), row.names=FALSE)
+
