@@ -13,6 +13,7 @@ library(gamm4)
 library(googlesheets)
 library(googlesheets4)
 library(RCurl) #needed to download data from GitHub
+library(stringr)
 
 rm(list=ls())
 
@@ -25,25 +26,26 @@ study<-"mad.schools"
 
 # Add you work dir here ----
 work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Use this directory name from now on
+work.dir <- ("Y:/2020-Moorea-minimum-approach") # Work laptop
 
 tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
 summaries=paste(work.dir,"Data/Summaries",sep="/")
 data.dir=paste(work.dir,"Data",sep="/")
 plots=paste(work.dir,"Plots",sep="/")
-model.out=paste(work.dir,"ModelOut",sep="/")
+model.out=paste(work.dir,"ModelOut/MAD",sep="/")
 
 # Moorea life history ----
-url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
-
-master <- googlesheets4::read_sheet(url)%>%
-  mutate(Max=as.numeric(Max))%>%
-  mutate(Max_length=Max*10)%>%
-  mutate(Min_length=0)%>%
-  dplyr::rename(diet=`Diet 7cl2`)%>%
-  dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
-  mutate(TargetLoc=as.character(TargetLoc))%>%
-  mutate(Commercial=as.character(Commercial))%>%
-  glimpse()
+# url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
+# 
+# master <- googlesheets4::read_sheet(url)%>%
+#   mutate(Max=as.numeric(Max))%>%
+#   mutate(Max_length=Max*10)%>%
+#   mutate(Min_length=0)%>%
+#   dplyr::rename(diet=`Diet 7cl2`)%>%
+#   dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
+#   mutate(TargetLoc=as.character(TargetLoc))%>%
+#   mutate(Commercial=as.character(Commercial))%>%
+#   glimpse()
 
 # For offline ----
 setwd(data.dir)
@@ -82,6 +84,7 @@ mad.data<-raw.data%>%
   #filter(Length>80)%>%
   #filter(Length<300)%>%
   dplyr::mutate(Indicator="Mad")%>%
+  dplyr::mutate(TargetLoc=str_replace_all(.$TargetLoc,c("1"="targeted","2"="targeted","0"="non-target")))%>% # test
   dplyr::mutate(TargetLoc=as.factor(TargetLoc))%>%
   dplyr::rename(response=final.mad)%>%
   dplyr::select(-c(Reef.Lagoon))%>%
@@ -108,17 +111,17 @@ mad<-bind_rows(mad.schools, mad.individuals)
 
 test.schools<-mad%>%
   mutate(TargetLoc=as.numeric(TargetLoc))%>%
-  mutate(TargetLoc=ifelse(TargetLoc==1,2,TargetLoc))%>%
+  # mutate(TargetLoc=ifelse(TargetLoc==1,2,TargetLoc))%>%
   group_by(Sample,School)%>%
-  summarise(number=length(unique(TargetLoc)),average=mean(TargetLoc))
+  summarise(number=length(unique(TargetLoc)))#,average=mean(TargetLoc))
 
 schools.with.mutliple.targetlocs<-test.schools%>%
   dplyr::filter(number>1)%>%
   distinct(Sample,School) # might need to come back to this
 
 mad.final <- mad%>%
-  anti_join(schools.with.mutliple.targetlocs)%>%
-  mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
+  anti_join(schools.with.mutliple.targetlocs)#%>%
+  #mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
 
 # Removes 594 fish (8975-8381) (594/8975*100=6%)
 
