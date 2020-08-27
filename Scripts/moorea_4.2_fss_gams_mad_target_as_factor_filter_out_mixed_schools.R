@@ -84,7 +84,7 @@ mad.data<-raw.data%>%
   #filter(Length>80)%>%
   #filter(Length<300)%>%
   dplyr::mutate(Indicator="Mad")%>%
-  dplyr::mutate(TargetLoc=str_replace_all(.$TargetLoc,c("1"="targeted","2"="targeted","0"="non-target")))%>% # test
+  # dplyr::mutate(TargetLoc=str_replace_all(.$TargetLoc,c("1"="targeted","2"="targeted","0"="non-target")))%>% # test
   dplyr::mutate(TargetLoc=as.factor(TargetLoc))%>%
   dplyr::rename(response=final.mad)%>%
   dplyr::select(-c(Reef.Lagoon))%>%
@@ -120,8 +120,8 @@ schools.with.mutliple.targetlocs<-test.schools%>%
   distinct(Sample,School) # might need to come back to this
 
 mad.final <- mad%>%
-  anti_join(schools.with.mutliple.targetlocs)#%>%
-  #mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
+  anti_join(schools.with.mutliple.targetlocs)%>%
+  mutate(Metric=ifelse(TargetLoc%in%c(0),"non-target",ifelse(TargetLoc%in%c(1),"mod-target","high-target")))
 
 # Removes 594 fish (8975-8381) (594/8975*100=6%)
 
@@ -141,7 +141,7 @@ mad.sum <- mad.final%>%
   glimpse()
 
 # Set predictor variables ----
-pred.vars=c("sd.relief","reef","mean.releif","mean.length","school.size") 
+pred.vars=c("sd.relief","reef","mean.relief","mean.length","school.size") 
 
 # Removed 
 # reef - correlated with sand
@@ -174,9 +174,7 @@ for (i in pred.vars) {
 pred.vars=c("mean.relief","sd.relief","hard.corals","rock","min.length","school.size") # "max.length","mean.length",
 
 
-pred.vars=c("sd.relief","reef","mean.relief","mean.length","school.size") 
-
-#pred.vars=c("mean.relief","sd.relief","hard.corals","rock","Length")
+pred.vars=c("sd.relief","reef","mean.relief","mean.length","school.size")
 
 names(dat)
 
