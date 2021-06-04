@@ -20,6 +20,7 @@ study<-"mad.schools"
 # Add you working directory here ----
 work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Use this directory name from now on (MAC)
 work.dir <- ("Y:/2020-Moorea-minimum-approach") # Work laptop
+work.dir <- ("C:/GitHub/Moorea-minimum-approach") # Brooke's UWA Desktop
 
 # Subdirectories ----
 data.dir=paste(work.dir,"Data",sep="/")

@@ -3,7 +3,8 @@ rm(list=ls())
 study<-"mad.schools"
 
 # Add you work dir here-
-work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Use this directory name from now on
+work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Brooke's Mac
+work.dir <- ("C:/GitHub/Moorea-minimum-approach") # Brooke's UWA Desktop
 
 habitat.data <- paste(work.dir,"Data/Habitat",sep="/")
 tidy.data <- paste(work.dir,"Data/Tidy data",sep="/")
@@ -78,7 +79,7 @@ relief<-hab%>%
 # CREATE catami_broad------
 broad<-hab%>%
   select(-c(fieldofview,relief))%>%
-  mutate(broad=ifelse(broad=="Octocoral/Black","Octocoral.Black",ifelse(broad=="Stony corals","Stony.corals",ifelse(broad=="Open Water","Open.Water",broad))))%>% #correct bad names
+  mutate(broad=ifelse(broad=="Octocoral/Black","Stony.corals",ifelse(broad=="Stony corals","Stony.corals",ifelse(broad=="Open Water","Open.Water",broad))))%>% #correct bad names
   filter(!broad=="")%>%
   filter(!is.na(broad))%>%
   filter(!broad=="Unknown")%>%
