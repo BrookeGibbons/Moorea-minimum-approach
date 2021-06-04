@@ -173,11 +173,6 @@ for (i in pred.vars) {
 dat<-combined.abundance.dataframes%>%
   dplyr::rename(response=Response)
 
-glimpse(dat)
-
-dat<-as.data.frame(dat)%>%
-  dplyr::select(-c(Depth, rock, macroalgae, sand, mean.relief))
-
 ## ABUNDANCE ----
 # Re-set the predictors for modeling----
 pred.vars=c("rock","sd.relief","hard.corals","sand") 
@@ -202,7 +197,7 @@ unique.vars.use
 setwd(model.out) # Set wd for example outputs - will differ on your computer
 resp.vars=unique.vars.use
 use.dat=dat
-factor.vars=c("Status")# Status as a Factor with two levels
+factor.vars=c("Status","TargetLoc")# Status as a Factor with two levels
 out.all=list()
 var.imp=list()
 

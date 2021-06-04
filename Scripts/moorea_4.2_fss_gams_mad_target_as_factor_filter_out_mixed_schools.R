@@ -17,7 +17,7 @@ library(stringr)
 rm(list=ls())
 
 # install package----
-devtools::install_github("beckyfisher/FSSgam_package", force =TRUE) #run once
+#devtools::install_github("beckyfisher/FSSgam_package", force =TRUE) #run once
 library(FSSgam)
 
 # Study name
@@ -26,7 +26,7 @@ study<-"mad.schools"
 # Add you work dir here ----
 work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Use this directory name from now on
 work.dir<-("C:/GitHub/Moorea-minimum-approach") # work desktop
-work.dir <- ("Y:/2020-Moorea-minimum-approach") # Work laptop
+#work.dir <- ("Y:/2020-Moorea-minimum-approach") # Work laptop
 
 tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
 summaries=paste(work.dir,"Data/Summaries",sep="/")
@@ -34,18 +34,6 @@ data.dir=paste(work.dir,"Data",sep="/")
 plots=paste(work.dir,"Plots",sep="/")
 model.out=paste(work.dir,"ModelOut/MAD",sep="/")
 
-# Moorea life history ----
-# url <- ("https://docs.google.com/spreadsheets/d/1ud-Bk7GAVVB90ptH_1DizLhEByRwyJYwacvWpernU3s/edit#gid=956213975")
-# 
-# master <- googlesheets4::read_sheet(url)%>%
-#   mutate(Max=as.numeric(Max))%>%
-#   mutate(Max_length=Max*10)%>%
-#   mutate(Min_length=0)%>%
-#   dplyr::rename(diet=`Diet 7cl2`)%>%
-#   dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
-#   mutate(TargetLoc=as.character(TargetLoc))%>%
-#   mutate(Commercial=as.character(Commercial))%>%
-#   glimpse()
 
 # For offline ----
 setwd(data.dir)
@@ -90,6 +78,31 @@ mad.data<-raw.data%>%
   dplyr::select(-c(Reef.Lagoon))%>%
   glimpse()
 
+# Add a median length within a school
+# if no lengths in a school give median length for that species in that transect?
+
+mad.with.length <- mad.data[!is.na(mad.data$Length),]
+
+median.schools <- plyr::ddply(mad.with.length, (Genus_species ~ Sample ~ School), summarise, Length.new = median(Length),)
+median.all <- plyr::ddply(mad.with.length, (Genus_species ~ Location), summarise, Length.new = median(Length),)
+
+# Subset to all missing lengths
+mad.no.length <- mad.data[is.na(mad.data$Length),]
+mad.new.lengths <- dplyr::left_join(mad.no.length, median.schools)%>%
+  dplyr::mutate(Length=ifelse(is.na(Length), Length.new, Length))%>%
+  dplyr::select(!Length.new)
+
+still.no.length <- mad.new.lengths[is.na(mad.add.lengths$Length),]
+
+last.add.lengths<- dplyr::left_join(still.no.length, median.all)%>%
+  dplyr::mutate(Length=ifelse(is.na(Length), Length.new, Length))
+
+new.mad.data <- mad.new.lengths %>%
+  filter(!is.na(Length))%>%
+  bind_rows(., mad.with.length, last.add.lengths)
+
+mad.data <- new.mad.data
+
 mad.schools<-mad.data%>%
   dplyr::filter(grepl("School",School)) # filter to only those in schools
 
@@ -111,9 +124,13 @@ mad<-bind_rows(mad.schools, mad.individuals)
 
 test.schools<-mad%>%
   mutate(TargetLoc=as.numeric(TargetLoc))%>%
-  # mutate(TargetLoc=ifelse(TargetLoc==1,2,TargetLoc))%>%
+  #mutate(TargetLoc=ifelse(TargetLoc==1,2,TargetLoc))%>%
   group_by(Sample,School)%>%
   summarise(number=length(unique(TargetLoc)))#,average=mean(TargetLoc))
+
+
+# 75 schools (594 fish) 6% if 3 levels of target and we remove all mixed fish
+# 73 schools () if 2 levels of target and we remove all mixed fish
 
 schools.with.mutliple.targetlocs<-test.schools%>%
   dplyr::filter(number>1)%>%
@@ -129,6 +146,7 @@ mad.final <- mad%>%
 # with min, mean and max length
 # and school size
 mad.sum <- mad.final%>%
+  filter(Length<300)%>%
   dplyr::group_by(Sample,School,Metric,TargetLoc)%>% # need to keep target loc in
   dplyr::summarise(response=min(response),min.length=min(Length),mean.length=mean(Length),max.length=max(Length))%>%
   ungroup()%>%
@@ -141,19 +159,22 @@ mad.sum <- mad.final%>%
   glimpse()
 
 # Set predictor variables ----
-pred.vars=c("sd.relief","reef","mean.relief","mean.length","school.size") 
+pred.vars=c("mean.relief","sd.relief","hard.corals","rock","reef",
+            "min.length","mean.length","max.length","school.size") 
 
 # Removed 
 # reef - correlated with sand
 # macroalgae - too few
 # Depth didnt used to be in but maybe keep it??? BG
 
-dat<-mad.sum
+dat<-mad.sum %>%
+  filter(!school.size>200)
 
 # Check for correalation of predictor variables- remove anything highly correlated (>0.95)---
 round(cor(dat[,pred.vars]),2)
 
-# nothing is highly correlated 
+# All of the length variables are highly correlated.
+# I think I have to run through this 3 times using each one (min, mean and max)
 
 # Plot of likely transformations - thanks to Anna Cresswell for this loop!
 par(mfrow=c(3,2))
@@ -168,13 +189,15 @@ for (i in pred.vars) {
   plot(log(x+1))
 }
 
+# school size is very shitty
+# rock is also pretty shitty
+# sqrt hard corals
+
 ### MAD ----
 # Need to change all of this (copied from abundance)----
 # Re-set the predictors for modeling----
-pred.vars=c("mean.relief","sd.relief","hard.corals","rock","min.length","school.size") # "max.length","mean.length",
-
-
-pred.vars=c("sd.relief","reef","mean.relief","mean.length","school.size")
+pred.vars=c("mean.relief","sd.relief","hard.corals","reef",
+            "mean.length","school.size")
 
 names(dat)
 
@@ -183,8 +206,6 @@ name<-"mad.output"
 
 # Data
 dat<-mad.sum
-
-#dat<-mad.final%>%dplyr::rename(Metric=Indicator)
 
 # Check to make sure Response vector has not more than 80% zeros----
 unique.vars=unique(as.character(dat$Metric))
