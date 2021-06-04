@@ -24,7 +24,7 @@ study<-"mad.schools"
 
 # Add you working directory here ----
 work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Use this directory name from now on (MAC)
-work.dir <- ("Y:/2020-Moorea-minimum-approach") # Work laptop
+work.dir <- ("Y:/Moorea-minimum-approach") # Work laptop
 work.dir <- ("C:/GitHub/Moorea-minimum-approach") # Brooke's UWA Desktop
 
 tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
@@ -133,7 +133,8 @@ number.of.schools<-schools.summary%>%
 # Combine datasets together ----
 combined.abundance.dataframes <- bind_rows(total.abundance.species.richness,
                                          size.class.target,
-                                         number.of.schools)
+                                         number.of.schools)%>%
+  dplyr::rename(response=Response)
 
 unique(combined.abundance.dataframes$Site)
 
@@ -150,7 +151,7 @@ pred.vars=c("Depth","PeriodLength","sd.relief","mean.relief","rock","hard.corals
 # Reef is correlated with sand - keep reef
 # Keep sd relief, periodlength (offset), remove macroalgae
 
-dat<-combined.abundance.dataframes
+dat<-combined.abundance.dataframes%>%glimpse()
 
 # Check for correalation of predictor variables- remove anything highly correlated (>0.95)---
 round(cor(dat[,pred.vars]),2)
@@ -176,7 +177,7 @@ dat<-combined.abundance.dataframes%>%
 ## ABUNDANCE ----
 # Re-set the predictors for modeling----
 pred.vars=c("rock","sd.relief","hard.corals","sand") 
-pred.vars=c("reef","sd.relief","hard.corals") # NEW PREDICTORS
+pred.vars=c("reef","sd.relief","hard.corals","mean.relief") # NEW PREDICTORS
 
 names(dat)
 
@@ -197,7 +198,7 @@ unique.vars.use
 setwd(model.out) # Set wd for example outputs - will differ on your computer
 resp.vars=unique.vars.use
 use.dat=dat
-factor.vars=c("Status","TargetLoc")# Status as a Factor with two levels
+factor.vars=c("Status")# Status as a Factor with two levels
 out.all=list()
 var.imp=list()
 

@@ -1,0 +1,2 @@
+"","modname","AICc","BIC","r2.vals","r2.vals.unique","edf","edf.less.1","delta.AICc","delta.BIC","wi.AICc","wi.BIC","mean.relief","sd.relief","hard.corals","reef","mean.length","school.size","Status","TargetLoc","cumsum.wi"
+"MAD","mean.length+reef+school.size",75595.2706629897,75733.4452282831,0.37191,NA,20.54,0,0,0,0.993,0.901,0,0,0,1,1,1,0,0,0.993
