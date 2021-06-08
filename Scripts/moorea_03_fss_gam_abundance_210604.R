@@ -81,6 +81,22 @@ total.abundance.species.richness <- ta.sr%>%
   gather(key=Metric, value = Response, (match("reef",names(.))+1):ncol(.))
 
 ## Make size class data ----
+# size.class <- raw.data%>%
+#   dplyr::rename(Response = Number)%>%
+#   filter(!is.na(Length))%>% 
+#   mutate(Indicator = ifelse(Length<=(Max_length/3),"small","large"))%>%
+#   dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,TargetLoc,Commercial,Max_length,final.mad,School))%>%
+#   left_join(samples,.,by="Sample")%>%
+#   tidyr::complete(Sample,tidyr::nesting(Family,Genus_species),Indicator)%>%
+#   left_join(factors,., by = "Sample")%>%
+#   replace_na(list(Response = 0))%>%
+#   filter(Reef.Lagoon == "Lagoon")%>% # I am only looking at Lagoon sites
+#   filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
+#   left_join(master, by = c("Family", "Genus_species"))%>%
+#   mutate(Metric=Indicator)%>%
+#   dplyr::select(-c(Resilience.x,Resilience.y,diet,CommLoc,CommReg,Ciguatera,Commercial,Max_length))%>%
+#   glimpse()
+
 size.class <- raw.data%>%
   dplyr::rename(Response = Number)%>%
   filter(!is.na(Length))%>% 
@@ -88,13 +104,15 @@ size.class <- raw.data%>%
   dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,TargetLoc,Commercial,Max_length,final.mad,School))%>%
   left_join(samples,.,by="Sample")%>%
   tidyr::complete(Sample,tidyr::nesting(Family,Genus_species),Indicator)%>%
-  left_join(factors,., by = "Sample")%>%
   replace_na(list(Response = 0))%>%
+  dplyr::group_by(Sample,Indicator)%>%
+  dplyr::summarise(Response=sum(Response))%>%
+  left_join(factors,., by = "Sample")%>%
   filter(Reef.Lagoon == "Lagoon")%>% # I am only looking at Lagoon sites
   filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
-  left_join(master, by = c("Family", "Genus_species"))%>%
+  #left_join(master, by = c("Family", "Genus_species"))%>%
   mutate(Metric=Indicator)%>%
-  dplyr::select(-c(Resilience.x,Resilience.y,diet,CommLoc,CommReg,Ciguatera,Commercial,Max_length))%>%
+  #dplyr::select(-c(Resilience.x,Resilience.y,diet,CommLoc,CommReg,Ciguatera,Commercial,Max_length))%>%
   glimpse()
 
 names(size.class)
@@ -132,11 +150,13 @@ number.of.schools<-schools.summary%>%
 
 # Combine datasets together ----
 combined.abundance.dataframes <- bind_rows(total.abundance.species.richness,
-                                         size.class.target,
+                                         size.class, #.target,
                                          number.of.schools)%>%
   dplyr::rename(response=Response)
 
 unique(combined.abundance.dataframes$Site)
+
+
 
 # Set predictor variables ----
 pred.vars=c("Depth","PeriodLength","sd.relief","mean.relief","rock","hard.corals","sand","reef","macroalgae") 
