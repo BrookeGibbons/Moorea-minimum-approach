@@ -218,7 +218,7 @@ unique.vars.use
 setwd(model.out) # Set wd for example outputs - will differ on your computer
 resp.vars=unique.vars.use
 use.dat=dat
-factor.vars=c("Status")# Status as a Factor with two levels
+factor.vars=c("Status","TargetLoc")# Status as a Factor with two levels
 out.all=list()
 var.imp=list()
 

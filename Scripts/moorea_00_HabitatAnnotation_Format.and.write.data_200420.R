@@ -5,6 +5,7 @@ study<-"mad.schools"
 # Add you work dir here-
 work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Brooke's Mac
 work.dir <- ("C:/GitHub/Moorea-minimum-approach") # Brooke's UWA Desktop
+work.dir <- ("Y:/Moorea-minimum-approach") # For work laptop
 
 habitat.data <- paste(work.dir,"Data/Habitat",sep="/")
 tidy.data <- paste(work.dir,"Data/Tidy data",sep="/")

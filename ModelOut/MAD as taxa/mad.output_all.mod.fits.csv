@@ -1,12 +1,6 @@
 "","modname","AICc","BIC","r2.vals","r2.vals.unique","edf","edf.less.1","delta.AICc","delta.BIC","wi.AICc","wi.BIC","mean.relief","sd.relief","hard.corals","reef","mean.length","school.size","Status","cumsum.wi"
-"high-target","mean.length+reef+school.size",48591.781671315,48721.0273594294,0.34405,NA,20.66,0,0,0,0.978,0.895,0,0,0,1,1,1,0,0.978
-"mod-target.mean.length+reef+Status","mean.length+reef+Status",8614.41712852635,8683.52378743385,0.40445,NA,15.58,0,0,0,0.184,0.473,0,0,0,1,1,0,1,0.184
-"mod-target.mean.length+reef","mean.length+reef",8614.60831580791,8683.77753121334,0.40434,NA,15.59,0,0.191,0.254,0.167,0.417,0,0,0,1,1,0,0,0.351
-"mod-target.mean.length.by.Status+reef+Status","mean.length.by.Status+reef+Status",8614.74092219762,8690.87697772883,0.40836,NA,17.29,0,0.324,7.353,0.157,0.012,0,0,0,1,1,0,1,0.508
-"mod-target.mean.length+reef+school.size","mean.length+reef+school.size",8615.03587544485,8688.5207972666,0.40641,NA,16.64,0,0.619,4.997,0.135,0.039,0,0,0,1,1,1,0,0.643
-"mod-target.mean.length.by.Status+reef.by.Status+Status","mean.length.by.Status+reef.by.Status+Status",8615.24480413482,8696.61287570884,0.41096,NA,18.58,0,0.828,13.089,0.122,0.001,0,0,0,1,1,0,1,0.765
-"mod-target.mean.length+reef.by.Status+Status","mean.length+reef.by.Status+Status",8615.36678285593,8690.41520184119,0.40693,NA,17.03,0,0.95,6.891,0.115,0.015,0,0,0,1,1,0,1,0.88
-"mod-target.hard.corals+mean.length+reef","hard.corals+mean.length+reef",8615.71862337575,8690.12292585093,0.40626,NA,16.87,0,1.301,6.599,0.096,0.017,0,0,1,1,1,0,0,0.976
-"non-target.mean.length.by.Status+reef.by.Status+Status","mean.length.by.Status+reef.by.Status+Status",18208.4707711022,18302.053008246,0.27759,NA,17.77,0,0,12.241,0.353,0.001,0,0,0,1,1,0,1,0.353
-"non-target.mean.length+reef+school.size","mean.length+reef+school.size",18208.7844556045,18291.9401494168,0.27453,NA,15.66,0,0.314,2.128,0.302,0.109,0,0,0,1,1,1,0,0.655
-"non-target.mean.length+reef.by.Status+Status","mean.length+reef.by.Status+Status",18210.1939573282,18291.6037032781,0.27315,NA,15.31,0,1.723,1.792,0.149,0.129,0,0,0,1,1,0,1,0.804
+"high-target","mean.length+mean.relief+school.size",68767.804809476,68900.8410696856,0.26418,NA,20.15,0,0,0,0.867,0.991,1,0,0,0,1,1,0,0.867
+"mod-target.mean.length.by.Status+reef+Status","mean.length.by.Status+reef+Status",10856.4615176706,10942.8275947017,0.32992,NA,18.74,0,0,5.405,0.371,0.026,0,0,0,1,1,0,1,0.371
+"mod-target.mean.length.by.Status+reef.by.Status+Status","mean.length.by.Status+reef.by.Status+Status",10856.7762244169,10949.5899979314,0.33303,NA,20.24,0,0.315,12.167,0.317,0.001,0,0,0,1,1,0,1,0.688
+"non-target.mean.length+reef+school.size","mean.length+reef+school.size",25957.0453963905,26044.1763585417,0.17987,NA,15.37,0,0,0.95,0.323,0.101,0,0,0,1,1,1,0,0.323
+"non-target.mean.length+mean.relief+school.size","mean.length+mean.relief+school.size",25958.7701991616,26044.6896723832,0.17868,NA,15.14,0,1.725,1.463,0.136,0.078,1,0,0,0,1,1,0,0.459
