@@ -1,4 +1,4 @@
-# librarys----
+# librarys ----
 library(tidyr)
 library(dplyr)
 library(mgcv)
@@ -20,65 +20,37 @@ rm(list=ls())
 library(FSSgam)
 
 # Study name
-study<-"mad.schools"
-
-# Add you working directory here ----
-work.dir <- ("~/Git Projects/current/2020-Moorea-minimum-approach") # Use this directory name from now on (MAC)
-work.dir <- ("Y:/Moorea-minimum-approach") # Work laptop
-work.dir <- ("C:/GitHub/Moorea-minimum-approach") # Brooke's UWA Desktop
-
-tidy.data=paste(work.dir,"Data/Tidy data",sep="/")
-summaries=paste(work.dir,"Data/Summaries",sep="/")
-data.dir=paste(work.dir,"Data",sep="/")
-plots=paste(work.dir,"Plots",sep="/")
-model.out=paste(work.dir,"ModelOut/Abundance",sep="/")
-
-# Mo'orea life history data ----
-setwd(data.dir)
-dir()
-
-master <- read.delim("Moorea Species List_170406.txt")%>%
-  mutate(Max=as.numeric(Max))%>%
-  mutate(Max_length=Max*10)%>%
-  mutate(Min_length=0)%>%
-  dplyr::rename(diet=Diet.7cl2)%>%
-  dplyr::select(Genus_species,Family,diet,CommLoc,CommReg,TargetLoc,Commercial,Ciguatera,Resilience,Max_length)%>%
-  mutate(TargetLoc=as.character(TargetLoc))%>%
-  mutate(Commercial=as.character(Commercial))%>%
-  glimpse()
+study <- "mad.schools"
 
 # Bring in length data ----
-setwd(tidy.data)
-dir()
-
-raw.data <- read.csv("2020-04-20_mad.schools_combined.factors.habitat.csv")%>%
+raw.data <- readRDS("Data/Tidy data/length.combined.factors.habitat.RDS")%>%
   filter(Reef.Lagoon %in% c("Lagoon"))%>% # I am only looking at Lagoon sites
-  filter(Location %in% c("Pihaena", "Tiahura", "Tetaiuo"))%>% # only in these three reserves
+  filter(Location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
   glimpse()
 
 # Make factors and sample list ----
-samples <- raw.data%>%
+samples <- raw.data %>%
   distinct(Sample)
 
-factors <- raw.data%>%
-  distinct(Sample,Depth,Location,Status,Site,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength)
+factors <- raw.data %>%
+  distinct(Sample, Depth, Location, Status, Site, Reef.Lagoon, mean.relief, sd.relief, rock, macroalgae, hard.corals, sand,reef, PeriodLength)
 
 # Make TA and SR for gams ----
-ta.sr <- raw.data%>%
-  group_by(Genus_species,Sample) %>%
-  dplyr::summarise(Abundance = sum(Number))%>%
-  spread(Genus_species, Abundance, fill = 0)%>%
-  mutate(Total.Abundance = rowSums(.[,2:(ncol(.))],na.rm = TRUE ))#Add in Totals
+ta.sr <- raw.data %>%
+  group_by(Genus_species, Sample) %>%
+  dplyr::summarise(Abundance = sum(Number)) %>%
+  spread(Genus_species, Abundance, fill = 0) %>%
+  mutate(Total.Abundance = rowSums(.[,2:(ncol(.))],na.rm = TRUE )) # Add in Totals
 
 Presence.Absence <- ta.sr[,2:(ncol(ta.sr))-1]
 for (i in 1:dim(Presence.Absence)[2]){
   Presence.Absence[,i] <- ifelse(Presence.Absence[,i]>0,1,0)
 }
-total.abundance.species.richness <- ta.sr%>%
-  mutate(Species.Richness = rowSums(Presence.Absence,na.rm = TRUE))%>%
-  inner_join(factors, by="Sample")%>%
-  dplyr::select(Depth,Location,Status,Site,Sample,PeriodLength,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,Total.Abundance,Species.Richness)%>%
-  gather(key=Metric, value = Response, (match("reef",names(.))+1):ncol(.))
+total.abundance.species.richness <- ta.sr %>%
+  mutate(Species.Richness = rowSums(Presence.Absence, na.rm = TRUE)) %>%
+  inner_join(factors, by = "Sample") %>%
+  dplyr::select(Depth, Location, Status, Site, Sample, PeriodLength, mean.relief, sd.relief, rock, macroalgae, hard.corals, sand, reef, Total.Abundance, Species.Richness) %>%
+  gather(key = Metric, value = Response, (match("reef", names(.))+1):ncol(.))
 
 ## Make size class data ----
 # size.class <- raw.data%>%
@@ -97,22 +69,20 @@ total.abundance.species.richness <- ta.sr%>%
 #   dplyr::select(-c(Resilience.x,Resilience.y,diet,CommLoc,CommReg,Ciguatera,Commercial,Max_length))%>%
 #   glimpse()
 
-size.class <- raw.data%>%
+size.class <- raw.data %>%
   dplyr::rename(Response = Number)%>%
-  filter(!is.na(Length))%>% 
-  mutate(Indicator = ifelse(Length<=(Max_length/3),"small","large"))%>%
+  filter(!is.na(Length)) %>% 
+  mutate(Indicator = ifelse(Length <= (Max_length/3), "small", "large")) %>%
   dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,TargetLoc,Commercial,Max_length,final.mad,School))%>%
-  left_join(samples,.,by="Sample")%>%
-  tidyr::complete(Sample,tidyr::nesting(Family,Genus_species),Indicator)%>%
-  replace_na(list(Response = 0))%>%
-  dplyr::group_by(Sample,Indicator)%>%
-  dplyr::summarise(Response=sum(Response))%>%
-  left_join(factors,., by = "Sample")%>%
-  filter(Reef.Lagoon == "Lagoon")%>% # I am only looking at Lagoon sites
-  filter(Location%in%c("Pihaena","Tiahura","Tetaiuo"))%>% # only in these three reserves
-  #left_join(master, by = c("Family", "Genus_species"))%>%
-  mutate(Metric=Indicator)%>%
-  #dplyr::select(-c(Resilience.x,Resilience.y,diet,CommLoc,CommReg,Ciguatera,Commercial,Max_length))%>%
+  full_join(samples, ., by = "Sample") %>%
+  tidyr::complete(Sample, tidyr::nesting(Family, Genus_species), Indicator) %>%
+  replace_na(list(Response = 0)) %>%
+  dplyr::group_by(Sample, Indicator)%>%
+  dplyr::summarise(Response = sum(Response)) %>%
+  left_join(factors, ., by = "Sample")%>%
+  filter(Reef.Lagoon == "Lagoon") %>% # I am only looking at Lagoon sites
+  filter(Location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
+  mutate(Metric = Indicator) %>%
   glimpse()
 
 names(size.class)
