@@ -73,7 +73,7 @@ size.class <- raw.data %>%
   dplyr::rename(Response = Number)%>%
   filter(!is.na(Length)) %>% 
   mutate(Indicator = ifelse(Length <= (Max_length/3), "small", "large")) %>%
-  dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,TargetLoc,Commercial,Max_length,final.mad,School))%>%
+  dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,Commercial,Max_length,final.mad,School))%>%
   full_join(samples, ., by = "Sample") %>%
   tidyr::complete(Sample, tidyr::nesting(Family, Genus_species), Indicator) %>%
   replace_na(list(Response = 0)) %>%
@@ -89,47 +89,71 @@ names(size.class)
 unique(size.class$Sample)
 
 # Abundance by size and TargetLoc ----
-size.class.target <- size.class%>%
-  filter(!is.na(TargetLoc))%>%
-  dplyr::group_by(Sample,Indicator,TargetLoc)%>%
-  dplyr::summarise(Response=sum(Response))%>%
+size.class.target <- raw.data %>%
+  dplyr::rename(Response = Number)%>%
+  filter(!is.na(Length)) %>% 
+  mutate(Indicator = ifelse(Length <= (Max_length/3), "small", "large")) %>%
+  dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,Commercial,Max_length,final.mad,School))%>%
+  full_join(samples, ., by = "Sample") %>%
+  tidyr::complete(Sample, tidyr::nesting(Family, Genus_species), Indicator, TargetLoc) %>%
+  replace_na(list(Response = 0)) %>%
+  dplyr::group_by(Sample, Indicator, TargetLoc)%>%
+  dplyr::summarise(Response = sum(Response)) %>%
+  left_join(factors, ., by = "Sample")%>%
+  filter(Reef.Lagoon == "Lagoon") %>% # I am only looking at Lagoon sites
+  filter(Location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
+  mutate(Metric = Indicator) %>%
+  filter(!is.na(TargetLoc)) %>%
   ungroup()%>%
-  inner_join(factors, by="Sample")%>%
   mutate(Metric=paste("Abundance.TargetLoc",TargetLoc,Indicator,sep="."))%>%
   dplyr::select(-c(TargetLoc,Reef.Lagoon))%>%
   glimpse()
 
+unique(size.class.target$Sample)
+unique(size.class.target$Metric)
+6*96
+
 # Number and size of schools ----
-schools.summary <- raw.data%>%
-  dplyr::filter(!is.na(School))%>%
-  dplyr::group_by(School,Sample) %>%
-  dplyr::summarise(Abundance = sum(Number))%>%
-  spread(School,Abundance, fill = 0)%>%
-  mutate(School.Total=rowSums(.[,2:(ncol(.))],na.rm = TRUE )) # Add in Totals
+schools.total <- raw.data %>%
+  dplyr::filter(!is.na(School)) %>%
+  dplyr::group_by(School, Sample) %>%
+  dplyr::summarise(Response = sum(Number)) %>%
+  dplyr::mutate(Metric = "Number in school") %>%
+  full_join(samples, ., by = "Sample") %>%
+  replace_na(list(Response = 0)) %>%
+  left_join(factors, ., by = "Sample") %>%
+  ungroup()
 
-Presence.Absence <- schools.summary[,2:(ncol(schools.summary))-1]
-for (i in 1:dim(Presence.Absence)[2]){
-  Presence.Absence[,i] <- ifelse(Presence.Absence[,i]>0,1,0)
-}
-
-number.of.schools<-schools.summary%>%
-  mutate(Number.of.schools = rowSums(Presence.Absence,na.rm = TRUE))%>%
-  inner_join(factors, by="Sample")%>%
-  dplyr::select(Depth,Location,Status,Site,Sample,PeriodLength,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,School.Total,Number.of.schools)%>%
-  gather(key=Metric, value = Response, (match("reef",names(.))+1):ncol(.))
-
+number.of.schools <- schools.total %>%
+  filter(!School %in% c("NA", NA, "")) %>%
+  dplyr::group_by(Sample) %>%
+  dplyr::summarise(number.of.schools = n()) %>%
+  dplyr::mutate(Metric = "Number of schools") %>%
+  ungroup() %>%
+  full_join(samples, ., by = "Sample") %>%
+  left_join(factors, ., by = "Sample")
+  replace_na(list(Response = 0))
+  
 # Combine datasets together ----
 combined.abundance.dataframes <- bind_rows(total.abundance.species.richness,
-                                         size.class, #.target,
+                                         size.class, 
+                                         size.class.target,
+                                         schools.total,
                                          number.of.schools)%>%
   dplyr::rename(response=Response)
 
 unique(combined.abundance.dataframes$Site)
 
-
-
 # Set predictor variables ----
-pred.vars=c("Depth","PeriodLength","sd.relief","mean.relief","rock","hard.corals","sand","reef","macroalgae") 
+pred.vars = c("Depth",
+            "PeriodLength",
+            "sd.relief",
+            "mean.relief",
+            "rock",
+            "hard.corals",
+            "sand",
+            "reef",
+            "macroalgae") 
 
 # Removed 
 # reef - correlated with sand
@@ -141,7 +165,7 @@ pred.vars=c("Depth","PeriodLength","sd.relief","mean.relief","rock","hard.corals
 # Reef is correlated with sand - keep reef
 # Keep sd relief, periodlength (offset), remove macroalgae
 
-dat<-combined.abundance.dataframes%>%glimpse()
+dat <- combined.abundance.dataframes%>%glimpse()
 
 # Check for correalation of predictor variables- remove anything highly correlated (>0.95)---
 round(cor(dat[,pred.vars]),2)
@@ -176,20 +200,26 @@ name<-"abundance.output"
 
 # Check to make sure Response vector has not more than 80% zeros----
 unique.vars=unique(as.character(dat$Metric))
+glimpse(unique.vars)
+
 unique.vars.use=character()
+
+glimpse(dat)
+
 for(i in 1:length(unique.vars)){
   temp.dat=dat[which(dat$Metric==unique.vars[i]),]
   if(length(which(temp.dat$response==0))/nrow(temp.dat)<0.8){
     unique.vars.use=c(unique.vars.use,unique.vars[i])}
 }
+
 unique.vars.use     
 
 # Run the full subset model selection----
-setwd(model.out) # Set wd for example outputs - will differ on your computer
+# setwd("/ModelOut") # Set wd for example outputs - will differ on your computer
 resp.vars=unique.vars.use
 use.dat=dat
-factor.vars=c("Status","TargetLoc")# Status as a Factor with two levels
-out.all=list()
+factor.vars=c("Status")# Status as a Factor with two levels #,"TargetLoc" BG removed 03/03/2023
+out.all=list() 
 var.imp=list()
 
 names(dat)
