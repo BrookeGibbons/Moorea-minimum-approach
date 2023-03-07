@@ -12,6 +12,7 @@ library(doSNOW)
 library(gamm4)
 library(googlesheets4)
 library(RCurl) #needed to download data from GitHub
+library(GlobalArchive)
 
 rm(list=ls())
 
@@ -24,33 +25,34 @@ study <- "mad.schools"
 
 # Bring in length data ----
 raw.data <- readRDS("Data/Tidy data/length.combined.factors.habitat.RDS")%>%
-  filter(Reef.Lagoon %in% c("Lagoon"))%>% # I am only looking at Lagoon sites
-  filter(Location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
+  ga.clean.names() %>%
+  filter(reef.lagoon %in% c("Lagoon"))%>% # I am only looking at Lagoon sites
+  filter(location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
   glimpse()
 
 # Make factors and sample list ----
 samples <- raw.data %>%
-  distinct(Sample)
+  distinct(sample)
 
 factors <- raw.data %>%
-  distinct(Sample, Depth, Location, Status, Site, Reef.Lagoon, mean.relief, sd.relief, rock, macroalgae, hard.corals, sand,reef, PeriodLength)
+  distinct(sample, depth, location, status, site, reef.lagoon, mean.relief, sd.relief, rock, macroalgae, hard.corals, sand,reef, periodlength)
 
 # Make TA and SR for gams ----
 ta.sr <- raw.data %>%
-  group_by(Genus_species, Sample) %>%
-  dplyr::summarise(Abundance = sum(Number)) %>%
-  spread(Genus_species, Abundance, fill = 0) %>%
-  mutate(Total.Abundance = rowSums(.[,2:(ncol(.))],na.rm = TRUE )) # Add in Totals
+  group_by(genus_species, sample) %>%
+  dplyr::summarise(abundance = sum(number)) %>%
+  spread(genus_species, abundance, fill = 0) %>%
+  mutate(total.abundance = rowSums(.[,2:(ncol(.))],na.rm = TRUE )) # Add in Totals
 
 Presence.Absence <- ta.sr[,2:(ncol(ta.sr))-1]
 for (i in 1:dim(Presence.Absence)[2]){
   Presence.Absence[,i] <- ifelse(Presence.Absence[,i]>0,1,0)
 }
 total.abundance.species.richness <- ta.sr %>%
-  mutate(Species.Richness = rowSums(Presence.Absence, na.rm = TRUE)) %>%
-  inner_join(factors, by = "Sample") %>%
-  dplyr::select(Depth, Location, Status, Site, Sample, PeriodLength, mean.relief, sd.relief, rock, macroalgae, hard.corals, sand, reef, Total.Abundance, Species.Richness) %>%
-  gather(key = Metric, value = Response, (match("reef", names(.))+1):ncol(.))
+  mutate(species.richness = rowSums(Presence.Absence, na.rm = TRUE)) %>%
+  inner_join(factors, by = "sample") %>%
+  dplyr::select(depth, location, status, site, sample, periodlength, mean.relief, sd.relief, rock, macroalgae, hard.corals, sand, reef, total.abundance, species.richness) %>%
+  gather(key = metric, value = response, (match("reef", names(.))+1):ncol(.))
 
 ## Make size class data ----
 # size.class <- raw.data%>%
@@ -70,83 +72,81 @@ total.abundance.species.richness <- ta.sr %>%
 #   glimpse()
 
 size.class <- raw.data %>%
-  dplyr::rename(Response = Number)%>%
-  filter(!is.na(Length)) %>% 
-  mutate(Indicator = ifelse(Length <= (Max_length/3), "small", "large")) %>%
-  dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,Commercial,Max_length,final.mad,School))%>%
-  full_join(samples, ., by = "Sample") %>%
-  tidyr::complete(Sample, tidyr::nesting(Family, Genus_species), Indicator) %>%
-  replace_na(list(Response = 0)) %>%
-  dplyr::group_by(Sample, Indicator)%>%
-  dplyr::summarise(Response = sum(Response)) %>%
-  left_join(factors, ., by = "Sample")%>%
-  filter(Reef.Lagoon == "Lagoon") %>% # I am only looking at Lagoon sites
-  filter(Location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
-  mutate(Metric = Indicator) %>%
+  dplyr::rename(response = number)%>%
+  filter(!is.na(length)) %>% 
+  mutate(indicator = ifelse(length <= (max_length/3), "small", "large")) %>%
+  dplyr::select(-c(depth, location, status, site, region, reef.lagoon, mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,periodlength,diet,commercial,max_length,final.mad,school))%>%
+  full_join(samples, ., by = "sample") %>%
+  tidyr::complete(sample, tidyr::nesting(family, genus_species), indicator) %>%
+  replace_na(list(response = 0)) %>%
+  dplyr::group_by(sample, indicator)%>%
+  dplyr::summarise(response = sum(response)) %>%
+  left_join(factors, ., by = "sample")%>%
+  filter(reef.lagoon == "Lagoon") %>% # I am only looking at Lagoon sites
+  filter(location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
+  mutate(metric = indicator) %>%
   glimpse()
 
 names(size.class)
-unique(size.class$Sample)
+unique(size.class$sample)
 
 # Abundance by size and TargetLoc ----
 size.class.target <- raw.data %>%
-  dplyr::rename(Response = Number)%>%
-  filter(!is.na(Length)) %>% 
-  mutate(Indicator = ifelse(Length <= (Max_length/3), "small", "large")) %>%
-  dplyr::select(-c(Depth,Location,Status,Site,Region,Reef.Lagoon,mean.relief,sd.relief,rock,macroalgae,hard.corals,sand,reef,PeriodLength,diet,Commercial,Max_length,final.mad,School))%>%
-  full_join(samples, ., by = "Sample") %>%
-  tidyr::complete(Sample, tidyr::nesting(Family, Genus_species), Indicator, TargetLoc) %>%
-  replace_na(list(Response = 0)) %>%
-  dplyr::group_by(Sample, Indicator, TargetLoc)%>%
-  dplyr::summarise(Response = sum(Response)) %>%
-  left_join(factors, ., by = "Sample")%>%
-  filter(Reef.Lagoon == "Lagoon") %>% # I am only looking at Lagoon sites
-  filter(Location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
-  mutate(Metric = Indicator) %>%
-  filter(!is.na(TargetLoc)) %>%
+  dplyr::rename(response = number)%>%
+  filter(!is.na(length)) %>% 
+  mutate(indicator = ifelse(length <= (max_length/3), "small", "large")) %>%
+  dplyr::select(-c(depth,location, status, site, region, reef.lagoon, mean.relief, sd.relief, rock, macroalgae, hard.corals, sand, reef, periodlength, diet, commercial, max_length,final.mad,school))%>%
+  full_join(samples, ., by = "sample") %>%
+  tidyr::complete(sample, tidyr::nesting(family, genus_species), indicator, targetloc) %>%
+  replace_na(list(response = 0)) %>%
+  dplyr::group_by(sample, indicator, targetloc)%>%
+  dplyr::summarise(response = sum(response)) %>%
+  left_join(factors, ., by = "sample")%>%
+  filter(reef.lagoon == "Lagoon") %>% # I am only looking at Lagoon sites
+  filter(location %in% c("Pihaena", "Tiahura", "Tetaiuo")) %>% # only in these three reserves
+  mutate(metric = indicator) %>%
+  filter(!is.na(targetloc)) %>%
   ungroup()%>%
-  mutate(Metric=paste("Abundance.TargetLoc",TargetLoc,Indicator,sep="."))%>%
-  dplyr::select(-c(TargetLoc,Reef.Lagoon))%>%
+  mutate(metric=paste("abundance.targetloc", targetloc, indicator, sep = "."))%>%
+  dplyr::select(-c(targetloc, reef.lagoon))%>%
   glimpse()
 
-unique(size.class.target$Sample)
-unique(size.class.target$Metric)
+unique(size.class.target$sample)
+unique(size.class.target$metric)
 6*96
 
 # Number and size of schools ----
 schools.total <- raw.data %>%
-  dplyr::filter(!is.na(School)) %>%
-  dplyr::group_by(School, Sample) %>%
-  dplyr::summarise(Response = sum(Number)) %>%
-  dplyr::mutate(Metric = "Number in school") %>%
-  full_join(samples, ., by = "Sample") %>%
-  replace_na(list(Response = 0)) %>%
-  left_join(factors, ., by = "Sample") %>%
+  dplyr::filter(!is.na(school)) %>%
+  dplyr::group_by(school, sample) %>%
+  dplyr::summarise(response = sum(number)) %>%
+  dplyr::mutate(metric = "number in school") %>%
+  full_join(samples, ., by = "sample") %>%
+  replace_na(list(response = 0)) %>%
+  left_join(factors, ., by = "sample") %>%
   ungroup()
 
 number.of.schools <- schools.total %>%
-  filter(!School %in% c("NA", NA, "")) %>%
-  dplyr::group_by(Sample) %>%
-  dplyr::summarise(number.of.schools = n()) %>%
-  dplyr::mutate(Metric = "Number of schools") %>%
+  filter(!school %in% c("NA", NA, "")) %>%
+  dplyr::group_by(sample) %>%
+  dplyr::summarise(response = n()) %>%
+  dplyr::mutate(metric = "number of schools") %>%
   ungroup() %>%
-  full_join(samples, ., by = "Sample") %>%
-  left_join(factors, ., by = "Sample")
-  replace_na(list(Response = 0))
+  full_join(samples, ., by = "sample") %>%
+  left_join(factors, ., by = "sample") %>%
+  replace_na(list(response = 0))
   
 # Combine datasets together ----
-combined.abundance.dataframes <- bind_rows(total.abundance.species.richness,
+combined.abundance <- bind_rows(total.abundance.species.richness,
                                          size.class, 
                                          size.class.target,
                                          schools.total,
-                                         number.of.schools)%>%
-  dplyr::rename(response=Response)
+                                         number.of.schools)
 
-unique(combined.abundance.dataframes$Site)
 
 # Set predictor variables ----
-pred.vars = c("Depth",
-            "PeriodLength",
+pred.vars = c("depth",
+            "periodlength",
             "sd.relief",
             "mean.relief",
             "rock",
@@ -165,7 +165,7 @@ pred.vars = c("Depth",
 # Reef is correlated with sand - keep reef
 # Keep sd relief, periodlength (offset), remove macroalgae
 
-dat <- combined.abundance.dataframes%>%glimpse()
+dat <- combined.abundance%>%glimpse()
 
 # Check for correalation of predictor variables- remove anything highly correlated (>0.95)---
 round(cor(dat[,pred.vars]),2)
@@ -185,8 +185,7 @@ for (i in pred.vars) {
   plot(log(x+1))
 }
 
-dat<-combined.abundance.dataframes%>%
-  dplyr::rename(response=Response)
+dat<-combined.abundance
 
 ## ABUNDANCE ----
 # Re-set the predictors for modeling----
@@ -199,7 +198,7 @@ names(dat)
 name<-"abundance.output"
 
 # Check to make sure Response vector has not more than 80% zeros----
-unique.vars=unique(as.character(dat$Metric))
+unique.vars=unique(as.character(dat$metric))
 glimpse(unique.vars)
 
 unique.vars.use=character()
@@ -207,7 +206,7 @@ unique.vars.use=character()
 glimpse(dat)
 
 for(i in 1:length(unique.vars)){
-  temp.dat=dat[which(dat$Metric==unique.vars[i]),]
+  temp.dat=dat[which(dat$metric==unique.vars[i]),]
   if(length(which(temp.dat$response==0))/nrow(temp.dat)<0.8){
     unique.vars.use=c(unique.vars.use,unique.vars[i])}
 }
