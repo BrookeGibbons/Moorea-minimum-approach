@@ -195,7 +195,7 @@ dat<-combined.abundance %>%
 ## ABUNDANCE ----
 # Re-set the predictors for modeling----
 # pred.vars=c("rock","sd.relief","hard.corals","sand") 
-pred.vars=c("reef","sd.relief","hard.corals","mean.relief") # NEW PREDICTORS
+pred.vars=c("sand","sd.relief","hard.corals","mean.relief") # NEW PREDICTORS
 
 # Set name of models ----
 name<-"abundance.output"
@@ -219,6 +219,8 @@ use.dat=dat
 factor.vars=c("status")# Status as a Factor with two levels #,"TargetLoc" BG removed 03/03/2023
 out.all=list() 
 var.imp=list()
+
+names(dat)
 
 # dat <- dat %>%
 #   select(-c(reef.lagoon, indicator, school, depth, macroalgae, sand, rock))
@@ -260,7 +262,7 @@ for(i in 1:length(resp.vars)){
   for(m in 1:nrow(out.i)){
     best.model.name=as.character(out.i$modname[m])
     
-    png(file=paste(name,m,resp.vars[i],"mod_fits.png",sep="_"))
+    png(file=paste("ModelOut/",name,resp.vars[i],m,"mod_fits.png",sep="_"))
     if(best.model.name!="null"){
       par(mfrow=c(3,1),mar=c(9,4,3,1))
       best.model=out.list$success.models[[best.model.name]]
@@ -275,8 +277,8 @@ names(out.all)=resp.vars
 names(var.imp)=resp.vars
 all.mod.fits=do.call("rbind",out.all)
 all.var.imp=do.call("rbind",var.imp)
-write.csv(all.mod.fits[,-2],file=paste(name,"all.mod.fits.csv",sep="_"))
-write.csv(all.var.imp,file=paste(name,"all.var.imp.csv",sep="_"))
+write.csv(all.mod.fits[,-2],file=paste("ModelOut/", name, "all.mod.fits.csv", sep = "_"))
+write.csv(all.var.imp,file=paste("ModelOut/", name, "all.var.imp.csv", sep = "_"))
 
 # Generic importance plots-
 heatmap.2(all.var.imp,notecex=0.4,  dendrogram ="none",
