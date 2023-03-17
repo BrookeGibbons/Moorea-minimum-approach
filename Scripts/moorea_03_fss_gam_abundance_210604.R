@@ -130,10 +130,10 @@ number.of.schools <- schools.total %>%
   filter(!school %in% c("NA", NA, "")) %>%
   dplyr::group_by(sample) %>%
   dplyr::summarise(response = n()) %>%
-  dplyr::mutate(metric = "number of schools") %>%
   ungroup() %>%
   full_join(samples, ., by = "sample") %>%
   left_join(factors, ., by = "sample") %>%
+  dplyr::mutate(metric = "number of schools") %>%
   replace_na(list(response = 0))
   
 # Combine datasets together ----
@@ -141,7 +141,8 @@ combined.abundance <- bind_rows(total.abundance.species.richness,
                                          size.class, 
                                          size.class.target,
                                          schools.total,
-                                         number.of.schools)
+                                         number.of.schools) %>%
+  left_join(factors)
 
 
 # Set predictor variables ----
@@ -185,25 +186,23 @@ for (i in pred.vars) {
   plot(log(x+1))
 }
 
-dat<-combined.abundance
+dat<-combined.abundance %>%
+  dplyr::mutate(status = as.factor(status))%>%
+  dplyr::mutate(location = as.factor(location))%>%
+  dplyr::mutate(site = as.factor(site))%>%
+  dplyr::mutate(sample = as.factor(sample))
 
 ## ABUNDANCE ----
 # Re-set the predictors for modeling----
-pred.vars=c("rock","sd.relief","hard.corals","sand") 
+# pred.vars=c("rock","sd.relief","hard.corals","sand") 
 pred.vars=c("reef","sd.relief","hard.corals","mean.relief") # NEW PREDICTORS
-
-names(dat)
 
 # Set name of models ----
 name<-"abundance.output"
 
 # Check to make sure Response vector has not more than 80% zeros----
 unique.vars=unique(as.character(dat$metric))
-glimpse(unique.vars)
-
 unique.vars.use=character()
-
-glimpse(dat)
 
 for(i in 1:length(unique.vars)){
   temp.dat=dat[which(dat$metric==unique.vars[i]),]
@@ -217,19 +216,23 @@ unique.vars.use
 # setwd("/ModelOut") # Set wd for example outputs - will differ on your computer
 resp.vars=unique.vars.use
 use.dat=dat
-factor.vars=c("Status")# Status as a Factor with two levels #,"TargetLoc" BG removed 03/03/2023
+factor.vars=c("status")# Status as a Factor with two levels #,"TargetLoc" BG removed 03/03/2023
 out.all=list() 
 var.imp=list()
 
-names(dat)
-glimpse(use.dat)
+# dat <- dat %>%
+#   select(-c(reef.lagoon, indicator, school, depth, macroalgae, sand, rock))
 
 # Loop through the FSS function for each Taxa----
 for(i in 1:length(resp.vars)){
-  use.dat=dat[which(dat$Metric==resp.vars[i]),]
   
-  Model1=gam(response~s(reef,k=3,bs='cr')+ s(Site, Location, bs='re'),
-             family=tw(),  offset=PeriodLength, data=use.dat)
+  use.dat=dat[which(dat$metric==resp.vars[i]),] %>% as.data.frame()
+  
+  # glimpse(use.dat)
+  # names(use.dat)
+  
+  Model1 = gam(response~s(mean.relief, k = 3, bs = 'cr')+ s(site, location, bs = 're'),
+             family = tw(),  offset = periodlength, data = use.dat)
   
   model.set=generate.model.set(use.dat=use.dat,
                                test.fit=Model1,
@@ -237,7 +240,7 @@ for(i in 1:length(resp.vars)){
                                pred.vars.fact=factor.vars,
                                #linear.vars="Distance",
                                k=3,
-                               null.terms="s(Site, Location, bs='re')")
+                               null.terms="s(site, location, bs='re')")
   
   out.list=fit.model.set(model.set,
                          max.models=600,
